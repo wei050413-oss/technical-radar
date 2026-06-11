@@ -1,193 +1,292 @@
 import os
+
+import pandas as pd
 import requests
 import yfinance as yf
-import pandas as pd
+
 
 SHEET_ID = "1DM7x4sQP2Mt7Tiohf2wGLt_l1dizbhAk-sZEIMleqlc"
-SHEET_NAME = "Watchlist"
+SHEET_NAME = "watchlist"
+MAX_MESSAGE_LENGTH = 4500
+TRUNCATION_NOTICE = "訊息過長，已截斷。"
+
 
 def get_tickers_from_sheets():
-    url = f"https://docs.google.com/spreadsheets/d/1DM7x4sQP2Mt7Tiohf2wGLt_l1dizbhAk-sZEIMleqlc/gviz/tq?tqx=out:csv&sheet=Watchlist"
-    df = pd.read_csv(url)
+    url = (
+        f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/tq"
+        f"?tqx=out:csv&sheet={SHEET_NAME}"
+    )
 
-    active_df = df[df["active"] == True]
-    tickers = active_df["ticker"].dropna().astype(str).str.strip().tolist()
+    try:
+        df = pd.read_csv(url)
+        required_columns = {"ticker", "active"}
+        missing_columns = required_columns - set(df.columns)
+        if missing_columns:
+            missing = ", ".join(sorted(missing_columns))
+            raise ValueError(f"缺少必要欄位：{missing}")
 
-    return tickers
+        active = df["active"].astype(str).str.strip().str.lower()
+        active_df = df[active.isin({"true", "1", "yes", "y"})]
+        return (
+            active_df["ticker"]
+            .dropna()
+            .astype(str)
+            .str.strip()
+            .loc[lambda values: values.ne("")]
+            .tolist()
+        )
+    except Exception as exc:
+        print(f"Google Sheets 讀取失敗：{exc}")
+        raise
 
 
 def calculate_rsi(series, period=14):
     delta = series.diff()
-    gain = delta.where(delta > 0, 0).rolling(period).mean()
-    loss = -delta.where(delta < 0, 0).rolling(period).mean()
+    gain = delta.clip(lower=0).rolling(period).mean()
+    loss = -delta.clip(upper=0).rolling(period).mean()
     rs = gain / loss
     return 100 - (100 / (1 + rs))
 
 
-def analyze_ticker(ticker):
-    df = yf.download(ticker, period="6mo", auto_adjust=True, progress=False)
+def get_price_data(ticker):
+    df = yf.download(
+        ticker,
+        period="1y",
+        interval="1d",
+        auto_adjust=True,
+        progress=False,
+    )
 
     if df.empty:
-        return f"\n📌 {ticker}\n抓不到資料\n"
+        raise ValueError("抓不到價格資料")
 
     if isinstance(df.columns, pd.MultiIndex):
-        close = df["Close"][ticker]
-        volume = df["Volume"][ticker]
+        try:
+            close = df["Close"][ticker]
+            volume = df["Volume"][ticker]
+        except KeyError:
+            close = df["Close"].iloc[:, 0]
+            volume = df["Volume"].iloc[:, 0]
     else:
         close = df["Close"]
         volume = df["Volume"]
 
-    ma20 = close.rolling(20).mean()
-    ma50 = close.rolling(50).mean()
-    rsi = calculate_rsi(close)
+    price_data = pd.DataFrame({"close": close, "volume": volume}).dropna(
+        subset=["close"]
+    )
+    if len(price_data) < 2:
+        raise ValueError("價格資料不足，至少需要兩個交易日")
 
-    latest_close = float(close.iloc[-1])
-    prev_close = float(close.iloc[-2])
-    change_pct = (latest_close - prev_close) / prev_close * 100
+    return price_data
 
-    latest_ma20 = float(ma20.iloc[-1])
-    prev_ma20 = float(ma20.iloc[-2])
-    latest_ma50 = float(ma50.iloc[-1])
-    latest_rsi = float(rsi.iloc[-1])
-    prev_rsi = float(rsi.iloc[-2])
 
-    latest_volume = float(volume.iloc[-1])
-    avg_volume_20 = float(volume.rolling(20).mean().iloc[-1])
+def analyze_ticker(ticker):
+    result = {
+        "ticker": ticker,
+        "close": None,
+        "change_pct": None,
+        "high_alerts": [],
+        "medium_alerts": [],
+        "error": None,
+    }
 
-    # ===== 結構：20日區間位置 =====
-    recent_20_high = float(close.tail(20).max())
-    recent_20_low = float(close.tail(20).min())
+    try:
+        df = get_price_data(ticker)
+        close = df["close"]
+        volume = df["volume"]
 
-    if recent_20_high == recent_20_low:
-        position_20 = 0.5
-    else:
-        position_20 = (latest_close - recent_20_low) / (recent_20_high - recent_20_low)
+        ma20 = close.rolling(20).mean()
+        ma50 = close.rolling(50).mean()
+        rsi = calculate_rsi(close)
+        avg_volume_20 = volume.rolling(20).mean()
 
-    # ===== 結構：突破 / 跌破 =====
-    prev_20_high = float(close.iloc[-21:-1].max())
-    prev_20_low = float(close.iloc[-21:-1].min())
+        latest_close = float(close.iloc[-1])
+        prev_close = float(close.iloc[-2])
+        change_pct = (latest_close - prev_close) / prev_close * 100
 
-    # ===== 結構：趨勢方向 =====
-    ma20_slope = float(ma20.iloc[-1] - ma20.iloc[-5])
+        result["close"] = latest_close
+        result["change_pct"] = change_pct
 
-    message = f"\n📌 {ticker}\n"
-    message += f"收盤價：{latest_close:.2f} ({change_pct:+.2f}%)\n"
+        previous_close = close.iloc[:-1]
+        previous_20 = previous_close.tail(20)
+        previous_52_week = previous_close.tail(252)
 
-    if abs(change_pct) >= 3:
-        message += "⚠️ 當日波動較大\n"
+        if len(previous_20) >= 20:
+            if latest_close > float(previous_20.max()):
+                result["high_alerts"].append("突破近20日高點")
+            if latest_close < float(previous_20.min()):
+                result["high_alerts"].append("跌破近20日低點")
 
-    # ===== 區間結構 =====
-    message += "\n📊 結構\n"
+        if not previous_52_week.empty:
+            if latest_close > float(previous_52_week.max()):
+                result["high_alerts"].append("創52週新高")
+            if latest_close < float(previous_52_week.min()):
+                result["high_alerts"].append("創52週新低")
 
-    if position_20 >= 0.8:
-        message += f"👉 接近 20日高點（區間位置 {position_20:.0%}）\n"
-    elif position_20 <= 0.2:
-        message += f"👉 接近 20日低點（區間位置 {position_20:.0%}）\n"
-    else:
-        message += f"👉 位於 20日區間中段（區間位置 {position_20:.0%}）\n"
+        latest_ma50 = ma50.iloc[-1]
+        prev_ma50 = ma50.iloc[-2]
+        if pd.notna(latest_ma50) and pd.notna(prev_ma50):
+            if prev_close > prev_ma50 and latest_close < latest_ma50:
+                result["high_alerts"].append("剛跌破50MA")
+            if prev_close < prev_ma50 and latest_close > latest_ma50:
+                result["high_alerts"].append("剛站上50MA")
 
-    if latest_close > prev_20_high:
-        message += "🚀 突破近 20日高點\n"
-    elif latest_close < prev_20_low:
-        message += "⚠️ 跌破近 20日低點\n"
+        latest_avg_volume = avg_volume_20.iloc[-1]
+        latest_volume = volume.iloc[-1]
+        if (
+            pd.notna(latest_volume)
+            and pd.notna(latest_avg_volume)
+            and latest_avg_volume > 0
+            and latest_volume > latest_avg_volume * 2
+        ):
+            volume_multiple = latest_volume / latest_avg_volume
+            result["high_alerts"].append(f"成交量放大 {volume_multiple:.1f}倍")
 
-    if latest_ma20 > latest_ma50 and ma20_slope > 0:
-        message += "📈 趨勢結構偏多：20MA > 50MA，且 20MA 上彎\n"
-    elif latest_ma20 < latest_ma50 and ma20_slope < 0:
-        message += "📉 趨勢結構偏空：20MA < 50MA，且 20MA 下彎\n"
-    else:
-        message += "↔️ 趨勢結構不明顯 / 盤整可能\n"
+        latest_ma20 = ma20.iloc[-1]
+        prev_ma20 = ma20.iloc[-2]
+        if pd.notna(latest_ma20) and pd.notna(prev_ma20):
+            if prev_close > prev_ma20 and latest_close < latest_ma20:
+                result["medium_alerts"].append("剛跌破20MA")
+            if prev_close < prev_ma20 and latest_close > latest_ma20:
+                result["medium_alerts"].append("剛站上20MA")
 
-    # ===== 指標狀態 =====
-    message += "\n📊 指標\n"
+        latest_rsi = rsi.iloc[-1]
+        if pd.notna(latest_rsi):
+            if latest_rsi > 80:
+                result["medium_alerts"].append(
+                    f"RSI {latest_rsi:.1f}，極度過熱"
+                )
+            if latest_rsi < 30:
+                result["medium_alerts"].append(f"RSI {latest_rsi:.1f}，超賣")
 
-    if latest_close > latest_ma20:
-        message += "👉 站上 20MA\n"
-    else:
-        message += "👉 跌破 20MA\n"
+        if abs(change_pct) >= 5:
+            result["medium_alerts"].append(
+                f"當日波動較大 {change_pct:+.2f}%"
+            )
+    except Exception as exc:
+        result["error"] = str(exc)
+        print(f"{ticker} 資料處理失敗：{exc}")
 
-    if prev_close < prev_ma20 and latest_close > latest_ma20:
-        message += "🚀 剛站上 20MA（短線轉強）\n"
+    return result
 
-    if prev_close > prev_ma20 and latest_close < latest_ma20:
-        message += "⚠️ 剛跌破 20MA（短線轉弱）\n"
 
-    if latest_close > latest_ma50:
-        message += "👉 在 50MA 之上\n"
-    else:
-        message += "👉 在 50MA 之下\n"
+def build_daily_watchlist(results):
+    lines = ["📈 Daily Watchlist"]
+    for result in results:
+        ticker = result["ticker"]
+        if result.get("error"):
+            lines.append(f"{ticker}: 資料錯誤")
+            continue
 
-    if latest_rsi > 80:
-        message += f"🔥 RSI {latest_rsi:.1f}，極度過熱\n"
-    elif latest_rsi > 70:
-        message += f"⚠️ RSI {latest_rsi:.1f}，偏熱\n"
-    elif latest_rsi < 30:
-        message += f"🧊 RSI {latest_rsi:.1f}，超賣\n"
-    else:
-        message += f"👉 RSI {latest_rsi:.1f}，中性\n"
+        lines.append(
+            f"{ticker}: {result['close']:.2f} "
+            f"({result['change_pct']:+.2f}%)"
+        )
 
-    if prev_rsi <= 70 and latest_rsi > 70:
-        message += "🚀 RSI 剛進入過熱區\n"
+    return "\n".join(lines)
 
-    if prev_rsi >= 30 and latest_rsi < 30:
-        message += "⚠️ RSI 剛跌入超賣區\n"
 
-    if latest_volume > avg_volume_20 * 1.5:
-        message += "📢 成交量明顯放大\n"
+def build_technical_alerts(results):
+    high_priority = []
+    medium_priority = []
 
-        prev_volume = float(volume.iloc[-2])
-        prev_avg_volume_20 = float(volume.rolling(20).mean().iloc[-2])
+    for result in results:
+        if result.get("error"):
+            continue
 
-        if prev_volume <= prev_avg_volume_20 * 1.5:
-            message += "🚀 成交量剛放大\n"
+        high_alerts = result["high_alerts"][:4]
+        remaining_slots = 4 - len(high_alerts)
+        medium_alerts = result["medium_alerts"][:remaining_slots]
+
+        if high_alerts:
+            high_priority.append((result["ticker"], high_alerts))
+        if medium_alerts:
+            medium_priority.append((result["ticker"], medium_alerts))
+
+    if not high_priority and not medium_priority:
+        return "🚨 Technical Alerts\n今日無重大技術訊號。"
+
+    lines = ["🚨 Technical Alerts"]
+    if high_priority:
+        lines.extend(["", "🔥 High Priority"])
+        for ticker, alerts in high_priority:
+            lines.append(ticker)
+            lines.extend(f"- {alert}" for alert in alerts)
+
+    if medium_priority:
+        lines.extend(["", "⚠️ Medium Priority"])
+        for ticker, alerts in medium_priority:
+            lines.append(ticker)
+            lines.extend(f"- {alert}" for alert in alerts)
+
+    return "\n".join(lines)
+
+
+def build_message():
+    try:
+        tickers = get_tickers_from_sheets()
+    except Exception:
+        return None
+
+    if not tickers:
+        print("Google Sheets 中沒有 active=True 的 ticker，不送出 LINE 訊息。")
+        return None
+
+    results = [analyze_ticker(ticker) for ticker in tickers]
+    message = (
+        f"{build_daily_watchlist(results)}\n\n"
+        f"{build_technical_alerts(results)}"
+    )
+
+    if len(message) > MAX_MESSAGE_LENGTH:
+        keep_length = MAX_MESSAGE_LENGTH - len(TRUNCATION_NOTICE) - 1
+        message = f"{message[:keep_length].rstrip()}\n{TRUNCATION_NOTICE}"
 
     return message
 
 
-def build_message():
-    tickers = get_tickers_from_sheets()
-
-    final_message = "📈 今日技術面雷達\n"
-    final_message += f"追蹤股票數：{len(tickers)}\n"
-
-    for ticker in tickers:
-        try:
-            final_message += analyze_ticker(ticker)
-        except Exception as e:
-            final_message += f"\n📌 {ticker}\n發生錯誤：{e}\n"
-
-    return final_message
-
-
 def send_line_message(text):
+    if not text or not text.strip():
+        print("LINE 訊息為空，不送出。")
+        return
+
     token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN")
     user_id = os.getenv("LINE_USER_ID")
 
     if not token or not user_id:
-        print("❌ LINE token 或 user id 沒有設定")
-        print(text)
+        print("LINE_CHANNEL_ACCESS_TOKEN 或 LINE_USER_ID 沒有設定，不送出訊息。")
         return
 
     url = "https://api.line.me/v2/bot/message/push"
-
     headers = {
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json",
     }
-
     payload = {
         "to": user_id,
         "messages": [{"type": "text", "text": text}],
     }
 
-    response = requests.post(url, headers=headers, json=payload)
-
-    print("LINE status:", response.status_code)
-    print(response.text)
+    try:
+        response = requests.post(
+            url,
+            headers=headers,
+            json=payload,
+            timeout=30,
+        )
+        response.raise_for_status()
+        print(f"LINE 訊息發送成功，status={response.status_code}")
+    except requests.RequestException as exc:
+        print(f"LINE 訊息發送失敗：{exc}")
+        if getattr(exc, "response", None) is not None:
+            print(exc.response.text)
 
 
 def main():
     message = build_message()
+    if not message:
+        return
+
     print(message)
     send_line_message(message)
 
