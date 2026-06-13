@@ -1,4 +1,8 @@
+import json
 import os
+from datetime import date, datetime, time, timedelta
+from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import pandas as pd
 import requests
@@ -9,6 +13,45 @@ SHEET_ID = "1DM7x4sQP2Mt7Tiohf2wGLt_l1dizbhAk-sZEIMleqlc"
 SHEET_NAME = "watchlist"
 MAX_MESSAGE_LENGTH = 4500
 TRUNCATION_NOTICE = "訊息過長，已截斷。"
+EVENT_STATE_PATH = Path(__file__).with_name("event_state.json")
+
+MACRO_EVENTS = [
+    {
+        "id": "CPI_2026-06-12",
+        "type": "macro",
+        "name": "CPI",
+        "date": "2026-06-12",
+        "session": "before_market",
+    },
+    {
+        "id": "PPI_2026-06-15",
+        "type": "macro",
+        "name": "PPI",
+        "date": "2026-06-15",
+        "session": "before_market",
+    },
+    {
+        "id": "FOMC_2026-06-18",
+        "type": "macro",
+        "name": "FOMC",
+        "date": "2026-06-18",
+        "session": "after_market",
+    },
+    {
+        "id": "NFP_2026-07-05",
+        "type": "macro",
+        "name": "非農就業",
+        "date": "2026-07-05",
+        "session": "before_market",
+    },
+    {
+        "id": "PCE_2026-07-26",
+        "type": "macro",
+        "name": "PCE",
+        "date": "2026-07-26",
+        "session": "before_market",
+    },
+]
 
 
 def get_tickers_from_sheets():
@@ -46,6 +89,282 @@ def calculate_rsi(series, period=14):
     loss = -delta.clip(upper=0).rolling(period).mean()
     rs = gain / loss
     return 100 - (100 / (1 + rs))
+
+
+def parse_event_date(event):
+    value = event.get("date")
+    if isinstance(value, datetime):
+        return value.date()
+    if isinstance(value, date):
+        return value
+    if isinstance(value, str):
+        return datetime.strptime(value, "%Y-%m-%d").date()
+    raise ValueError(f"無效事件日期：{value}")
+
+
+def format_event_date(event_date):
+    if isinstance(event_date, datetime):
+        event_date = event_date.date()
+    return f"{event_date.month}/{event_date.day}"
+
+
+def format_event_session(session):
+    session_labels = {
+        "before_market": "盤前公布",
+        "after_market": "盤後公布",
+        "during_market": "盤中公布",
+        "unknown": "時間待確認",
+    }
+    return session_labels.get(session, "時間待確認")
+
+
+def format_event_line(event):
+    event_date = parse_event_date(event)
+    session = format_event_session(event.get("session", "unknown"))
+    return f"{event['name']}：{format_event_date(event_date)} {session}"
+
+
+def _flatten_calendar_values(value):
+    if isinstance(value, pd.DataFrame):
+        return value.to_numpy().ravel().tolist()
+    if isinstance(value, (pd.Series, pd.Index)):
+        return value.tolist()
+    if isinstance(value, (list, tuple, set)):
+        flattened = []
+        for item in value:
+            flattened.extend(_flatten_calendar_values(item))
+        return flattened
+    return [value]
+
+
+def _extract_earnings_values(calendar):
+    if calendar is None:
+        return []
+
+    if isinstance(calendar, dict):
+        for key, value in calendar.items():
+            if "earnings date" in str(key).strip().lower():
+                return _flatten_calendar_values(value)
+        return []
+
+    if isinstance(calendar, pd.Series):
+        for key, value in calendar.items():
+            if "earnings date" in str(key).strip().lower():
+                return _flatten_calendar_values(value)
+        return []
+
+    if isinstance(calendar, pd.DataFrame):
+        for label in calendar.index:
+            if "earnings date" in str(label).strip().lower():
+                return _flatten_calendar_values(calendar.loc[label])
+        for label in calendar.columns:
+            if "earnings date" in str(label).strip().lower():
+                return _flatten_calendar_values(calendar[label])
+
+    return []
+
+
+def _parse_earnings_datetime(value):
+    if value is None or pd.isna(value):
+        return None
+
+    try:
+        if isinstance(value, (int, float)):
+            timestamp = pd.to_datetime(value, unit="s")
+        else:
+            timestamp = pd.Timestamp(value)
+    except (TypeError, ValueError, OverflowError):
+        return None
+
+    if pd.isna(timestamp):
+        return None
+    return timestamp.to_pydatetime()
+
+
+def _get_earnings_session(earnings_datetime):
+    if not isinstance(earnings_datetime, datetime):
+        return "unknown"
+
+    event_time = earnings_datetime.time()
+    if event_time == time.min:
+        return "unknown"
+
+    eastern = ZoneInfo("America/New_York")
+    if earnings_datetime.tzinfo is None:
+        eastern_datetime = earnings_datetime.replace(tzinfo=eastern)
+    else:
+        eastern_datetime = earnings_datetime.astimezone(eastern)
+
+    event_time = eastern_datetime.time().replace(tzinfo=None)
+    if event_time < time(9, 30):
+        return "before_market"
+    if event_time >= time(16, 0):
+        return "after_market"
+    if time(9, 30) <= event_time < time(16, 0):
+        return "during_market"
+    return "unknown"
+
+
+def get_earnings_events(tickers):
+    events = []
+    today = datetime.now().date()
+
+    for ticker in tickers:
+        try:
+            calendar = yf.Ticker(ticker).calendar
+            values = _extract_earnings_values(calendar)
+            earnings_datetimes = [
+                parsed
+                for value in values
+                if (parsed := _parse_earnings_datetime(value)) is not None
+            ]
+            upcoming = [
+                value for value in earnings_datetimes if value.date() >= today
+            ]
+            if not upcoming:
+                continue
+
+            earnings_datetime = min(upcoming, key=lambda value: value.date())
+            earnings_date = earnings_datetime.date().isoformat()
+            events.append(
+                {
+                    "id": f"{ticker}_earnings_{earnings_date}",
+                    "type": "earnings",
+                    "name": f"{ticker} 財報",
+                    "ticker": ticker,
+                    "date": earnings_date,
+                    "session": _get_earnings_session(earnings_datetime),
+                }
+            )
+        except Exception as exc:
+            print(f"Warning: {ticker} 財報日期讀取失敗，已跳過：{exc}")
+
+    return events
+
+
+def get_macro_events():
+    events = []
+    for event in MACRO_EVENTS:
+        try:
+            parse_event_date(event)
+            events.append(event.copy())
+        except (TypeError, ValueError) as exc:
+            print(
+                f"Warning: macro event {event.get('id', 'unknown')} "
+                f"日期格式錯誤，已跳過：{exc}"
+            )
+    return events
+
+
+def load_event_state():
+    empty_state = {"notified_event_ids": []}
+    if not EVENT_STATE_PATH.exists():
+        try:
+            save_event_state(empty_state)
+        except OSError as exc:
+            print(f"Warning: event_state.json 建立失敗：{exc}")
+        return empty_state
+
+    try:
+        with EVENT_STATE_PATH.open("r", encoding="utf-8") as state_file:
+            state = json.load(state_file)
+        notified_ids = state.get("notified_event_ids")
+        if not isinstance(notified_ids, list):
+            raise ValueError("notified_event_ids 必須是 list")
+        return {"notified_event_ids": list(dict.fromkeys(notified_ids))}
+    except (OSError, json.JSONDecodeError, ValueError, TypeError) as exc:
+        print(f"Warning: event_state.json 讀取失敗，使用空狀態：{exc}")
+        return empty_state
+
+
+def save_event_state(state):
+    normalized_state = {
+        "notified_event_ids": list(
+            dict.fromkeys(state.get("notified_event_ids", []))
+        )
+    }
+    with EVENT_STATE_PATH.open("w", encoding="utf-8") as state_file:
+        json.dump(normalized_state, state_file, ensure_ascii=False, indent=2)
+        state_file.write("\n")
+
+    # GitHub Actions runner is ephemeral. Persisting this state there later
+    # requires committing it back to the repo or using external storage such
+    # as Google Sheets, GitHub Gist, Firebase, or Supabase.
+
+
+def get_new_events(events, state):
+    notified_ids = set(state.get("notified_event_ids", []))
+    return [event for event in events if event["id"] not in notified_ids]
+
+
+def update_event_state(state, new_events):
+    notified_ids = list(state.get("notified_event_ids", []))
+    notified_ids.extend(event["id"] for event in new_events)
+    state["notified_event_ids"] = list(dict.fromkeys(notified_ids))
+    return state
+
+
+def get_this_week_events(events, today):
+    end_date = today + timedelta(days=7)
+    this_week = []
+
+    for event in events:
+        try:
+            event_date = parse_event_date(event)
+        except (TypeError, ValueError) as exc:
+            print(
+                f"Warning: event {event.get('id', 'unknown')} "
+                f"日期格式錯誤，已跳過：{exc}"
+            )
+            continue
+
+        if today <= event_date <= end_date:
+            this_week.append(event)
+
+    return this_week
+
+
+def _sort_events(events):
+    return sorted(events, key=lambda event: (parse_event_date(event), event["name"]))
+
+
+def build_event_radar(tickers):
+    earnings_events = get_earnings_events(tickers)
+    macro_events = get_macro_events()
+    events_by_id = {
+        event["id"]: event for event in earnings_events + macro_events
+    }
+    events = _sort_events(events_by_id.values())
+
+    state = load_event_state()
+    new_events = get_new_events(events, state)[:10]
+    new_event_ids = {event["id"] for event in new_events}
+    this_week_events = [
+        event
+        for event in get_this_week_events(events, datetime.now().date())
+        if event["id"] not in new_event_ids
+    ][:10]
+
+    if new_events:
+        update_event_state(state, new_events)
+        try:
+            save_event_state(state)
+        except OSError as exc:
+            print(f"Warning: event_state.json 更新失敗：{exc}")
+
+    if not new_events and not this_week_events:
+        return "📅 Event Radar\n今日無新的或當週重要事件。"
+
+    lines = ["📅 Event Radar"]
+    if new_events:
+        lines.extend(["", "🆕 New Events"])
+        lines.extend(format_event_line(event) for event in new_events)
+
+    if this_week_events:
+        lines.extend(["", "📌 This Week"])
+        lines.extend(format_event_line(event) for event in this_week_events)
+
+    return "\n".join(lines)
 
 
 def get_price_data(ticker):
@@ -233,9 +552,16 @@ def build_message():
         return None
 
     results = [analyze_ticker(ticker) for ticker in tickers]
+    try:
+        event_radar = build_event_radar(tickers)
+    except Exception as exc:
+        print(f"Warning: Event Radar 建立失敗：{exc}")
+        event_radar = "📅 Event Radar\n今日無新的或當週重要事件。"
+
     message = (
         f"{build_daily_watchlist(results)}\n\n"
-        f"{build_technical_alerts(results)}"
+        f"{build_technical_alerts(results)}\n\n"
+        f"{event_radar}"
     )
 
     if len(message) > MAX_MESSAGE_LENGTH:
