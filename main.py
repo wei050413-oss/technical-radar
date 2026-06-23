@@ -14,6 +14,11 @@ SHEET_NAME = "watchlist"
 MAX_MESSAGE_LENGTH = 4500
 TRUNCATION_NOTICE = "訊息過長，已截斷。"
 EVENT_STATE_PATH = Path(__file__).with_name("event_state.json")
+VOLUME_EXPANSION_THRESHOLD = 1.5
+VOLUME_SHRINK_THRESHOLD = 1.0
+BIG_MOVE_THRESHOLD = 5.0
+TAIPEI_TIMEZONE = ZoneInfo("Asia/Taipei")
+MAX_ALERTS_PER_TICKER = 4
 
 MACRO_EVENTS = [
     {
@@ -91,14 +96,133 @@ def calculate_rsi(series, period=14):
     return 100 - (100 / (1 + rs))
 
 
+def calculate_volume_ratio(volume, avg_volume_20d):
+    if (
+        pd.isna(volume)
+        or pd.isna(avg_volume_20d)
+        or avg_volume_20d <= 0
+    ):
+        return None
+
+    return volume / avg_volume_20d
+
+
+def get_volume_price_signal(change_pct, volume_ratio):
+    if change_pct is None or volume_ratio is None:
+        return {"label": None, "priority": "none"}
+    if pd.isna(change_pct) or pd.isna(volume_ratio):
+        return {"label": None, "priority": "none"}
+
+    ratio_label = f"{volume_ratio:.1f}x Avg Volume"
+
+    if change_pct == 0:
+        return {
+            "label": f"➖ 價格持平（{ratio_label}）",
+            "priority": "none",
+        }
+
+    if volume_ratio >= VOLUME_EXPANSION_THRESHOLD:
+        if change_pct >= BIG_MOVE_THRESHOLD:
+            return {
+                "label": f"🔥 強勢放量上漲（{ratio_label}）",
+                "priority": "high",
+            }
+        if change_pct > 0:
+            return {
+                "label": f"📈 放量上漲（{ratio_label}）",
+                "priority": "high",
+            }
+        if change_pct <= -BIG_MOVE_THRESHOLD:
+            return {
+                "label": f"🚨 強勢放量下跌（{ratio_label}）",
+                "priority": "high",
+            }
+        return {
+            "label": f"⚠️ 放量下跌（{ratio_label}）",
+            "priority": "high",
+        }
+
+    if volume_ratio < VOLUME_SHRINK_THRESHOLD:
+        if change_pct >= BIG_MOVE_THRESHOLD:
+            return {
+                "label": f"⚠️ 強勢量縮上漲（{ratio_label}）",
+                "priority": "medium",
+            }
+        if change_pct > 0:
+            return {
+                "label": f"⚠️ 量縮上漲（{ratio_label}）",
+                "priority": "medium",
+            }
+        if change_pct <= -BIG_MOVE_THRESHOLD:
+            return {
+                "label": f"📉 強勢量縮下跌（{ratio_label}）",
+                "priority": "medium",
+            }
+        return {
+            "label": f"📉 量縮下跌（{ratio_label}）",
+            "priority": "medium",
+        }
+
+    if change_pct > 0:
+        return {
+            "label": f"➖ 正常量能上漲（{ratio_label}）",
+            "priority": "none",
+        }
+
+    return {
+        "label": f"➖ 正常量能下跌（{ratio_label}）",
+        "priority": "none",
+    }
+
+
+def is_volume_price_signal(alert):
+    return isinstance(alert, str) and "Avg Volume" in alert
+
+
+def limit_alerts_prioritizing_volume_signal(alerts, limit=MAX_ALERTS_PER_TICKER):
+    if limit <= 0:
+        return [alert for alert in alerts if is_volume_price_signal(alert)][:1]
+
+    if len(alerts) <= limit:
+        return alerts
+
+    visible_alerts = alerts[:limit]
+    if any(is_volume_price_signal(alert) for alert in visible_alerts):
+        return visible_alerts
+
+    for alert in alerts[limit:]:
+        if is_volume_price_signal(alert):
+            return visible_alerts[: limit - 1] + [alert]
+
+    return visible_alerts
+
+
+def get_today_taipei():
+    return datetime.now(TAIPEI_TIMEZONE).date()
+
+
 def parse_event_date(event):
+    current_year = get_today_taipei().year
     value = event.get("date")
     if isinstance(value, datetime):
         return value.date()
     if isinstance(value, date):
         return value
     if isinstance(value, str):
-        return datetime.strptime(value, "%Y-%m-%d").date()
+        value = value.strip()
+        try:
+            return datetime.strptime(value, "%Y-%m-%d").date()
+        except ValueError:
+            pass
+
+        for separator in ("/", "-"):
+            if separator not in value:
+                continue
+            try:
+                month, day = (int(part) for part in value.split(separator, 1))
+                return date(current_year, month, day)
+            except ValueError:
+                continue
     raise ValueError(f"無效事件日期：{value}")
 
 
@@ -207,7 +331,7 @@ def _get_earnings_session(earnings_datetime):
 
 def get_earnings_events(tickers):
     events = []
-    today = datetime.now().date()
+    today = get_today_taipei()
 
     for ticker in tickers:
         try:
@@ -254,6 +378,24 @@ def get_macro_events():
                 f"日期格式錯誤，已跳過：{exc}"
             )
     return events
+
+
+def get_upcoming_events(events, today):
+    upcoming_events = []
+    for event in events:
+        try:
+            event_date = parse_event_date(event)
+        except (TypeError, ValueError) as exc:
+            print(
+                f"Warning: event {event.get('id', 'unknown')} "
+                f"日期格式錯誤，已跳過：{exc}"
+            )
+            continue
+
+        if event_date >= today:
+            upcoming_events.append(event)
+
+    return upcoming_events
 
 
 def load_event_state():
@@ -329,19 +471,20 @@ def _sort_events(events):
 
 
 def build_event_radar(tickers):
+    today = get_today_taipei()
     earnings_events = get_earnings_events(tickers)
     macro_events = get_macro_events()
     events_by_id = {
         event["id"]: event for event in earnings_events + macro_events
     }
-    events = _sort_events(events_by_id.values())
+    events = _sort_events(get_upcoming_events(events_by_id.values(), today))
 
     state = load_event_state()
     new_events = get_new_events(events, state)[:10]
     new_event_ids = {event["id"] for event in new_events}
     this_week_events = [
         event
-        for event in get_this_week_events(events, datetime.now().date())
+        for event in get_this_week_events(events, today)
         if event["id"] not in new_event_ids
     ][:10]
 
@@ -452,14 +595,12 @@ def analyze_ticker(ticker):
 
         latest_avg_volume = avg_volume_20.iloc[-1]
         latest_volume = volume.iloc[-1]
-        if (
-            pd.notna(latest_volume)
-            and pd.notna(latest_avg_volume)
-            and latest_avg_volume > 0
-            and latest_volume > latest_avg_volume * 2
-        ):
-            volume_multiple = latest_volume / latest_avg_volume
-            result["high_alerts"].append(f"成交量放大 {volume_multiple:.1f}倍")
+        volume_ratio = calculate_volume_ratio(latest_volume, latest_avg_volume)
+        volume_signal = get_volume_price_signal(change_pct, volume_ratio)
+        if volume_signal["priority"] == "high":
+            result["high_alerts"].append(volume_signal["label"])
+        if volume_signal["priority"] == "medium":
+            result["medium_alerts"].append(volume_signal["label"])
 
         latest_ma20 = ma20.iloc[-1]
         prev_ma20 = ma20.iloc[-2]
@@ -478,10 +619,6 @@ def analyze_ticker(ticker):
             if latest_rsi < 30:
                 result["medium_alerts"].append(f"RSI {latest_rsi:.1f}，超賣")
 
-        if abs(change_pct) >= 5:
-            result["medium_alerts"].append(
-                f"當日波動較大 {change_pct:+.2f}%"
-            )
     except Exception as exc:
         result["error"] = str(exc)
         print(f"{ticker} 資料處理失敗：{exc}")
@@ -513,9 +650,14 @@ def build_technical_alerts(results):
         if result.get("error"):
             continue
 
-        high_alerts = result["high_alerts"][:4]
-        remaining_slots = 4 - len(high_alerts)
-        medium_alerts = result["medium_alerts"][:remaining_slots]
+        high_alerts = limit_alerts_prioritizing_volume_signal(
+            result["high_alerts"]
+        )
+        remaining_slots = MAX_ALERTS_PER_TICKER - len(high_alerts)
+        medium_alerts = limit_alerts_prioritizing_volume_signal(
+            result["medium_alerts"],
+            remaining_slots,
+        )
 
         if high_alerts:
             high_priority.append((result["ticker"], high_alerts))
