@@ -482,9 +482,10 @@ class WeeklyMarketRecapTest(unittest.TestCase):
         return {
             "week_range": "2026-06-15 to 2026-06-19",
             "indices": {
-                "SOX": "+3.2%",
+                "Dow Jones": "+0.2%",
+                "S&P500": "+0.4%",
                 "NASDAQ": "-1.1%",
-                "SP500": "+0.4%",
+                "PHLX": "+3.2%",
             },
             "sector_etfs": {
                 "XLE": "+4.2%",
@@ -532,7 +533,9 @@ class WeeklyMarketRecapTest(unittest.TestCase):
         self.assertIn('"watchlist_top_movers"', user_prompt)
         self.assertIn('"news_headlines"', user_prompt)
         self.assertIn("Fed keeps rates unchanged", user_prompt)
-        self.assertIn("SOX", user_prompt)
+        self.assertIn("Dow Jones", user_prompt)
+        self.assertIn("S&P500", user_prompt)
+        self.assertIn("PHLX", user_prompt)
         self.assertIn("SMH", user_prompt)
         self.assertIn("BE +18.0%", user_prompt)
 
@@ -574,9 +577,10 @@ class WeeklyMarketRecapTest(unittest.TestCase):
 
 指數表現：
 
-SOX +3.2%
+Dow Jones +0.2%
+S&P500 +0.4%
 NASDAQ -1.1%
-SP500 +0.4%"""
+PHLX +3.2%"""
 
         with (
             patch("main.collect_weekly_market_data", return_value=self.weekly_summary()),

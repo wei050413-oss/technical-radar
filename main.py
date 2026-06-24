@@ -30,11 +30,10 @@ OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 WEEKLY_NEWS_LIMIT = 12
 WEEKLY_WATCHLIST_LIMIT = 5
 WEEKLY_INDEX_TICKERS = {
-    "SP500": "^GSPC",
+    "Dow Jones": "^DJI",
+    "S&P500": "^GSPC",
     "NASDAQ": "^IXIC",
-    "SOX": "^SOX",
-    "RUSSELL2000": "^RUT",
-    "DOW": "^DJI",
+    "PHLX": "^SOX",
 }
 WEEKLY_SECTOR_ETFS = {
     "XLK": "科技",
@@ -1090,9 +1089,10 @@ def build_weekly_recap_prompt(summary):
 
 指數表現：
 
-SOX +x.x%
+Dow Jones +x.x%
+S&P500 +x.x%
 NASDAQ +x.x%
-SP500 +x.x%
+PHLX +x.x%
 
 Structured data:
 {json.dumps(summary, ensure_ascii=False, indent=2)}
