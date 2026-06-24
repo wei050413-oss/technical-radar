@@ -383,6 +383,37 @@ class EventRadarTest(unittest.TestCase):
         self.assertIn("未來無年份事件：6/24", message)
         self.assertNotIn("過期無年份事件", message)
 
+    def test_tw_event_radar_excludes_us_macro_events(self):
+        us_macro_events = [
+            {
+                "id": "CPI_2026-07-10",
+                "name": "CPI",
+                "date": "2026-07-10",
+                "session": "before_market",
+            }
+        ]
+        tw_events = [
+            {
+                "id": "TW_monthly_revenue_2026-07",
+                "name": "台股月營收公告截止",
+                "date": "2026-07-10",
+                "session": "unknown",
+            }
+        ]
+
+        with (
+            patch("main.get_today_taipei", return_value=date(2026, 6, 24)),
+            patch("main.get_earnings_events", return_value=[]),
+            patch("main.get_macro_events", return_value=us_macro_events),
+            patch("main.get_tw_market_events", return_value=tw_events),
+            patch("main.load_event_state", return_value={"notified_event_ids": []}),
+            patch("main.save_event_state"),
+        ):
+            message = build_event_radar([], "tw")
+
+        self.assertIn("台股月營收公告截止：7/10", message)
+        self.assertNotIn("CPI", message)
+
     def test_today_uses_asia_taipei_timezone(self):
         fixed_now = datetime(2026, 6, 23, 1, 0, tzinfo=TAIPEI_TIMEZONE)
         with patch("main.datetime") as mocked_datetime:
@@ -468,13 +499,17 @@ class WatchlistMarketTest(unittest.TestCase):
         with (
             patch("main.get_watchlist_from_sheets", return_value=watchlist),
             patch("main.analyze_ticker", return_value=result),
-            patch("main.build_event_radar", return_value="📅 Event Radar\n今日無新的或當週重要事件。"),
+            patch(
+                "main.build_event_radar",
+                return_value="📅 Event Radar\n今日無新的或當週重要事件。",
+            ) as mocked_event_radar,
         ):
             message = build_message("tw")
 
         self.assertIn("台積電: 1000.00 (+1.23%)", message)
         self.assertIn("台積電\n- 📈 放量上漲（2.1x Avg Volume）", message)
         self.assertNotIn("2330.TW", message)
+        mocked_event_radar.assert_called_once_with(watchlist, "tw")
 
 
 class WeeklyMarketRecapTest(unittest.TestCase):

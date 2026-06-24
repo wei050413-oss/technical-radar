@@ -77,12 +77,14 @@ WATCHLIST_CONFIGS = {
         "display": "ticker",
         "title": "📈 Daily Watchlist",
         "include_event_radar": True,
+        "event_scope": "us",
     },
     "tw": {
         "sheet_name": "TW Watchlist",
         "display": "name",
         "title": "📈 台股 Watchlist",
         "include_event_radar": True,
+        "event_scope": "tw",
     },
 }
 
@@ -469,6 +471,28 @@ def get_macro_events():
     return events
 
 
+def get_tw_market_events(today=None):
+    today = today or get_today_taipei()
+    events = []
+
+    for month_offset in range(3):
+        month = today.month + month_offset
+        year = today.year + (month - 1) // 12
+        month = (month - 1) % 12 + 1
+        revenue_deadline = date(year, month, 10)
+        events.append(
+            {
+                "id": f"TW_monthly_revenue_{year}-{month:02d}",
+                "type": "tw_market",
+                "name": "台股月營收公告截止",
+                "date": revenue_deadline.isoformat(),
+                "session": "unknown",
+            }
+        )
+
+    return events
+
+
 def get_upcoming_events(events, today):
     upcoming_events = []
     for event in events:
@@ -559,12 +583,16 @@ def _sort_events(events):
     return sorted(events, key=lambda event: (parse_event_date(event), event["name"]))
 
 
-def build_event_radar(watchlist):
+def build_event_radar(watchlist, event_scope="us"):
     today = get_today_taipei()
     earnings_events = get_earnings_events(watchlist)
-    macro_events = get_macro_events()
+    if event_scope == "tw":
+        market_events = get_tw_market_events(today)
+    else:
+        market_events = get_macro_events()
+
     events_by_id = {
-        event["id"]: event for event in earnings_events + macro_events
+        event["id"]: event for event in earnings_events + market_events
     }
     events = _sort_events(get_upcoming_events(events_by_id.values(), today))
 
@@ -794,7 +822,10 @@ def build_message(market=None):
 
     if config["include_event_radar"]:
         try:
-            event_radar = build_event_radar(watchlist)
+            event_radar = build_event_radar(
+                watchlist,
+                config.get("event_scope", "us"),
+            )
         except Exception as exc:
             print(f"Warning: Event Radar 建立失敗：{exc}")
             event_radar = "📅 Event Radar\n今日無新的或當週重要事件。"
