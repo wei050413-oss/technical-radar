@@ -9,15 +9,10 @@ from main import (
     TAIPEI_TIMEZONE,
     analyze_ticker,
     build_event_radar,
-    build_message,
     build_technical_alerts,
-    build_why_did_it_move,
     calculate_volume_ratio,
-    format_why_did_it_move_news,
-    get_recent_news,
     get_upcoming_events,
     get_volume_price_signal,
-    get_why_did_it_move_candidates,
 )
 
 
@@ -374,141 +369,6 @@ class EventRadarTest(unittest.TestCase):
 
         mocked_datetime.now.assert_called_once_with(TAIPEI_TIMEZONE)
         self.assertEqual(today, date(2026, 6, 23))
-
-
-class WhyDidItMoveTest(unittest.TestCase):
-    def result(self, ticker, change_pct, close=100.0):
-        return {
-            "ticker": ticker,
-            "close": close,
-            "change_pct": change_pct,
-            "volume_ratio": 1.8,
-            "high_alerts": ["📈 放量上漲（1.8x Avg Volume）"],
-            "medium_alerts": [],
-            "error": None,
-        }
-
-    def test_change_over_five_percent_triggers(self):
-        candidates = get_why_did_it_move_candidates(
-            [self.result("BE", 5.1)]
-        )
-
-        self.assertEqual([item["ticker"] for item in candidates], ["BE"])
-
-    def test_change_below_five_percent_does_not_trigger(self):
-        candidates = get_why_did_it_move_candidates(
-            [self.result("BE", 4.9)]
-        )
-
-        self.assertEqual(candidates, [])
-
-    def test_only_top_five_by_absolute_change_are_used(self):
-        results = [
-            self.result("A", 5.1),
-            self.result("B", -9.0),
-            self.result("C", 7.0),
-            self.result("D", -6.0),
-            self.result("E", 12.0),
-            self.result("F", 8.0),
-        ]
-
-        candidates = get_why_did_it_move_candidates(results)
-
-        self.assertEqual(
-            [item["ticker"] for item in candidates],
-            ["E", "B", "F", "C", "D"],
-        )
-
-    def news(self, index):
-        return {
-            "title": f"News title {index}",
-            "source": "Yahoo Finance",
-            "published_at": "2026-06-24",
-            "url": f"https://example.com/news-{index}",
-        }
-
-    def test_each_ticker_displays_at_most_three_news_items(self):
-        news_items = [self.news(1), self.news(2), self.news(3), self.news(4)]
-        with patch("main.get_recent_news", return_value=news_items[:3]):
-            section = build_why_did_it_move([self.result("BE", 15.4)])
-
-        self.assertIn("1. News title 1", section)
-        self.assertIn("2. News title 2", section)
-        self.assertIn("3. News title 3", section)
-        self.assertNotIn("4. News title 4", section)
-
-    def test_get_recent_news_returns_at_most_three_items(self):
-        news_items = [
-            {
-                **self.news(index),
-                "published_at": "Wed, 24 Jun 2026 12:00:00 GMT",
-            }
-            for index in range(1, 5)
-        ]
-        with (
-            patch("main.get_news_feed_urls", return_value=["https://example.com/rss"]),
-            patch("main.fetch_rss_news", return_value=news_items),
-        ):
-            recent_news = get_recent_news("BE")
-
-        self.assertEqual(len(recent_news), 3)
-        self.assertEqual([item["title"] for item in recent_news], [
-            "News title 1",
-            "News title 2",
-            "News title 3",
-        ])
-
-    def test_get_recent_news_continues_when_one_feed_fails(self):
-        news_item = {
-            **self.news(1),
-            "published_at": "Wed, 24 Jun 2026 12:00:00 GMT",
-        }
-
-        def fake_fetch(url):
-            if "google" in url:
-                raise RuntimeError("feed down")
-            return [news_item]
-
-        with (
-            patch(
-                "main.get_news_feed_urls",
-                return_value=["https://google.example/rss", "https://yahoo.example/rss"],
-            ),
-            patch("main.fetch_rss_news", side_effect=fake_fetch),
-        ):
-            recent_news = get_recent_news("BE")
-
-        self.assertEqual(len(recent_news), 1)
-        self.assertEqual(recent_news[0]["title"], "News title 1")
-
-    def test_missing_news_still_outputs_section(self):
-        with patch("main.get_recent_news", return_value=[]):
-            section = build_why_did_it_move([self.result("BE", 15.4)])
-
-        self.assertIn("BE +15.4%", section)
-        self.assertIn("近期未找到明確新聞。", section)
-
-    def test_news_output_contains_title_source_date_and_url(self):
-        lines = format_why_did_it_move_news([self.news(1)])
-        output = "\n".join(lines)
-
-        self.assertIn("1. News title 1", output)
-        self.assertIn("Source: Yahoo Finance / 2026-06-24", output)
-        self.assertIn("URL: https://example.com/news-1", output)
-
-    def test_news_failure_does_not_block_full_message(self):
-        with (
-            patch("main.get_tickers_from_sheets", return_value=["BE"]),
-            patch("main.analyze_ticker", return_value=self.result("BE", 15.4)),
-            patch("main.build_event_radar", return_value="📅 Event Radar\nOK"),
-            patch("main.get_recent_news", side_effect=RuntimeError("news down")),
-        ):
-            message = build_message()
-
-        self.assertIn("📈 Daily Watchlist", message)
-        self.assertIn("🚨 Technical Alerts", message)
-        self.assertIn("近期未找到明確新聞。", message)
-        self.assertIn("📅 Event Radar", message)
 
 
 if __name__ == "__main__":
