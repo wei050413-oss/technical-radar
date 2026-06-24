@@ -1,8 +1,10 @@
 import json
 import os
 from datetime import date, datetime, time, timedelta
+from email.utils import parsedate_to_datetime
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, quote_plus
+from xml.etree import ElementTree
 from zoneinfo import ZoneInfo
 
 import pandas as pd
@@ -20,6 +22,56 @@ BIG_MOVE_THRESHOLD = 5.0
 TAIPEI_TIMEZONE = ZoneInfo("Asia/Taipei")
 MAX_ALERTS_PER_TICKER = 4
 DEFAULT_MARKET = "us"
+DEFAULT_REPORT_TYPE = "daily"
+WEEKLY_RECAP_FALLBACK = (
+    "📊 Weekly Market Recap\n\nWeekly Market Recap 暫時無法產生。"
+)
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+WEEKLY_NEWS_LIMIT = 12
+WEEKLY_WATCHLIST_LIMIT = 5
+WEEKLY_INDEX_TICKERS = {
+    "SP500": "^GSPC",
+    "NASDAQ": "^IXIC",
+    "SOX": "^SOX",
+    "RUSSELL2000": "^RUT",
+    "DOW": "^DJI",
+}
+WEEKLY_SECTOR_ETFS = {
+    "XLK": "科技",
+    "XLE": "能源",
+    "XLF": "金融",
+    "XLV": "醫療",
+    "XLI": "工業",
+    "XLU": "公用事業",
+    "XLY": "非必需消費",
+    "XLP": "必需消費",
+    "SMH": "半導體",
+    "SOXX": "半導體",
+    "IGV": "軟體",
+    "XSD": "半導體設備 / 小型半導體",
+    "URA": "鈾 / 核能",
+    "NLR": "核能",
+    "PAVE": "基建",
+    "ITA": "國防",
+    "TAN": "太陽能",
+    "ICLN": "潔淨能源",
+}
+WEEKLY_NEWS_KEYWORDS = [
+    "Federal Reserve",
+    "inflation",
+    "CPI",
+    "PPI",
+    "jobs report",
+    "oil price",
+    "Middle East",
+    "Iran",
+    "tariffs",
+    "Nvidia",
+    "AI infrastructure",
+    "semiconductor",
+    "data center power",
+    "nuclear energy",
+]
 WATCHLIST_CONFIGS = {
     "us": {
         "sheet_name": "US Watchlist",
@@ -758,6 +810,342 @@ def build_message(market=None):
     return message
 
 
+def should_run_weekly_recap(today=None):
+    today = today or get_today_taipei()
+    return today.weekday() == 0
+
+
+def get_previous_us_week_range(today=None):
+    today = today or get_today_taipei()
+    days_since_previous_monday = today.weekday() + 7
+    week_start = today - timedelta(days=days_since_previous_monday)
+    week_end = week_start + timedelta(days=4)
+    return week_start, week_end
+
+
+def calculate_period_return(price_data, start_date=None, end_date=None):
+    if price_data is None or price_data.empty:
+        return None
+
+    data = price_data.copy()
+    if not isinstance(data.index, pd.DatetimeIndex):
+        data.index = pd.to_datetime(data.index)
+
+    if "close" in data.columns:
+        close = data["close"]
+    elif "Close" in data.columns:
+        close = data["Close"]
+    else:
+        raise ValueError("缺少 close 欄位")
+
+    close = close.dropna()
+    if start_date is not None:
+        close = close[close.index.date >= start_date]
+    if end_date is not None:
+        close = close[close.index.date <= end_date]
+    if len(close) < 2:
+        return None
+
+    start_price = float(close.iloc[0])
+    end_price = float(close.iloc[-1])
+    if start_price <= 0:
+        return None
+
+    return (end_price - start_price) / start_price * 100
+
+
+def get_period_price_data(ticker, start_date, end_date):
+    download_end = end_date + timedelta(days=3)
+    df = yf.download(
+        ticker,
+        start=start_date.isoformat(),
+        end=download_end.isoformat(),
+        interval="1d",
+        auto_adjust=True,
+        progress=False,
+    )
+
+    if df.empty:
+        raise ValueError("抓不到價格資料")
+
+    if isinstance(df.columns, pd.MultiIndex):
+        try:
+            close = df["Close"][ticker]
+        except KeyError:
+            close = df["Close"].iloc[:, 0]
+    else:
+        close = df["Close"]
+
+    return pd.DataFrame({"close": close}).dropna(subset=["close"])
+
+
+def get_weekly_returns(tickers, start_date, end_date):
+    returns = {}
+    for label, ticker in tickers.items():
+        try:
+            price_data = get_period_price_data(ticker, start_date, end_date)
+            period_return = calculate_period_return(
+                price_data,
+                start_date,
+                end_date,
+            )
+            if period_return is not None:
+                returns[label] = round(period_return, 2)
+        except Exception as exc:
+            print(f"Warning: {label} 週報酬率讀取失敗，已跳過：{exc}")
+
+    return returns
+
+
+def get_watchlist_weekly_movers(watchlist, start_date, end_date):
+    movers = []
+    for item in watchlist:
+        ticker = item["ticker"]
+        display_name = item.get("display_name") or ticker
+        try:
+            price_data = get_period_price_data(ticker, start_date, end_date)
+            period_return = calculate_period_return(
+                price_data,
+                start_date,
+                end_date,
+            )
+            if period_return is None:
+                continue
+            movers.append(
+                {
+                    "ticker": ticker,
+                    "name": display_name,
+                    "return_pct": round(period_return, 2),
+                }
+            )
+        except Exception as exc:
+            print(f"Warning: {ticker} watchlist 週報酬率讀取失敗，已跳過：{exc}")
+
+    gainers = sorted(movers, key=lambda item: item["return_pct"], reverse=True)[
+        :WEEKLY_WATCHLIST_LIMIT
+    ]
+    losers = sorted(movers, key=lambda item: item["return_pct"])[:WEEKLY_WATCHLIST_LIMIT]
+    big_moves = [
+        item for item in movers if abs(item["return_pct"]) >= BIG_MOVE_THRESHOLD
+    ]
+    big_moves = sorted(
+        big_moves,
+        key=lambda item: abs(item["return_pct"]),
+        reverse=True,
+    )
+
+    return {
+        "gainers": format_movers(gainers),
+        "losers": format_movers(losers),
+        "big_moves": format_movers(big_moves),
+    }
+
+
+def format_movers(movers):
+    return [
+        f"{item['name']} {item['return_pct']:+.1f}%"
+        for item in movers
+    ]
+
+
+def parse_rss_items(xml_text, start_date, end_date, limit):
+    try:
+        root = ElementTree.fromstring(xml_text)
+    except ElementTree.ParseError:
+        return []
+
+    items = []
+    seen_titles = set()
+    for item in root.findall(".//item"):
+        title = (item.findtext("title") or "").strip()
+        link = (item.findtext("link") or "").strip()
+        source = (item.findtext("source") or "Google News").strip()
+        published_text = (item.findtext("pubDate") or "").strip()
+        if not title or title.lower() in seen_titles:
+            continue
+
+        published_at = ""
+        published_date = None
+        if published_text:
+            try:
+                published = parsedate_to_datetime(published_text)
+                published_date = published.date()
+                published_at = published_date.isoformat()
+            except (TypeError, ValueError):
+                published_at = published_text
+
+        if published_date and not (start_date <= published_date <= end_date):
+            continue
+
+        seen_titles.add(title.lower())
+        items.append(
+            {
+                "title": title,
+                "source": source,
+                "published_at": published_at,
+                "url": link,
+            }
+        )
+        if len(items) >= limit:
+            break
+
+    return items
+
+
+def fetch_weekly_market_news(start_date, end_date, limit=WEEKLY_NEWS_LIMIT):
+    query = " OR ".join(f'"{keyword}"' for keyword in WEEKLY_NEWS_KEYWORDS)
+    query = f"({query}) after:{start_date.isoformat()} before:{(end_date + timedelta(days=1)).isoformat()}"
+    url = (
+        "https://news.google.com/rss/search"
+        f"?q={quote_plus(query)}&hl=en-US&gl=US&ceid=US:en"
+    )
+
+    try:
+        response = requests.get(url, timeout=20)
+        response.raise_for_status()
+        return parse_rss_items(response.text, start_date, end_date, limit)
+    except requests.RequestException as exc:
+        print(f"Warning: Weekly news 讀取失敗，已跳過：{exc}")
+        return []
+
+
+def collect_weekly_market_data(today=None):
+    week_start, week_end = get_previous_us_week_range(today)
+    indices = get_weekly_returns(WEEKLY_INDEX_TICKERS, week_start, week_end)
+    sector_tickers = {
+        ticker: ticker
+        for ticker in WEEKLY_SECTOR_ETFS
+    }
+    sector_returns = get_weekly_returns(sector_tickers, week_start, week_end)
+
+    try:
+        watchlist = get_watchlist_from_sheets("us")
+    except Exception as exc:
+        print(f"Warning: US Watchlist 讀取失敗，週報略過 watchlist：{exc}")
+        watchlist = []
+
+    watchlist_top_movers = get_watchlist_weekly_movers(
+        watchlist,
+        week_start,
+        week_end,
+    )
+    news_headlines = fetch_weekly_market_news(week_start, week_end)
+
+    return {
+        "week_range": f"{week_start.isoformat()} to {week_end.isoformat()}",
+        "indices": format_return_map(indices),
+        "sector_etfs": format_return_map(sector_returns),
+        "sector_etf_labels": WEEKLY_SECTOR_ETFS,
+        "watchlist_top_movers": watchlist_top_movers,
+        "news_headlines": news_headlines,
+    }
+
+
+def format_return_map(returns):
+    return {
+        label: f"{value:+.1f}%"
+        for label, value in returns.items()
+    }
+
+
+def build_weekly_recap_prompt(summary):
+    system_prompt = (
+        "你是謹慎的市場摘要助手。只能根據使用者提供的 structured data "
+        "整理每週市場回顧，不要給買賣建議，不要硬編原因。"
+    )
+    user_prompt = f"""
+請根據以下 JSON 產生適合 LINE 閱讀的繁體中文美股週報。
+
+規則：
+1. 不要給買賣建議。
+2. 不要硬編原因。
+3. 如果新聞與市場表現無法明確連結，請寫「市場反應較分散，未出現單一明確主線」。
+4. 本週主線最多 3 點。
+5. 類股輪動最多列 3 個強勢、3 個弱勢。
+6. 內容要短。
+7. 固定使用以下格式：
+
+📊 Weekly Market Recap
+
+本週主線：
+
+1. ...
+2. ...
+3. ...
+
+市場反應：
+
+✓ ...
+✓ ...
+✗ ...
+
+類股輪動：
+
+↑ ...
+↑ ...
+↑ ...
+
+↓ ...
+↓ ...
+
+指數表現：
+
+SOX +x.x%
+NASDAQ +x.x%
+SP500 +x.x%
+
+Structured data:
+{json.dumps(summary, ensure_ascii=False, indent=2)}
+""".strip()
+    return system_prompt, user_prompt
+
+
+def call_openai_weekly_recap(summary):
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        raise RuntimeError("OPENAI_API_KEY 沒有設定")
+
+    system_prompt, user_prompt = build_weekly_recap_prompt(summary)
+    response = requests.post(
+        "https://api.openai.com/v1/chat/completions",
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+        },
+        json={
+            "model": OPENAI_MODEL,
+            "messages": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+            "temperature": 0.2,
+            "max_tokens": 600,
+        },
+        timeout=45,
+    )
+    response.raise_for_status()
+    data = response.json()
+    return data["choices"][0]["message"]["content"].strip()
+
+
+def build_weekly_market_recap_message(today=None):
+    try:
+        summary = collect_weekly_market_data(today)
+        recap = call_openai_weekly_recap(summary)
+    except Exception as exc:
+        print(f"Warning: Weekly Market Recap 建立失敗：{exc}")
+        return WEEKLY_RECAP_FALLBACK
+
+    if not recap.startswith("📊 Weekly Market Recap"):
+        recap = f"📊 Weekly Market Recap\n\n{recap}"
+
+    if len(recap) > MAX_MESSAGE_LENGTH:
+        keep_length = MAX_MESSAGE_LENGTH - len(TRUNCATION_NOTICE) - 1
+        recap = f"{recap[:keep_length].rstrip()}\n{TRUNCATION_NOTICE}"
+
+    return recap
+
+
 def send_line_message(text):
     if not text or not text.strip():
         print("LINE 訊息為空，不送出。")
@@ -796,7 +1184,12 @@ def send_line_message(text):
 
 
 def main():
-    message = build_message()
+    report_type = os.getenv("REPORT_TYPE", DEFAULT_REPORT_TYPE).lower()
+    if report_type == "weekly":
+        message = build_weekly_market_recap_message()
+    else:
+        message = build_message()
+
     if not message:
         return
 

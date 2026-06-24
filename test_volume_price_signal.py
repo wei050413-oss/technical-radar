@@ -8,14 +8,18 @@ import main
 from main import (
     TAIPEI_TIMEZONE,
     analyze_ticker,
+    build_weekly_market_recap_message,
+    build_weekly_recap_prompt,
     build_daily_watchlist,
     build_event_radar,
     build_message,
     build_technical_alerts,
+    calculate_period_return,
     calculate_volume_ratio,
     get_watchlist_from_sheets,
     get_upcoming_events,
     get_volume_price_signal,
+    should_run_weekly_recap,
 )
 
 
@@ -471,6 +475,121 @@ class WatchlistMarketTest(unittest.TestCase):
         self.assertIn("台積電: 1000.00 (+1.23%)", message)
         self.assertIn("台積電\n- 📈 放量上漲（2.1x Avg Volume）", message)
         self.assertNotIn("2330.TW", message)
+
+
+class WeeklyMarketRecapTest(unittest.TestCase):
+    def weekly_summary(self):
+        return {
+            "week_range": "2026-06-15 to 2026-06-19",
+            "indices": {
+                "SOX": "+3.2%",
+                "NASDAQ": "-1.1%",
+                "SP500": "+0.4%",
+            },
+            "sector_etfs": {
+                "XLE": "+4.2%",
+                "SMH": "+3.8%",
+                "IGV": "-2.1%",
+            },
+            "watchlist_top_movers": {
+                "gainers": ["BE +18.0%", "MU +12.0%"],
+                "losers": ["PLTR -8.0%", "ARM -7.0%"],
+                "big_moves": ["BE +18.0%", "MU +12.0%", "PLTR -8.0%"],
+            },
+            "news_headlines": [
+                {
+                    "title": "Fed keeps rates unchanged",
+                    "source": "Reuters",
+                    "published_at": "2026-06-18",
+                    "url": "https://example.com/fed",
+                }
+            ],
+        }
+
+    def test_weekly_recap_runs_on_monday(self):
+        self.assertTrue(should_run_weekly_recap(date(2026, 6, 22)))
+        self.assertFalse(should_run_weekly_recap(date(2026, 6, 23)))
+
+    def test_period_return_is_calculated(self):
+        price_data = pd.DataFrame(
+            {"close": [100.0, 110.0]},
+            index=pd.to_datetime(["2026-06-15", "2026-06-19"]),
+        )
+
+        result = calculate_period_return(
+            price_data,
+            date(2026, 6, 15),
+            date(2026, 6, 19),
+        )
+
+        self.assertEqual(result, 10.0)
+
+    def test_ai_prompt_contains_market_data(self):
+        _, user_prompt = build_weekly_recap_prompt(self.weekly_summary())
+
+        self.assertIn('"indices"', user_prompt)
+        self.assertIn('"sector_etfs"', user_prompt)
+        self.assertIn('"watchlist_top_movers"', user_prompt)
+        self.assertIn('"news_headlines"', user_prompt)
+        self.assertIn("Fed keeps rates unchanged", user_prompt)
+        self.assertIn("SOX", user_prompt)
+        self.assertIn("SMH", user_prompt)
+        self.assertIn("BE +18.0%", user_prompt)
+
+    def test_ai_failure_returns_fallback_message(self):
+        with (
+            patch("main.collect_weekly_market_data", return_value=self.weekly_summary()),
+            patch("main.call_openai_weekly_recap", side_effect=RuntimeError("AI down")),
+        ):
+            message = build_weekly_market_recap_message(date(2026, 6, 22))
+
+        self.assertEqual(
+            message,
+            "📊 Weekly Market Recap\n\nWeekly Market Recap 暫時無法產生。",
+        )
+
+    def test_weekly_recap_output_is_line_readable(self):
+        ai_output = """📊 Weekly Market Recap
+
+本週主線：
+
+1. 聯準會維持觀望
+2. 半導體股反彈
+3. 能源股走強
+
+市場反應：
+
+✓ 能源股強勢
+✓ 半導體股強勢
+✗ 軟體股偏弱
+
+類股輪動：
+
+↑ Energy
+↑ Semiconductor
+↑ Defense
+
+↓ Software
+↓ Mag7
+
+指數表現：
+
+SOX +3.2%
+NASDAQ -1.1%
+SP500 +0.4%"""
+
+        with (
+            patch("main.collect_weekly_market_data", return_value=self.weekly_summary()),
+            patch("main.call_openai_weekly_recap", return_value=ai_output),
+        ):
+            message = build_weekly_market_recap_message(date(2026, 6, 22))
+
+        self.assertTrue(message.startswith("📊 Weekly Market Recap"))
+        self.assertIn("本週主線：", message)
+        self.assertIn("市場反應：", message)
+        self.assertIn("類股輪動：", message)
+        self.assertIn("指數表現：", message)
+        self.assertLess(len(message), 1000)
 
 
 if __name__ == "__main__":
