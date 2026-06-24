@@ -1,8 +1,8 @@
-name: Daily Technical Radar
+name: TW Daily Technical Radar
 
 on:
   schedule:
-    - cron: "30 23 * * 1-5"  # 台灣早上 7:30
+    - cron: "0 8 * * 1-5"  # 台灣下午 4:00
   workflow_dispatch:
 
 jobs:
@@ -25,5 +25,5 @@ jobs:
         env:
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
-          WATCHLIST_MARKET: us
+          WATCHLIST_MARKET: tw
         run: python main.py

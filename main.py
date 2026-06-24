@@ -2,6 +2,7 @@ import json
 import os
 from datetime import date, datetime, time, timedelta
 from pathlib import Path
+from urllib.parse import quote
 from zoneinfo import ZoneInfo
 
 import pandas as pd
@@ -10,7 +11,6 @@ import yfinance as yf
 
 
 SHEET_ID = "1DM7x4sQP2Mt7Tiohf2wGLt_l1dizbhAk-sZEIMleqlc"
-SHEET_NAME = "watchlist"
 MAX_MESSAGE_LENGTH = 4500
 TRUNCATION_NOTICE = "訊息過長，已截斷。"
 EVENT_STATE_PATH = Path(__file__).with_name("event_state.json")
@@ -19,6 +19,21 @@ VOLUME_SHRINK_THRESHOLD = 1.0
 BIG_MOVE_THRESHOLD = 5.0
 TAIPEI_TIMEZONE = ZoneInfo("Asia/Taipei")
 MAX_ALERTS_PER_TICKER = 4
+DEFAULT_MARKET = "us"
+WATCHLIST_CONFIGS = {
+    "us": {
+        "sheet_name": "US Watchlist",
+        "display": "ticker",
+        "title": "📈 Daily Watchlist",
+        "include_event_radar": True,
+    },
+    "tw": {
+        "sheet_name": "TW Watchlist",
+        "display": "name",
+        "title": "📈 台股 Watchlist",
+        "include_event_radar": True,
+    },
+}
 
 MACRO_EVENTS = [
     {
@@ -59,10 +74,19 @@ MACRO_EVENTS = [
 ]
 
 
-def get_tickers_from_sheets():
+def get_watchlist_config(market=None):
+    market_key = (market or os.getenv("WATCHLIST_MARKET") or DEFAULT_MARKET).lower()
+    if market_key not in WATCHLIST_CONFIGS:
+        raise ValueError(f"不支援的 WATCHLIST_MARKET：{market_key}")
+    return WATCHLIST_CONFIGS[market_key]
+
+
+def get_watchlist_from_sheets(market=None):
+    config = get_watchlist_config(market)
+    sheet_name = quote(config["sheet_name"])
     url = (
         f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/tq"
-        f"?tqx=out:csv&sheet={SHEET_NAME}"
+        f"?tqx=out:csv&sheet={sheet_name}"
     )
 
     try:
@@ -75,17 +99,33 @@ def get_tickers_from_sheets():
 
         active = df["active"].astype(str).str.strip().str.lower()
         active_df = df[active.isin({"true", "1", "yes", "y"})]
-        return (
-            active_df["ticker"]
-            .dropna()
-            .astype(str)
-            .str.strip()
-            .loc[lambda values: values.ne("")]
-            .tolist()
-        )
+        watchlist = []
+        for _, row in active_df.iterrows():
+            ticker = str(row.get("ticker", "")).strip()
+            if not ticker:
+                continue
+
+            name = row.get("name", "")
+            if pd.isna(name):
+                name = ""
+            name = str(name).strip()
+            display_name = name if config["display"] == "name" and name else ticker
+            watchlist.append(
+                {
+                    "ticker": ticker,
+                    "name": name,
+                    "display_name": display_name,
+                }
+            )
+
+        return watchlist
     except Exception as exc:
         print(f"Google Sheets 讀取失敗：{exc}")
         raise
+
+
+def get_tickers_from_sheets(market=None):
+    return [item["ticker"] for item in get_watchlist_from_sheets(market)]
 
 
 def calculate_rsi(series, period=14):
@@ -321,11 +361,17 @@ def _get_earnings_session(earnings_datetime):
     return "unknown"
 
 
-def get_earnings_events(tickers):
+def get_earnings_events(watchlist):
     events = []
     today = get_today_taipei()
 
-    for ticker in tickers:
+    for item in watchlist:
+        ticker = item["ticker"] if isinstance(item, dict) else item
+        display_name = (
+            item.get("display_name", ticker)
+            if isinstance(item, dict)
+            else ticker
+        )
         try:
             calendar = yf.Ticker(ticker).calendar
             values = _extract_earnings_values(calendar)
@@ -346,7 +392,7 @@ def get_earnings_events(tickers):
                 {
                     "id": f"{ticker}_earnings_{earnings_date}",
                     "type": "earnings",
-                    "name": f"{ticker} 財報",
+                    "name": f"{display_name} 財報",
                     "ticker": ticker,
                     "date": earnings_date,
                     "session": _get_earnings_session(earnings_datetime),
@@ -462,9 +508,9 @@ def _sort_events(events):
     return sorted(events, key=lambda event: (parse_event_date(event), event["name"]))
 
 
-def build_event_radar(tickers):
+def build_event_radar(watchlist):
     today = get_today_taipei()
-    earnings_events = get_earnings_events(tickers)
+    earnings_events = get_earnings_events(watchlist)
     macro_events = get_macro_events()
     events_by_id = {
         event["id"]: event for event in earnings_events + macro_events
@@ -534,9 +580,10 @@ def get_price_data(ticker):
     return price_data
 
 
-def analyze_ticker(ticker):
+def analyze_ticker(ticker, display_name=None):
     result = {
         "ticker": ticker,
+        "display_name": display_name or ticker,
         "close": None,
         "change_pct": None,
         "volume_ratio": None,
@@ -620,16 +667,16 @@ def analyze_ticker(ticker):
     return result
 
 
-def build_daily_watchlist(results):
-    lines = ["📈 Daily Watchlist"]
+def build_daily_watchlist(results, title="📈 Daily Watchlist"):
+    lines = [title]
     for result in results:
-        ticker = result["ticker"]
+        display_name = result.get("display_name") or result["ticker"]
         if result.get("error"):
-            lines.append(f"{ticker}: 資料錯誤")
+            lines.append(f"{display_name}: 資料錯誤")
             continue
 
         lines.append(
-            f"{ticker}: {result['close']:.2f} "
+            f"{display_name}: {result['close']:.2f} "
             f"({result['change_pct']:+.2f}%)"
         )
 
@@ -654,7 +701,8 @@ def build_technical_alerts(results):
         alerts = high_alerts + medium_alerts
 
         if alerts:
-            ticker_alerts.append((result["ticker"], alerts))
+            display_name = result.get("display_name") or result["ticker"]
+            ticker_alerts.append((display_name, alerts))
 
     if not ticker_alerts:
         return "🚨 Technical Alerts\n\nNo alerts today."
@@ -667,28 +715,39 @@ def build_technical_alerts(results):
     return "\n".join(lines)
 
 
-def build_message():
+def build_message(market=None):
     try:
-        tickers = get_tickers_from_sheets()
+        config = get_watchlist_config(market)
+    except ValueError as exc:
+        print(exc)
+        return None
+
+    try:
+        watchlist = get_watchlist_from_sheets(market)
     except Exception:
         return None
 
-    if not tickers:
+    if not watchlist:
         print("Google Sheets 中沒有 active=True 的 ticker，不送出 LINE 訊息。")
         return None
 
-    results = [analyze_ticker(ticker) for ticker in tickers]
-    try:
-        event_radar = build_event_radar(tickers)
-    except Exception as exc:
-        print(f"Warning: Event Radar 建立失敗：{exc}")
-        event_radar = "📅 Event Radar\n今日無新的或當週重要事件。"
+    results = [
+        analyze_ticker(item["ticker"], item["display_name"])
+        for item in watchlist
+    ]
 
     sections = [
-        build_daily_watchlist(results),
+        build_daily_watchlist(results, config["title"]),
         build_technical_alerts(results),
     ]
-    sections.append(event_radar)
+
+    if config["include_event_radar"]:
+        try:
+            event_radar = build_event_radar(watchlist)
+        except Exception as exc:
+            print(f"Warning: Event Radar 建立失敗：{exc}")
+            event_radar = "📅 Event Radar\n今日無新的或當週重要事件。"
+        sections.append(event_radar)
 
     message = "\n\n".join(sections)
 

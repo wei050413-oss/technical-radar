@@ -8,9 +8,12 @@ import main
 from main import (
     TAIPEI_TIMEZONE,
     analyze_ticker,
+    build_daily_watchlist,
     build_event_radar,
+    build_message,
     build_technical_alerts,
     calculate_volume_ratio,
+    get_watchlist_from_sheets,
     get_upcoming_events,
     get_volume_price_signal,
 )
@@ -179,6 +182,21 @@ class TechnicalAlertsTest(unittest.TestCase):
 
         self.assertEqual(message.count("TEST"), 1)
         self.assertIn("TEST\n- 跌破近20日低點\n- RSI 23.1，超賣", message)
+
+    def test_alerts_use_display_name_when_available(self):
+        message = build_technical_alerts(
+            [
+                {
+                    "ticker": "2330.TW",
+                    "display_name": "台積電",
+                    "high_alerts": ["📈 放量上漲（2.1x Avg Volume）"],
+                    "medium_alerts": [],
+                }
+            ]
+        )
+
+        self.assertIn("台積電\n- 📈 放量上漲（2.1x Avg Volume）", message)
+        self.assertNotIn("2330.TW", message)
 
     def test_regular_volume_shrink_up_is_not_displayed(self):
         signal = get_volume_price_signal(3.0, 0.7)
@@ -369,6 +387,90 @@ class EventRadarTest(unittest.TestCase):
 
         mocked_datetime.now.assert_called_once_with(TAIPEI_TIMEZONE)
         self.assertEqual(today, date(2026, 6, 23))
+
+
+class WatchlistMarketTest(unittest.TestCase):
+    def test_us_watchlist_reads_us_sheet_and_uses_ticker_display(self):
+        df = pd.DataFrame(
+            {
+                "ticker": ["ARM", "TSLA"],
+                "name": ["Arm", "Tesla"],
+                "active": [True, False],
+            }
+        )
+
+        with patch("main.pd.read_csv", return_value=df) as mocked_read_csv:
+            watchlist = get_watchlist_from_sheets("us")
+
+        self.assertIn("sheet=US%20Watchlist", mocked_read_csv.call_args.args[0])
+        self.assertEqual(
+            watchlist,
+            [{"ticker": "ARM", "name": "Arm", "display_name": "ARM"}],
+        )
+
+    def test_tw_watchlist_reads_tw_sheet_and_uses_name_display(self):
+        df = pd.DataFrame(
+            {
+                "ticker": ["2330.TW", "2317.TW"],
+                "name": ["台積電", ""],
+                "active": [True, True],
+            }
+        )
+
+        with patch("main.pd.read_csv", return_value=df) as mocked_read_csv:
+            watchlist = get_watchlist_from_sheets("tw")
+
+        self.assertIn("sheet=TW%20Watchlist", mocked_read_csv.call_args.args[0])
+        self.assertEqual(
+            watchlist,
+            [
+                {"ticker": "2330.TW", "name": "台積電", "display_name": "台積電"},
+                {"ticker": "2317.TW", "name": "", "display_name": "2317.TW"},
+            ],
+        )
+
+    def test_daily_watchlist_uses_display_name(self):
+        message = build_daily_watchlist(
+            [
+                {
+                    "ticker": "2330.TW",
+                    "display_name": "台積電",
+                    "close": 1000.0,
+                    "change_pct": 1.23,
+                    "error": None,
+                }
+            ],
+            "📈 台股 Watchlist",
+        )
+
+        self.assertIn("📈 台股 Watchlist", message)
+        self.assertIn("台積電: 1000.00 (+1.23%)", message)
+        self.assertNotIn("2330.TW", message)
+
+    def test_build_tw_message_uses_name_and_skips_ticker_display(self):
+        watchlist = [
+            {"ticker": "2330.TW", "name": "台積電", "display_name": "台積電"}
+        ]
+        result = {
+            "ticker": "2330.TW",
+            "display_name": "台積電",
+            "close": 1000.0,
+            "change_pct": 1.23,
+            "high_alerts": ["📈 放量上漲（2.1x Avg Volume）"],
+            "medium_alerts": [],
+            "error": None,
+        }
+
+        with (
+            patch("main.get_watchlist_from_sheets", return_value=watchlist),
+            patch("main.analyze_ticker", return_value=result),
+            patch("main.build_event_radar", return_value="📅 Event Radar\n今日無新的或當週重要事件。"),
+        ):
+            message = build_message("tw")
+
+        self.assertIn("台積電: 1000.00 (+1.23%)", message)
+        self.assertIn("台積電\n- 📈 放量上漲（2.1x Avg Volume）", message)
+        self.assertNotIn("2330.TW", message)
 
 
 if __name__ == "__main__":
