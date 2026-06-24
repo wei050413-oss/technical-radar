@@ -1,8 +1,11 @@
 import json
 import os
 from datetime import date, datetime, time, timedelta
+from email.utils import parsedate_to_datetime
 from pathlib import Path
+from urllib.parse import quote_plus
 from zoneinfo import ZoneInfo
+import xml.etree.ElementTree as ET
 
 import pandas as pd
 import requests
@@ -19,6 +22,11 @@ VOLUME_SHRINK_THRESHOLD = 1.0
 BIG_MOVE_THRESHOLD = 5.0
 TAIPEI_TIMEZONE = ZoneInfo("Asia/Taipei")
 MAX_ALERTS_PER_TICKER = 4
+WHY_DID_IT_MOVE_THRESHOLD = 5.0
+MAX_WHY_DID_IT_MOVE_TICKERS = 5
+MAX_WHY_DID_IT_MOVE_NEWS = 3
+NEWS_LOOKBACK_HOURS = 72
+NEWS_REQUEST_TIMEOUT = 10
 
 MACRO_EVENTS = [
     {
@@ -148,20 +156,12 @@ def get_volume_price_signal(change_pct, volume_ratio):
                 "label": f"⚠️ 強勢量縮上漲（{ratio_label}）",
                 "priority": "medium",
             }
-        if change_pct > 0:
-            return {
-                "label": f"⚠️ 量縮上漲（{ratio_label}）",
-                "priority": "medium",
-            }
         if change_pct <= -BIG_MOVE_THRESHOLD:
             return {
                 "label": f"📉 強勢量縮下跌（{ratio_label}）",
                 "priority": "medium",
             }
-        return {
-            "label": f"📉 量縮下跌（{ratio_label}）",
-            "priority": "medium",
-        }
+        return {"label": None, "priority": "none"}
 
     if change_pct > 0:
         return {
@@ -547,6 +547,7 @@ def analyze_ticker(ticker):
         "ticker": ticker,
         "close": None,
         "change_pct": None,
+        "volume_ratio": None,
         "high_alerts": [],
         "medium_alerts": [],
         "error": None,
@@ -596,6 +597,7 @@ def analyze_ticker(ticker):
         latest_avg_volume = avg_volume_20.iloc[-1]
         latest_volume = volume.iloc[-1]
         volume_ratio = calculate_volume_ratio(latest_volume, latest_avg_volume)
+        result["volume_ratio"] = volume_ratio
         volume_signal = get_volume_price_signal(change_pct, volume_ratio)
         if volume_signal["priority"] == "high":
             result["high_alerts"].append(volume_signal["label"])
@@ -643,8 +645,7 @@ def build_daily_watchlist(results):
 
 
 def build_technical_alerts(results):
-    high_priority = []
-    medium_priority = []
+    ticker_alerts = []
 
     for result in results:
         if result.get("error"):
@@ -658,27 +659,199 @@ def build_technical_alerts(results):
             result["medium_alerts"],
             remaining_slots,
         )
+        alerts = high_alerts + medium_alerts
 
-        if high_alerts:
-            high_priority.append((result["ticker"], high_alerts))
-        if medium_alerts:
-            medium_priority.append((result["ticker"], medium_alerts))
+        if alerts:
+            ticker_alerts.append((result["ticker"], alerts))
 
-    if not high_priority and not medium_priority:
-        return "🚨 Technical Alerts\n今日無重大技術訊號。"
+    if not ticker_alerts:
+        return "🚨 Technical Alerts\n\nNo alerts today."
 
     lines = ["🚨 Technical Alerts"]
-    if high_priority:
-        lines.extend(["", "🔥 High Priority"])
-        for ticker, alerts in high_priority:
-            lines.append(ticker)
-            lines.extend(f"- {alert}" for alert in alerts)
+    for ticker, alerts in ticker_alerts:
+        lines.extend(["", ticker])
+        lines.extend(f"- {alert}" for alert in alerts)
 
-    if medium_priority:
-        lines.extend(["", "⚠️ Medium Priority"])
-        for ticker, alerts in medium_priority:
-            lines.append(ticker)
-            lines.extend(f"- {alert}" for alert in alerts)
+    return "\n".join(lines)
+
+
+def get_why_did_it_move_candidates(results):
+    candidates = [
+        result
+        for result in results
+        if not result.get("error")
+        and result.get("change_pct") is not None
+        and abs(result["change_pct"]) >= WHY_DID_IT_MOVE_THRESHOLD
+    ]
+    return sorted(
+        candidates,
+        key=lambda result: abs(result["change_pct"]),
+        reverse=True,
+    )[:MAX_WHY_DID_IT_MOVE_TICKERS]
+
+
+def _parse_news_publish_time(news_item):
+    published_at = news_item.get("published_at")
+    if not published_at:
+        return None
+
+    try:
+        return parsedate_to_datetime(published_at)
+    except (TypeError, ValueError, IndexError, OverflowError):
+        return None
+
+
+def _rss_child_text(item, local_name):
+    for child in item:
+        if child.tag.split("}")[-1] == local_name:
+            text = child.text
+            if text:
+                return text.strip()
+    return None
+
+
+def _normalize_news_title(title):
+    return " ".join((title or "").split()).lower()
+
+
+def _news_source_from_title(title):
+    if " - " not in title:
+        return None
+    return title.rsplit(" - ", 1)[-1].strip()
+
+
+def _clean_news_title(title, source):
+    if not title:
+        return None
+    cleaned = " ".join(title.split())
+    if source and cleaned.endswith(f" - {source}"):
+        cleaned = cleaned[: -len(f" - {source}")].strip()
+    return cleaned
+
+
+def _parse_rss_news_item(item):
+    raw_title = _rss_child_text(item, "title")
+    link = _rss_child_text(item, "link")
+    published_at = _rss_child_text(item, "pubDate")
+    source = _rss_child_text(item, "source") or _news_source_from_title(raw_title)
+    title = _clean_news_title(raw_title, source)
+
+    if not title or not link or not published_at:
+        return None
+
+    return {
+        "title": title,
+        "source": source or "Unknown",
+        "published_at": published_at,
+        "url": link,
+    }
+
+
+def get_news_feed_urls(ticker):
+    query = quote_plus(f"{ticker} stock")
+    return [
+        (
+            "https://news.google.com/rss/search"
+            f"?q={query}+when:3d&hl=en-US&gl=US&ceid=US:en"
+        ),
+        (
+            "https://feeds.finance.yahoo.com/rss/2.0/headline"
+            f"?s={quote_plus(ticker)}&region=US&lang=en-US"
+        ),
+    ]
+
+
+def fetch_rss_news(url):
+    response = requests.get(
+        url,
+        headers={"User-Agent": "InvestJarTechnicalRadar/1.0"},
+        timeout=NEWS_REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+
+    root = ET.fromstring(response.content)
+    news = []
+    for item in root.findall(".//item"):
+        parsed = _parse_rss_news_item(item)
+        if parsed is not None:
+            news.append(parsed)
+
+    return news
+
+
+def get_recent_news(ticker):
+    earliest = datetime.now().astimezone() - timedelta(hours=NEWS_LOOKBACK_HOURS)
+    recent_news = []
+    seen_titles = set()
+
+    for url in get_news_feed_urls(ticker):
+        try:
+            feed_items = fetch_rss_news(url)
+        except Exception as exc:
+            print(f"Warning: {ticker} RSS 新聞讀取失敗，略過來源：{exc}")
+            continue
+
+        for item in feed_items:
+            published_at = _parse_news_publish_time(item)
+            if published_at is None:
+                continue
+            if published_at.tzinfo is None:
+                published_at = published_at.astimezone()
+            if published_at < earliest:
+                continue
+
+            normalized_title = _normalize_news_title(item["title"])
+            if not normalized_title or normalized_title in seen_titles:
+                continue
+
+            seen_titles.add(normalized_title)
+            item["published_at"] = published_at.date().isoformat()
+            recent_news.append(item)
+
+            if len(recent_news) >= MAX_WHY_DID_IT_MOVE_NEWS:
+                return recent_news
+
+    return recent_news
+
+
+def format_why_did_it_move_news(news_items):
+    if not news_items:
+        return ["近期未找到明確新聞。"]
+
+    lines = ["近期新聞："]
+    for index, news in enumerate(news_items, 1):
+        lines.extend(
+            [
+                f"{index}. {news['title']}",
+                f"   Source: {news['source']} / {news['published_at']}",
+                f"   URL: {news['url']}",
+            ]
+        )
+        if index < len(news_items):
+            lines.append("")
+
+    return lines
+
+
+def build_why_did_it_move(results):
+    candidates = get_why_did_it_move_candidates(results)
+    if not candidates:
+        return ""
+
+    lines = ["🚨 Why Did It Move"]
+    for index, result in enumerate(candidates):
+        ticker = result["ticker"]
+        if index > 0:
+            lines.extend(["", "---"])
+
+        lines.extend(["", f"{ticker} {result['change_pct']:+.1f}%", ""])
+        try:
+            news_items = get_recent_news(ticker)
+        except Exception as exc:
+            print(f"Warning: {ticker} Why Did It Move 新聞讀取失敗：{exc}")
+            news_items = []
+
+        lines.extend(format_why_did_it_move_news(news_items))
 
     return "\n".join(lines)
 
@@ -700,11 +873,16 @@ def build_message():
         print(f"Warning: Event Radar 建立失敗：{exc}")
         event_radar = "📅 Event Radar\n今日無新的或當週重要事件。"
 
-    message = (
-        f"{build_daily_watchlist(results)}\n\n"
-        f"{build_technical_alerts(results)}\n\n"
-        f"{event_radar}"
-    )
+    why_did_it_move = build_why_did_it_move(results)
+    sections = [
+        build_daily_watchlist(results),
+        build_technical_alerts(results),
+    ]
+    if why_did_it_move:
+        sections.append(why_did_it_move)
+    sections.append(event_radar)
+
+    message = "\n\n".join(sections)
 
     if len(message) > MAX_MESSAGE_LENGTH:
         keep_length = MAX_MESSAGE_LENGTH - len(TRUNCATION_NOTICE) - 1

@@ -9,10 +9,15 @@ from main import (
     TAIPEI_TIMEZONE,
     analyze_ticker,
     build_event_radar,
+    build_message,
     build_technical_alerts,
+    build_why_did_it_move,
     calculate_volume_ratio,
+    format_why_did_it_move_news,
+    get_recent_news,
     get_upcoming_events,
     get_volume_price_signal,
+    get_why_did_it_move_candidates,
 )
 
 
@@ -63,12 +68,12 @@ class VolumePriceSignalTest(unittest.TestCase):
             "medium",
         )
 
-    def test_volume_shrink_up(self):
+    def test_volume_shrink_up_is_not_alerted(self):
         self.assertSignal(
             3.0,
             0.7,
-            "⚠️ 量縮上漲（0.7x Avg Volume）",
-            "medium",
+            None,
+            "none",
         )
 
     def test_strong_volume_shrink_down(self):
@@ -79,12 +84,12 @@ class VolumePriceSignalTest(unittest.TestCase):
             "medium",
         )
 
-    def test_volume_shrink_down(self):
+    def test_volume_shrink_down_is_not_alerted(self):
         self.assertSignal(
             -3.0,
             0.7,
-            "📉 量縮下跌（0.7x Avg Volume）",
-            "medium",
+            None,
+            "none",
         )
 
     def test_normal_volume_up_is_not_alerted(self):
@@ -134,7 +139,7 @@ class TechnicalAlertsTest(unittest.TestCase):
             ]
         )
 
-    def test_volume_expansion_up_is_high_priority(self):
+    def test_volume_expansion_up_is_displayed_without_priority_heading(self):
         message = self.build_alerts(
             high_alerts=[
                 "突破近20日高點",
@@ -145,38 +150,64 @@ class TechnicalAlertsTest(unittest.TestCase):
             ]
         )
 
-        self.assertIn("🔥 High Priority", message)
+        self.assertNotIn("🔥 High Priority", message)
+        self.assertNotIn("⚠️ Medium Priority", message)
+        self.assertIn("TEST", message)
         self.assertIn("- 📈 放量上漲（2.1x Avg Volume）", message)
 
-    def test_volume_expansion_down_is_high_priority(self):
+    def test_volume_expansion_down_is_displayed(self):
         message = self.build_alerts(
             high_alerts=["⚠️ 放量下跌（2.1x Avg Volume）"]
         )
 
-        self.assertIn("🔥 High Priority", message)
         self.assertIn("- ⚠️ 放量下跌（2.1x Avg Volume）", message)
 
-    def test_volume_shrink_up_is_medium_priority(self):
+    def test_strong_volume_shrink_up_is_displayed(self):
         message = self.build_alerts(
-            medium_alerts=["⚠️ 量縮上漲（0.7x Avg Volume）"]
+            medium_alerts=["⚠️ 強勢量縮上漲（0.7x Avg Volume）"]
         )
 
-        self.assertIn("⚠️ Medium Priority", message)
-        self.assertIn("- ⚠️ 量縮上漲（0.7x Avg Volume）", message)
+        self.assertIn("- ⚠️ 強勢量縮上漲（0.7x Avg Volume）", message)
 
-    def test_volume_shrink_down_is_medium_priority(self):
+    def test_strong_volume_shrink_down_is_displayed(self):
         message = self.build_alerts(
-            medium_alerts=["📉 量縮下跌（0.7x Avg Volume）"]
+            medium_alerts=["📉 強勢量縮下跌（0.7x Avg Volume）"]
         )
 
-        self.assertIn("⚠️ Medium Priority", message)
-        self.assertIn("- 📉 量縮下跌（0.7x Avg Volume）", message)
+        self.assertIn("- 📉 強勢量縮下跌（0.7x Avg Volume）", message)
+
+    def test_high_and_medium_alerts_are_grouped_under_same_ticker_once(self):
+        message = self.build_alerts(
+            high_alerts=["跌破近20日低點"],
+            medium_alerts=["RSI 23.1，超賣"],
+        )
+
+        self.assertEqual(message.count("TEST"), 1)
+        self.assertIn("TEST\n- 跌破近20日低點\n- RSI 23.1，超賣", message)
+
+    def test_regular_volume_shrink_up_is_not_displayed(self):
+        signal = get_volume_price_signal(3.0, 0.7)
+        message = self.build_alerts(
+            medium_alerts=[] if signal["priority"] == "none" else [signal["label"]]
+        )
+
+        self.assertEqual(signal, {"label": None, "priority": "none"})
+        self.assertNotIn("量縮上漲", message)
+
+    def test_regular_volume_shrink_down_is_not_displayed(self):
+        signal = get_volume_price_signal(-3.0, 0.7)
+        message = self.build_alerts(
+            medium_alerts=[] if signal["priority"] == "none" else [signal["label"]]
+        )
+
+        self.assertEqual(signal, {"label": None, "priority": "none"})
+        self.assertNotIn("量縮下跌", message)
 
     def test_normal_volume_is_not_displayed(self):
         message = self.build_alerts()
 
         self.assertNotIn("正常量能", message)
-        self.assertEqual(message, "🚨 Technical Alerts\n今日無重大技術訊號。")
+        self.assertEqual(message, "🚨 Technical Alerts\n\nNo alerts today.")
 
     def test_missing_avg_volume_does_not_error_or_display(self):
         volume_ratio = calculate_volume_ratio(100, float("nan"))
@@ -211,15 +242,25 @@ class TechnicalAlertsTest(unittest.TestCase):
 
         self.assertIn("⚠️ 放量下跌（2.0x Avg Volume）", result["high_alerts"])
 
-    def test_analyze_appends_volume_shrink_up_to_medium_alerts(self):
+    def test_analyze_appends_strong_volume_shrink_up_to_medium_alerts(self):
+        result = self.analyze_with_price_data(106.0, 10.0)
+
+        self.assertIn("⚠️ 強勢量縮上漲（0.1x Avg Volume）", result["medium_alerts"])
+
+    def test_analyze_does_not_append_regular_volume_shrink_up(self):
         result = self.analyze_with_price_data(103.0, 10.0)
 
-        self.assertIn("⚠️ 量縮上漲（0.1x Avg Volume）", result["medium_alerts"])
+        self.assertNotIn("⚠️ 量縮上漲（0.1x Avg Volume）", result["medium_alerts"])
 
-    def test_analyze_appends_volume_shrink_down_to_medium_alerts(self):
+    def test_analyze_appends_strong_volume_shrink_down_to_medium_alerts(self):
+        result = self.analyze_with_price_data(94.0, 10.0)
+
+        self.assertIn("📉 強勢量縮下跌（0.1x Avg Volume）", result["medium_alerts"])
+
+    def test_analyze_does_not_append_regular_volume_shrink_down(self):
         result = self.analyze_with_price_data(97.0, 10.0)
 
-        self.assertIn("📉 量縮下跌（0.1x Avg Volume）", result["medium_alerts"])
+        self.assertNotIn("📉 量縮下跌（0.1x Avg Volume）", result["medium_alerts"])
 
     def test_analyze_does_not_append_normal_volume_signal(self):
         result = self.analyze_with_price_data(103.0, 120.0)
@@ -245,10 +286,10 @@ class TechnicalAlertsTest(unittest.TestCase):
                 "剛站上50MA",
                 "其他高優先訊號",
             ],
-            medium_alerts=["⚠️ 量縮上漲（0.7x Avg Volume）"],
+            medium_alerts=["⚠️ 強勢量縮上漲（0.7x Avg Volume）"],
         )
 
-        self.assertIn("- ⚠️ 量縮上漲（0.7x Avg Volume）", message)
+        self.assertIn("- ⚠️ 強勢量縮上漲（0.7x Avg Volume）", message)
 
 
 class EventRadarTest(unittest.TestCase):
@@ -333,6 +374,141 @@ class EventRadarTest(unittest.TestCase):
 
         mocked_datetime.now.assert_called_once_with(TAIPEI_TIMEZONE)
         self.assertEqual(today, date(2026, 6, 23))
+
+
+class WhyDidItMoveTest(unittest.TestCase):
+    def result(self, ticker, change_pct, close=100.0):
+        return {
+            "ticker": ticker,
+            "close": close,
+            "change_pct": change_pct,
+            "volume_ratio": 1.8,
+            "high_alerts": ["📈 放量上漲（1.8x Avg Volume）"],
+            "medium_alerts": [],
+            "error": None,
+        }
+
+    def test_change_over_five_percent_triggers(self):
+        candidates = get_why_did_it_move_candidates(
+            [self.result("BE", 5.1)]
+        )
+
+        self.assertEqual([item["ticker"] for item in candidates], ["BE"])
+
+    def test_change_below_five_percent_does_not_trigger(self):
+        candidates = get_why_did_it_move_candidates(
+            [self.result("BE", 4.9)]
+        )
+
+        self.assertEqual(candidates, [])
+
+    def test_only_top_five_by_absolute_change_are_used(self):
+        results = [
+            self.result("A", 5.1),
+            self.result("B", -9.0),
+            self.result("C", 7.0),
+            self.result("D", -6.0),
+            self.result("E", 12.0),
+            self.result("F", 8.0),
+        ]
+
+        candidates = get_why_did_it_move_candidates(results)
+
+        self.assertEqual(
+            [item["ticker"] for item in candidates],
+            ["E", "B", "F", "C", "D"],
+        )
+
+    def news(self, index):
+        return {
+            "title": f"News title {index}",
+            "source": "Yahoo Finance",
+            "published_at": "2026-06-24",
+            "url": f"https://example.com/news-{index}",
+        }
+
+    def test_each_ticker_displays_at_most_three_news_items(self):
+        news_items = [self.news(1), self.news(2), self.news(3), self.news(4)]
+        with patch("main.get_recent_news", return_value=news_items[:3]):
+            section = build_why_did_it_move([self.result("BE", 15.4)])
+
+        self.assertIn("1. News title 1", section)
+        self.assertIn("2. News title 2", section)
+        self.assertIn("3. News title 3", section)
+        self.assertNotIn("4. News title 4", section)
+
+    def test_get_recent_news_returns_at_most_three_items(self):
+        news_items = [
+            {
+                **self.news(index),
+                "published_at": "Wed, 24 Jun 2026 12:00:00 GMT",
+            }
+            for index in range(1, 5)
+        ]
+        with (
+            patch("main.get_news_feed_urls", return_value=["https://example.com/rss"]),
+            patch("main.fetch_rss_news", return_value=news_items),
+        ):
+            recent_news = get_recent_news("BE")
+
+        self.assertEqual(len(recent_news), 3)
+        self.assertEqual([item["title"] for item in recent_news], [
+            "News title 1",
+            "News title 2",
+            "News title 3",
+        ])
+
+    def test_get_recent_news_continues_when_one_feed_fails(self):
+        news_item = {
+            **self.news(1),
+            "published_at": "Wed, 24 Jun 2026 12:00:00 GMT",
+        }
+
+        def fake_fetch(url):
+            if "google" in url:
+                raise RuntimeError("feed down")
+            return [news_item]
+
+        with (
+            patch(
+                "main.get_news_feed_urls",
+                return_value=["https://google.example/rss", "https://yahoo.example/rss"],
+            ),
+            patch("main.fetch_rss_news", side_effect=fake_fetch),
+        ):
+            recent_news = get_recent_news("BE")
+
+        self.assertEqual(len(recent_news), 1)
+        self.assertEqual(recent_news[0]["title"], "News title 1")
+
+    def test_missing_news_still_outputs_section(self):
+        with patch("main.get_recent_news", return_value=[]):
+            section = build_why_did_it_move([self.result("BE", 15.4)])
+
+        self.assertIn("BE +15.4%", section)
+        self.assertIn("近期未找到明確新聞。", section)
+
+    def test_news_output_contains_title_source_date_and_url(self):
+        lines = format_why_did_it_move_news([self.news(1)])
+        output = "\n".join(lines)
+
+        self.assertIn("1. News title 1", output)
+        self.assertIn("Source: Yahoo Finance / 2026-06-24", output)
+        self.assertIn("URL: https://example.com/news-1", output)
+
+    def test_news_failure_does_not_block_full_message(self):
+        with (
+            patch("main.get_tickers_from_sheets", return_value=["BE"]),
+            patch("main.analyze_ticker", return_value=self.result("BE", 15.4)),
+            patch("main.build_event_radar", return_value="📅 Event Radar\nOK"),
+            patch("main.get_recent_news", side_effect=RuntimeError("news down")),
+        ):
+            message = build_message()
+
+        self.assertIn("📈 Daily Watchlist", message)
+        self.assertIn("🚨 Technical Alerts", message)
+        self.assertIn("近期未找到明確新聞。", message)
+        self.assertIn("📅 Event Radar", message)
 
 
 if __name__ == "__main__":
