@@ -2,7 +2,7 @@ name: TW Daily Technical Radar
 
 on:
   schedule:
-    - cron: "0 8 * * 1-5"  # 台灣下午 4:00
+    - cron: "17 7 * * 1-5"  # 台灣下午 3:17，避開 GitHub Actions 整點高峰
   workflow_dispatch:
 
 jobs:
