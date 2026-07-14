@@ -1,8 +1,7 @@
 name: Weekly Market Recap
 
 on:
-  schedule:
-    - cron: "0 0 * * 1"  # 台灣週一早上 8:00
+  # Weekly recap is paused. Keep manual dispatch available for ad-hoc runs.
   workflow_dispatch:
 
 jobs:
