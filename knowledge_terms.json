@@ -1,0 +1,258 @@
+[
+  {
+    "id": "ma",
+    "title": "MA",
+    "aliases": ["MA", "Moving Average", "移動平均線", "均線"],
+    "category": "technical_indicators",
+    "text": "MA（Moving Average，移動平均線）是把一段期間的收盤價平均後連成線，用來觀察趨勢方向與支撐壓力。常見用法是看價格在 MA 上方或下方、短期 MA 是否穿越長期 MA，以及多條均線是否呈現多頭或空頭排列。"
+  },
+  {
+    "id": "rsi",
+    "title": "RSI",
+    "aliases": ["RSI", "Relative Strength Index", "相對強弱指標"],
+    "category": "technical_indicators",
+    "text": "RSI（Relative Strength Index）用來衡量近期上漲與下跌力道，常見區間是 0 到 100。一般會把 70 以上視為偏熱、30 以下視為偏弱，但更重要的是搭配趨勢、背離與支撐壓力一起判讀。"
+  },
+  {
+    "id": "volume",
+    "title": "Volume",
+    "aliases": ["Volume", "成交量", "量能"],
+    "category": "technical_indicators",
+    "text": "Volume 是成交量，代表一段時間內市場實際成交的數量。價格突破時若量能同步放大，通常代表參與度較高；價格上漲但量能萎縮，則可能表示追價力道不足。"
+  },
+  {
+    "id": "bull_flag",
+    "title": "Bull Flag",
+    "aliases": ["Bull Flag", "牛旗", "多頭旗形"],
+    "category": "chart_patterns",
+    "text": "Bull Flag（多頭旗形）通常出現在一段急漲之後，價格進入短暫整理，整理區像旗面，前面的急漲像旗桿。重點是整理期間跌幅受控、量能降溫，之後若放量突破旗面上緣，常被視為多頭延續訊號。",
+    "image": "bull-flag.png"
+  },
+  {
+    "id": "bear_flag",
+    "title": "Bear Flag",
+    "aliases": ["Bear Flag", "熊旗", "空頭旗形"],
+    "category": "chart_patterns",
+    "text": "Bear Flag（空頭旗形）通常出現在一段急跌之後，價格短暫反彈或橫盤整理，但反彈力道有限。若後續跌破旗面下緣，常被視為空頭趨勢延續。判讀時要搭配成交量與大盤環境，避免把一般反彈誤認為旗形。",
+    "image": "bear-flag.png"
+  },
+  {
+    "id": "double_top",
+    "title": "Double Top",
+    "aliases": ["Double Top", "雙重頂", "M頭"],
+    "category": "chart_patterns",
+    "text": "Double Top（雙重頂）是價格兩次挑戰相近高點但未能有效突破，中間形成頸線。若價格跌破頸線，代表買盤在高檔承接不足，常被視為轉弱訊號。實務上應等待跌破確認，避免在第二個高點尚未成形時太早判斷。",
+    "image": "double-top.png"
+  },
+  {
+    "id": "double_bottom",
+    "title": "Double Bottom",
+    "aliases": ["Double Bottom", "雙重底", "W底"],
+    "category": "chart_patterns",
+    "text": "Double Bottom（雙重底）是價格兩次回測相近低點後守住，中間形成頸線。若價格突破頸線，代表低檔承接轉強，常被視為轉強訊號。觀察重點包括第二個低點是否守住、突破時是否有量，以及突破後是否回測成功。",
+    "image": "double-bottom.png"
+  },
+  {
+    "id": "support",
+    "title": "Support",
+    "aliases": ["Support", "支撐", "支撐位"],
+    "category": "price_action",
+    "text": "Support（支撐）是價格下跌時容易出現買盤、讓跌勢放慢或反彈的區域。支撐不是單一精準價格，而是一個區間；跌破後若無法重新站回，原支撐有時會轉為壓力。"
+  },
+  {
+    "id": "resistance",
+    "title": "Resistance",
+    "aliases": ["Resistance", "壓力", "壓力位"],
+    "category": "price_action",
+    "text": "Resistance（壓力）是價格上漲時容易遇到賣壓、讓漲勢放慢或回落的區域。壓力被有效突破後，若後續回測守住，原壓力可能轉為支撐。"
+  },
+  {
+    "id": "breakout",
+    "title": "Breakout",
+    "aliases": ["Breakout", "突破"],
+    "category": "price_action",
+    "text": "Breakout（突破）是價格離開原本的整理區、壓力或支撐區。有效突破通常會搭配收盤站穩、量能增加，並在回測時不輕易跌回原區間。"
+  },
+  {
+    "id": "retest",
+    "title": "Retest",
+    "aliases": ["Retest", "回測"],
+    "category": "price_action",
+    "text": "Retest（回測）是價格突破重要位置後，重新回到該區域附近確認支撐或壓力是否有效。成功回測通常代表突破較有可信度；若回測失敗跌回原區間，可能是假突破。"
+  },
+  {
+    "id": "long_call",
+    "title": "Long Call",
+    "aliases": ["Long Call", "買進買權", "買 Call"],
+    "category": "options_positions",
+    "text": "Long Call 是買進買權，付出權利金取得在到期前或到期日用履約價買進標的的權利。它通常用在看多情境，最大損失為權利金，潛在獲利隨標的上漲而增加，但會受到時間價值耗損影響。"
+  },
+  {
+    "id": "short_call",
+    "title": "Short Call",
+    "aliases": ["Short Call", "賣出買權", "賣 Call"],
+    "category": "options_positions",
+    "text": "Short Call 是賣出買權，收取權利金並承擔標的上漲時的履約義務。若沒有持有標的作為保護，風險可能很高；因此實務上常和持股搭配形成 Covered Call。"
+  },
+  {
+    "id": "long_put",
+    "title": "Long Put",
+    "aliases": ["Long Put", "買進賣權", "買 Put"],
+    "category": "options_positions",
+    "text": "Long Put 是買進賣權，付出權利金取得用履約價賣出標的的權利。它通常用在看空或避險情境，最大損失為權利金，標的下跌時價值通常上升。"
+  },
+  {
+    "id": "short_put",
+    "title": "Short Put",
+    "aliases": ["Short Put", "賣出賣權", "賣 Put"],
+    "category": "options_positions",
+    "text": "Short Put 是賣出賣權，收取權利金並承擔標的跌破履約價時買進標的的義務。它常被用於願意用較低價格承接股票的情境，但仍需要準備足夠資金並承擔下跌風險。"
+  },
+  {
+    "id": "delta",
+    "title": "Delta",
+    "aliases": ["Delta", "德爾塔"],
+    "category": "options_greeks",
+    "text": "Delta 衡量標的價格變動 1 單位時，選擇權價格大約會變動多少。Call 的 Delta 通常為正，Put 的 Delta 通常為負；Delta 也常被粗略用來理解價內機率或部位方向曝險。"
+  },
+  {
+    "id": "gamma",
+    "title": "Gamma",
+    "aliases": ["Gamma", "伽瑪"],
+    "category": "options_greeks",
+    "text": "Gamma 衡量 Delta 對標的價格變動的敏感度。Gamma 越高，代表標的價格稍微移動時 Delta 變化越快；接近到期且接近價平的選擇權通常 Gamma 較高。"
+  },
+  {
+    "id": "theta",
+    "title": "Theta",
+    "aliases": ["Theta", "西塔", "時間價值"],
+    "category": "options_greeks",
+    "text": "Theta 衡量時間流逝對選擇權價格的影響，也就是時間價值耗損。買方通常承受 Theta 流失，賣方通常受益於時間價值流失，但賣方仍需承擔價格大幅波動的風險。"
+  },
+  {
+    "id": "vega",
+    "title": "Vega",
+    "aliases": ["Vega", "隱含波動率敏感度"],
+    "category": "options_greeks",
+    "text": "Vega 衡量隱含波動率變動對選擇權價格的影響。當隱含波動率上升，買權與賣權價格通常都會上升；事件前波動率升高、事件後波動率回落，是選擇權交易中常見的風險。"
+  },
+  {
+    "id": "leaps",
+    "title": "LEAPS",
+    "aliases": ["LEAPS", "長天期選擇權"],
+    "category": "options_strategies",
+    "text": "LEAPS 是長天期選擇權，通常指到期時間超過一年的合約。它常被用來建立較長期方向性部位，時間價值耗損相對短天期慢，但仍會受到標的價格、波動率與流動性影響。"
+  },
+  {
+    "id": "covered_call",
+    "title": "Covered Call",
+    "aliases": ["Covered Call", "備兌買權"],
+    "category": "options_strategies",
+    "text": "Covered Call 是持有股票同時賣出買權，透過收取權利金增加收益。代價是若股價大幅上漲，股票可能被履約賣出，上方獲利會被履約價限制。"
+  },
+  {
+    "id": "cash_secured_put",
+    "title": "Cash-Secured Put",
+    "aliases": ["Cash-Secured Put", "現金擔保賣權", "CSP"],
+    "category": "options_strategies",
+    "text": "Cash-Secured Put 是準備足夠現金後賣出賣權，若標的跌破履約價並被指派，就用該履約價買進股票。它適合本來就願意承接標的的情境，但仍會承擔股價下跌風險。"
+  },
+  {
+    "id": "protective_put",
+    "title": "Protective Put",
+    "aliases": ["Protective Put", "保護性賣權"],
+    "category": "options_strategies",
+    "text": "Protective Put 是持有股票同時買進賣權，像替持股買保險。它可以限制下跌損失，但需要支付權利金，因此會降低整體報酬。"
+  },
+  {
+    "id": "cpi",
+    "title": "CPI",
+    "aliases": ["CPI", "消費者物價指數"],
+    "category": "macro",
+    "text": "CPI（Consumer Price Index，消費者物價指數）衡量消費者端一籃子商品與服務的價格變化，是市場觀察通膨的重要指標。CPI 高於預期時，市場通常會重新評估利率路徑與風險資產估值。"
+  },
+  {
+    "id": "pce",
+    "title": "PCE",
+    "aliases": ["PCE", "個人消費支出物價指數"],
+    "category": "macro",
+    "text": "PCE（Personal Consumption Expenditures）是美國聯準會偏好的通膨觀察指標之一。相較 CPI，PCE 權重調整方式不同，能反映消費者替代行為；核心 PCE 會排除食品與能源。"
+  },
+  {
+    "id": "ppi",
+    "title": "PPI",
+    "aliases": ["PPI", "生產者物價指數"],
+    "category": "macro",
+    "text": "PPI（Producer Price Index，生產者物價指數）衡量生產端商品與服務價格的變化，常被用來觀察企業成本壓力與未來通膨傳導。PPI 高於預期時，市場可能擔心成本推升最終售價，進而影響利率預期與股市估值。"
+  },
+  {
+    "id": "fomc",
+    "title": "FOMC",
+    "aliases": ["FOMC", "聯準會利率會議", "Fed 會議"],
+    "category": "macro",
+    "text": "FOMC 是美國聯準會決定利率與貨幣政策方向的會議。市場會關注利率決策、聲明措辭、點陣圖與主席記者會，因為這些會影響美元、債券殖利率與股市風險偏好。"
+  },
+  {
+    "id": "dxy",
+    "title": "DXY",
+    "aliases": ["DXY", "美元指數"],
+    "category": "macro",
+    "text": "DXY 是美元指數，用來衡量美元相對一籃子主要貨幣的強弱。美元走強時，常會影響商品價格、新興市場資金流與跨國企業匯率換算；但實際影響仍需看當時市場主題。"
+  },
+  {
+    "id": "vix",
+    "title": "VIX",
+    "aliases": ["VIX", "恐慌指數", "波動率指數"],
+    "category": "macro",
+    "text": "VIX 常被稱為恐慌指數，反映市場對 S&P 500 未來波動率的預期。VIX 上升通常代表避險需求增加或市場不確定性升高；VIX 回落則常見於風險情緒改善。"
+  },
+  {
+    "id": "foreign_investors",
+    "title": "外資",
+    "aliases": ["外資", "Foreign Investors"],
+    "category": "tw_flows",
+    "text": "外資是台股三大法人之一，泛指境外機構投資人。外資買賣超會影響大型權值股與指數方向，尤其在台積電、金融股與電子權值股上的動向，常是市場關注焦點。"
+  },
+  {
+    "id": "investment_trust",
+    "title": "投信",
+    "aliases": ["投信", "Investment Trust"],
+    "category": "tw_flows",
+    "text": "投信主要代表本地基金等機構資金。投信連續買超常被市場視為中小型股或特定族群的籌碼支撐，但仍要搭配成交量、基本面與股價位置判斷。"
+  },
+  {
+    "id": "dealer",
+    "title": "自營商",
+    "aliases": ["自營商", "Dealer"],
+    "category": "tw_flows",
+    "text": "自營商是券商用自有資金進行交易的部位，通常又可拆成自行買賣與避險交易。自營商買賣超有時反映短線交易或衍生性商品避險需求，解讀時不宜單獨使用。"
+  },
+  {
+    "id": "three_institutional_investors",
+    "title": "三大法人",
+    "aliases": ["三大法人", "法人買賣超"],
+    "category": "tw_flows",
+    "text": "三大法人包含外資、投信與自營商。每日買賣超可以觀察市場主力資金方向，但不同法人行為邏輯不同，應分開看，也要搭配指數、族群輪動與個股成交量。"
+  },
+  {
+    "id": "margin_buying",
+    "title": "融資",
+    "aliases": ["融資", "Margin Buying"],
+    "category": "tw_flows",
+    "text": "融資是投資人向券商借錢買股票，融資餘額上升通常代表散戶槓桿或短線參與度增加。若股價下跌且融資過高，可能面臨停損或斷頭壓力。"
+  },
+  {
+    "id": "short_selling",
+    "title": "融券",
+    "aliases": ["融券", "Short Selling"],
+    "category": "tw_flows",
+    "text": "融券是投資人向券商借股票賣出，期待未來用較低價格買回。融券增加可能代表看空或避險需求增加；若股價上漲，空方回補可能加速漲勢。"
+  },
+  {
+    "id": "securities_lending",
+    "title": "借券",
+    "aliases": ["借券", "Securities Lending"],
+    "category": "tw_flows",
+    "text": "借券是市場參與者借入股票，可能用於放空、避險、套利或交割需求。借券餘額增加不一定等於單純看空，需要搭配借券賣出、股價位置與成交量一起判讀。"
+  }
+]

@@ -1,3 +1,6 @@
 yfinance
 pandas
 requests
+fastapi
+uvicorn[standard]
+httpx
