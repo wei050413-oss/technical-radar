@@ -69,6 +69,12 @@ class WebhookNavigationTest(unittest.TestCase):
     def test_unknown_payload_returns_no_messages(self):
         self.assertEqual(messages_for_payload("not-a-known-topic"), [])
 
+    def test_term_reply_does_not_duplicate_title_when_text_starts_with_title(self):
+        messages = messages_for_payload("RSI")
+
+        self.assertEqual(messages[0]["text"].count("RSI（Relative Strength Index，相對強弱指標）"), 1)
+        self.assertTrue(messages[0]["text"].startswith("RSI（Relative Strength Index，相對強弱指標）"))
+
     def test_missing_image_file_falls_back_to_text_only(self):
         term = find_term("Bull Flag")
         with patch("webhook_app.get_public_base_url", return_value="https://example.com"):

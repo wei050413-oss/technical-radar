@@ -130,6 +130,13 @@ def term_list_message(category_id, page=1):
     }
 
 
+def term_text(term):
+    text = term.text.strip()
+    if text.startswith(term.title):
+        return text
+    return f"{term.title}\n\n{text}"
+
+
 def term_messages(term):
     messages = []
     base_url = get_public_base_url()
@@ -147,7 +154,7 @@ def term_messages(term):
     messages.append(
         {
             "type": "text",
-            "text": f"{term.title}\n\n{term.text}",
+            "text": term_text(term),
             "quickReply": quick_reply(
                 navigation_items(f"category={term.category}")
                 + [quick_reply_item(category["title"], f"category={term.category}")]
