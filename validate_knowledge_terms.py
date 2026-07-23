@@ -74,8 +74,8 @@ def validate():
         else:
             if "InvestJar" in text:
                 errors.append(f"{label}: text contains InvestJar")
-            if "💡 KKZ 提醒" not in text:
-                errors.append(f"{label}: text missing 💡 KKZ 提醒")
+            if "🐷 KKZ 提醒" not in text:
+                errors.append(f"{label}: text missing 🐷 KKZ 提醒")
             if "📖 是什麼" not in text:
                 errors.append(f"{label}: text missing 📖 是什麼")
             if "🧠 為什麼重要" not in text:
