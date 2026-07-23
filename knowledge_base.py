@@ -22,12 +22,22 @@ MAIN_MENUS = {
     "technical": {
         "title": "Technical",
         "aliases": ("Technical", "menu=technical"),
-        "categories": ("technical_indicators", "chart_patterns", "price_action"),
+        "categories": (
+            "technical_indicators",
+            "chart_patterns",
+            "candlestick_patterns",
+            "price_action",
+        ),
     },
     "options": {
         "title": "Options",
         "aliases": ("Options", "menu=options"),
-        "categories": ("options_positions", "options_greeks", "options_strategies"),
+        "categories": (
+            "options_positions",
+            "options_basics",
+            "options_greeks",
+            "options_strategies",
+        ),
     },
     "market_basics": {
         "title": "Market Basics",
@@ -52,10 +62,20 @@ CATEGORIES = {
         "menu": "technical",
         "aliases": ("價格行為",),
     },
+    "candlestick_patterns": {
+        "title": "K 線型態",
+        "menu": "technical",
+        "aliases": ("K 線型態", "K線型態", "Candlestick Patterns"),
+    },
     "options_positions": {
         "title": "基礎部位",
         "menu": "options",
         "aliases": ("基礎部位",),
+    },
+    "options_basics": {
+        "title": "選擇權基礎",
+        "menu": "options",
+        "aliases": ("選擇權基礎", "Options Basics"),
     },
     "options_greeks": {
         "title": "Greeks",

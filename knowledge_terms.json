@@ -1,258 +1,4427 @@
 [
   {
     "id": "ma",
-    "title": "MA",
-    "aliases": ["MA", "Moving Average", "移動平均線", "均線"],
+    "title": "MA（Moving Average，移動平均線）",
+    "aliases": [
+      "MA",
+      "Moving Average",
+      "移動平均線",
+      "均線"
+    ],
     "category": "technical_indicators",
-    "text": "MA（Moving Average，移動平均線）是把一段期間的收盤價平均後連成線，用來觀察趨勢方向與支撐壓力。常見用法是看價格在 MA 上方或下方、短期 MA 是否穿越長期 MA，以及多條均線是否呈現多頭或空頭排列。"
+    "related_terms": [
+      "sma",
+      "ema",
+      "moving_average_crossover",
+      "support"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "swing"
+    ],
+    "text": "MA（Moving Average，移動平均線）\n\n📖 是什麼\nMA 是把一段期間價格平均後連成線，用來觀察趨勢方向與價格相對位置。\n\n🧠 為什麼重要\n它能幫投資人把價格、量能或波動轉成較容易比較的訊號，但重點是用來輔助判斷市場狀態，不是保證預測工具。它較適合看趨勢與支撐壓力，不適合單獨抓精準轉折。\n\n👀 實際怎麼看\n- 目前是趨勢盤、盤整盤，還是事件造成的高波動\n- 指標方向是否和價格、成交量互相確認\n- 訊號是否出現在支撐、壓力或關鍵均線附近\n- 大週期趨勢與產業 / 大盤是否配合\n\n✅ 常見有效訊號\n收盤確認、成交量配合、同類或互補指標沒有明顯衝突，且風險報酬位置合理時，訊號通常較有參考價值。\n\n⚠️ 常見誤區\n- 不要只因單一數值達標就下買賣結論\n- 指標多半落後價格，不能忽略當下新聞與流動性\n- 同一指標在趨勢盤與盤整盤的解讀可能完全不同\n\n💡 KKZ 提醒\n先判斷市場環境，再選工具；指標是把圖表變清楚，不是替你承擔風險。\n\n🔗 延伸閱讀\n- SMA（Simple Moving Average，簡單移動平均線）\n- EMA（Exponential Moving Average，指數移動平均線）\n- Moving Average Crossover（均線交叉）\n- Support（支撐）"
   },
   {
     "id": "rsi",
-    "title": "RSI",
-    "aliases": ["RSI", "Relative Strength Index", "相對強弱指標"],
+    "title": "RSI（Relative Strength Index，相對強弱指標）",
+    "aliases": [
+      "RSI",
+      "Relative Strength Index",
+      "相對強弱指標",
+      "相對強弱"
+    ],
     "category": "technical_indicators",
-    "text": "RSI（Relative Strength Index）用來衡量近期上漲與下跌力道，常見區間是 0 到 100。一般會把 70 以上視為偏熱、30 以下視為偏弱，但更重要的是搭配趨勢、背離與支撐壓力一起判讀。"
+    "related_terms": [
+      "rsi_divergence",
+      "overbought",
+      "oversold",
+      "momentum"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "swing"
+    ],
+    "text": "RSI（Relative Strength Index，相對強弱指標）\n\n📖 是什麼\nRSI 衡量近期上漲與下跌力道，常用 0 到 100 的區間觀察動能偏強或偏弱。\n\n🧠 為什麼重要\n它能幫投資人把價格、量能或波動轉成較容易比較的訊號，但重點是用來輔助判斷市場狀態，不是保證預測工具。盤整區較容易辨識過熱或過冷，強趨勢中則可能長時間維持高檔或低檔。\n\n👀 實際怎麼看\n- 目前是趨勢盤、盤整盤，還是事件造成的高波動\n- 指標方向是否和價格、成交量互相確認\n- 訊號是否出現在支撐、壓力或關鍵均線附近\n- 大週期趨勢與產業 / 大盤是否配合\n\n✅ 常見有效訊號\n收盤確認、成交量配合、同類或互補指標沒有明顯衝突，且風險報酬位置合理時，訊號通常較有參考價值。\n\n⚠️ 常見誤區\n- 不要只因單一數值達標就下買賣結論\n- 指標多半落後價格，不能忽略當下新聞與流動性\n- 同一指標在趨勢盤與盤整盤的解讀可能完全不同\n\n💡 KKZ 提醒\n先判斷市場環境，再選工具；指標是把圖表變清楚，不是替你承擔風險。\n\n🔗 延伸閱讀\n- RSI Divergence（RSI 背離）\n- Overbought（超買）\n- Oversold（超賣）\n- Momentum（動能）"
   },
   {
     "id": "volume",
-    "title": "Volume",
-    "aliases": ["Volume", "成交量", "量能"],
+    "title": "Volume（成交量）",
+    "aliases": [
+      "Volume",
+      "成交量",
+      "量能"
+    ],
     "category": "technical_indicators",
-    "text": "Volume 是成交量，代表一段時間內市場實際成交的數量。價格突破時若量能同步放大，通常代表參與度較高；價格上漲但量能萎縮，則可能表示追價力道不足。"
+    "related_terms": [
+      "relative_volume",
+      "obv",
+      "breakout",
+      "volume_profile"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "swing"
+    ],
+    "image": "volume-price-relationship.png",
+    "text": "Volume（成交量）\n\n📖 是什麼\nVolume 是一段時間內市場實際成交的數量，反映參與度與資金活躍程度。\n\n🧠 為什麼重要\n它能幫投資人把價格、量能或波動轉成較容易比較的訊號，但重點是用來輔助判斷市場狀態，不是保證預測工具。價格移動若有成交量配合，通常比低量移動更值得追蹤。\n\n👀 實際怎麼看\n- 目前是趨勢盤、盤整盤，還是事件造成的高波動\n- 指標方向是否和價格、成交量互相確認\n- 訊號是否出現在支撐、壓力或關鍵均線附近\n- 大週期趨勢與產業 / 大盤是否配合\n\n✅ 常見有效訊號\n收盤確認、成交量配合、同類或互補指標沒有明顯衝突，且風險報酬位置合理時，訊號通常較有參考價值。\n\n⚠️ 常見誤區\n- 不要只因單一數值達標就下買賣結論\n- 指標多半落後價格，不能忽略當下新聞與流動性\n- 同一指標在趨勢盤與盤整盤的解讀可能完全不同\n\n💡 KKZ 提醒\n先判斷市場環境，再選工具；指標是把圖表變清楚，不是替你承擔風險。\n\n🔗 延伸閱讀\n- Relative Volume（相對成交量／RVOL）\n- OBV（On-Balance Volume，能量潮）\n- Breakout（突破）\n- Volume Profile（成交量分布）"
   },
   {
-    "id": "bull_flag",
-    "title": "Bull Flag",
-    "aliases": ["Bull Flag", "牛旗", "多頭旗形"],
-    "category": "chart_patterns",
-    "text": "Bull Flag（多頭旗形）通常出現在一段急漲之後，價格進入短暫整理，整理區像旗面，前面的急漲像旗桿。重點是整理期間跌幅受控、量能降溫，之後若放量突破旗面上緣，常被視為多頭延續訊號。",
-    "image": "bull-flag.png"
+    "id": "ema",
+    "title": "EMA（Exponential Moving Average，指數移動平均線）",
+    "aliases": [
+      "EMA",
+      "Exponential Moving Average",
+      "指數移動平均線",
+      "指數均線"
+    ],
+    "category": "technical_indicators",
+    "related_terms": [
+      "ma",
+      "sma",
+      "moving_average_crossover",
+      "trend"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "swing"
+    ],
+    "text": "EMA（Exponential Moving Average，指數移動平均線）\n\n📖 是什麼\nEMA 會給近期價格較高權重，因此比 SMA 對新價格變化更敏感。\n\n🧠 為什麼重要\n它能幫投資人把價格、量能或波動轉成較容易比較的訊號，但重點是用來輔助判斷市場狀態，不是保證預測工具。短線與波段交易常用 EMA 觀察趨勢延續，但也更容易受到雜訊影響。\n\n👀 實際怎麼看\n- 目前是趨勢盤、盤整盤，還是事件造成的高波動\n- 指標方向是否和價格、成交量互相確認\n- 訊號是否出現在支撐、壓力或關鍵均線附近\n- 大週期趨勢與產業 / 大盤是否配合\n\n✅ 常見有效訊號\n收盤確認、成交量配合、同類或互補指標沒有明顯衝突，且風險報酬位置合理時，訊號通常較有參考價值。\n\n⚠️ 常見誤區\n- 不要只因單一數值達標就下買賣結論\n- 指標多半落後價格，不能忽略當下新聞與流動性\n- 同一指標在趨勢盤與盤整盤的解讀可能完全不同\n\n💡 KKZ 提醒\n先判斷市場環境，再選工具；指標是把圖表變清楚，不是替你承擔風險。\n\n🔗 延伸閱讀\n- MA（Moving Average，移動平均線）\n- SMA（Simple Moving Average，簡單移動平均線）\n- Moving Average Crossover（均線交叉）\n- Trend（趨勢）"
   },
   {
-    "id": "bear_flag",
-    "title": "Bear Flag",
-    "aliases": ["Bear Flag", "熊旗", "空頭旗形"],
-    "category": "chart_patterns",
-    "text": "Bear Flag（空頭旗形）通常出現在一段急跌之後，價格短暫反彈或橫盤整理，但反彈力道有限。若後續跌破旗面下緣，常被視為空頭趨勢延續。判讀時要搭配成交量與大盤環境，避免把一般反彈誤認為旗形。",
-    "image": "bear-flag.png"
+    "id": "sma",
+    "title": "SMA（Simple Moving Average，簡單移動平均線）",
+    "aliases": [
+      "SMA",
+      "Simple Moving Average",
+      "簡單移動平均線",
+      "簡單均線"
+    ],
+    "category": "technical_indicators",
+    "related_terms": [
+      "ma",
+      "ema",
+      "golden_cross",
+      "death_cross"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "swing"
+    ],
+    "text": "SMA（Simple Moving Average，簡單移動平均線）\n\n📖 是什麼\nSMA 是把固定期間價格等權平均，線條較平滑，常用於判斷中長期趨勢。\n\n🧠 為什麼重要\n它能幫投資人把價格、量能或波動轉成較容易比較的訊號，但重點是用來輔助判斷市場狀態，不是保證預測工具。SMA 反應較慢，適合觀察大方向，不適合追求最快反應。\n\n👀 實際怎麼看\n- 目前是趨勢盤、盤整盤，還是事件造成的高波動\n- 指標方向是否和價格、成交量互相確認\n- 訊號是否出現在支撐、壓力或關鍵均線附近\n- 大週期趨勢與產業 / 大盤是否配合\n\n✅ 常見有效訊號\n收盤確認、成交量配合、同類或互補指標沒有明顯衝突，且風險報酬位置合理時，訊號通常較有參考價值。\n\n⚠️ 常見誤區\n- 不要只因單一數值達標就下買賣結論\n- 指標多半落後價格，不能忽略當下新聞與流動性\n- 同一指標在趨勢盤與盤整盤的解讀可能完全不同\n\n💡 KKZ 提醒\n先判斷市場環境，再選工具；指標是把圖表變清楚，不是替你承擔風險。\n\n🔗 延伸閱讀\n- MA（Moving Average，移動平均線）\n- EMA（Exponential Moving Average，指數移動平均線）\n- Golden Cross（黃金交叉）\n- Death Cross（死亡交叉）"
   },
   {
-    "id": "double_top",
-    "title": "Double Top",
-    "aliases": ["Double Top", "雙重頂", "M頭"],
-    "category": "chart_patterns",
-    "text": "Double Top（雙重頂）是價格兩次挑戰相近高點但未能有效突破，中間形成頸線。若價格跌破頸線，代表買盤在高檔承接不足，常被視為轉弱訊號。實務上應等待跌破確認，避免在第二個高點尚未成形時太早判斷。",
-    "image": "double-top.png"
+    "id": "vwap",
+    "title": "VWAP（Volume Weighted Average Price，成交量加權平均價）",
+    "aliases": [
+      "VWAP",
+      "Volume Weighted Average Price",
+      "成交量加權平均價",
+      "量價均價"
+    ],
+    "category": "technical_indicators",
+    "related_terms": [
+      "volume",
+      "support",
+      "resistance"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "intraday"
+    ],
+    "image": "vwap.png",
+    "text": "VWAP（Volume Weighted Average Price，成交量加權平均價）\n\n📖 是什麼\nVWAP 以成交量加權計算平均成交價格，常用於盤中判斷價格相對市場平均成本。\n\n🧠 為什麼重要\n它能幫投資人把價格、量能或波動轉成較容易比較的訊號，但重點是用來輔助判斷市場狀態，不是保證預測工具。盤中價格在 VWAP 上方通常代表買盤較主動，但仍要看趨勢與成交量。\n\n👀 實際怎麼看\n- 目前是趨勢盤、盤整盤，還是事件造成的高波動\n- 指標方向是否和價格、成交量互相確認\n- 訊號是否出現在支撐、壓力或關鍵均線附近\n- 大週期趨勢與產業 / 大盤是否配合\n\n✅ 常見有效訊號\n收盤確認、成交量配合、同類或互補指標沒有明顯衝突，且風險報酬位置合理時，訊號通常較有參考價值。\n\n⚠️ 常見誤區\n- 不要只因單一數值達標就下買賣結論\n- 指標多半落後價格，不能忽略當下新聞與流動性\n- 同一指標在趨勢盤與盤整盤的解讀可能完全不同\n\n💡 KKZ 提醒\n先判斷市場環境，再選工具；指標是把圖表變清楚，不是替你承擔風險。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Support（支撐）\n- Resistance（壓力）"
   },
   {
-    "id": "double_bottom",
-    "title": "Double Bottom",
-    "aliases": ["Double Bottom", "雙重底", "W底"],
-    "category": "chart_patterns",
-    "text": "Double Bottom（雙重底）是價格兩次回測相近低點後守住，中間形成頸線。若價格突破頸線，代表低檔承接轉強，常被視為轉強訊號。觀察重點包括第二個低點是否守住、突破時是否有量，以及突破後是否回測成功。",
-    "image": "double-bottom.png"
+    "id": "macd",
+    "title": "MACD（Moving Average Convergence Divergence，移動平均收斂發散指標）",
+    "aliases": [
+      "MACD",
+      "Moving Average Convergence Divergence",
+      "移動平均收斂發散指標",
+      "平滑異同移動平均線"
+    ],
+    "category": "technical_indicators",
+    "related_terms": [
+      "ema",
+      "momentum",
+      "trend",
+      "rsi"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "swing"
+    ],
+    "image": "macd.png",
+    "text": "MACD（Moving Average Convergence Divergence，移動平均收斂發散指標）\n\n📖 是什麼\nMACD 透過快慢均線差距觀察趨勢動能與可能轉折。\n\n🧠 為什麼重要\n它能幫投資人把價格、量能或波動轉成較容易比較的訊號，但重點是用來輔助判斷市場狀態，不是保證預測工具。它適合趨勢盤觀察動能變化，但在盤整盤容易反覆出現雜訊。\n\n👀 實際怎麼看\n- 目前是趨勢盤、盤整盤，還是事件造成的高波動\n- 指標方向是否和價格、成交量互相確認\n- 訊號是否出現在支撐、壓力或關鍵均線附近\n- 大週期趨勢與產業 / 大盤是否配合\n\n✅ 常見有效訊號\n收盤確認、成交量配合、同類或互補指標沒有明顯衝突，且風險報酬位置合理時，訊號通常較有參考價值。\n\n⚠️ 常見誤區\n- 不要只因單一數值達標就下買賣結論\n- 指標多半落後價格，不能忽略當下新聞與流動性\n- 同一指標在趨勢盤與盤整盤的解讀可能完全不同\n\n💡 KKZ 提醒\n先判斷市場環境，再選工具；指標是把圖表變清楚，不是替你承擔風險。\n\n🔗 延伸閱讀\n- EMA（Exponential Moving Average，指數移動平均線）\n- Momentum（動能）\n- Trend（趨勢）\n- RSI（Relative Strength Index，相對強弱指標）"
+  },
+  {
+    "id": "bollinger_bands",
+    "title": "Bollinger Bands（布林通道）",
+    "aliases": [
+      "Bollinger Bands",
+      "Bollinger Band",
+      "BBands",
+      "布林通道",
+      "布林帶"
+    ],
+    "category": "technical_indicators",
+    "related_terms": [
+      "atr",
+      "vix",
+      "breakout",
+      "mean_reversion"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "swing"
+    ],
+    "image": "bollinger-bands.png",
+    "text": "Bollinger Bands（布林通道）\n\n📖 是什麼\n布林通道由中線與上下軌組成，用來觀察價格相對平均與波動區間。\n\n🧠 為什麼重要\n它能幫投資人把價格、量能或波動轉成較容易比較的訊號，但重點是用來輔助判斷市場狀態，不是保證預測工具。通道收斂可代表波動壓縮，擴張可能代表趨勢或波動開始放大。\n\n👀 實際怎麼看\n- 目前是趨勢盤、盤整盤，還是事件造成的高波動\n- 指標方向是否和價格、成交量互相確認\n- 訊號是否出現在支撐、壓力或關鍵均線附近\n- 大週期趨勢與產業 / 大盤是否配合\n\n✅ 常見有效訊號\n收盤確認、成交量配合、同類或互補指標沒有明顯衝突，且風險報酬位置合理時，訊號通常較有參考價值。\n\n⚠️ 常見誤區\n- 不要只因單一數值達標就下買賣結論\n- 指標多半落後價格，不能忽略當下新聞與流動性\n- 同一指標在趨勢盤與盤整盤的解讀可能完全不同\n\n💡 KKZ 提醒\n先判斷市場環境，再選工具；指標是把圖表變清楚，不是替你承擔風險。\n\n🔗 延伸閱讀\n- ATR（Average True Range，平均真實波幅）\n- Breakout（突破）\n- Mean Reversion（均值回歸）"
+  },
+  {
+    "id": "atr",
+    "title": "ATR（Average True Range，平均真實波幅）",
+    "aliases": [
+      "ATR",
+      "Average True Range",
+      "平均真實波幅",
+      "真實波幅"
+    ],
+    "category": "technical_indicators",
+    "related_terms": [
+      "vix",
+      "expected_move",
+      "risk_off",
+      "breakout"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "trending",
+      "swing"
+    ],
+    "text": "ATR（Average True Range，平均真實波幅）\n\n📖 是什麼\nATR 衡量一段時間內價格波動幅度，重點在波動大小，不直接判斷方向。\n\n🧠 為什麼重要\n它能幫投資人把價格、量能或波動轉成較容易比較的訊號，但重點是用來輔助判斷市場狀態，不是保證預測工具。它常用於設定風險範圍、停損距離與判斷市場波動是否升高。\n\n👀 實際怎麼看\n- 目前是趨勢盤、盤整盤，還是事件造成的高波動\n- 指標方向是否和價格、成交量互相確認\n- 訊號是否出現在支撐、壓力或關鍵均線附近\n- 大週期趨勢與產業 / 大盤是否配合\n\n✅ 常見有效訊號\n收盤確認、成交量配合、同類或互補指標沒有明顯衝突，且風險報酬位置合理時，訊號通常較有參考價值。\n\n⚠️ 常見誤區\n- 不要只因單一數值達標就下買賣結論\n- 指標多半落後價格，不能忽略當下新聞與流動性\n- 同一指標在趨勢盤與盤整盤的解讀可能完全不同\n\n💡 KKZ 提醒\n先判斷市場環境，再選工具；指標是把圖表變清楚，不是替你承擔風險。\n\n🔗 延伸閱讀\n- VIX（CBOE Volatility Index，波動率指數／恐慌指數）\n- Expected Move（預期波動區間）\n- Risk-Off（風險趨避）\n- Breakout（突破）"
+  },
+  {
+    "id": "adx",
+    "title": "ADX（Average Directional Index，平均方向指數）",
+    "aliases": [
+      "ADX",
+      "Average Directional Index",
+      "平均方向指數",
+      "趨勢強度指標"
+    ],
+    "category": "technical_indicators",
+    "related_terms": [
+      "trend",
+      "sideways_market",
+      "momentum",
+      "breakout"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "trending",
+      "swing"
+    ],
+    "text": "ADX（Average Directional Index，平均方向指數）\n\n📖 是什麼\nADX 衡量趨勢強度，不直接告訴你方向是上或下。\n\n🧠 為什麼重要\n它能幫投資人把價格、量能或波動轉成較容易比較的訊號，但重點是用來輔助判斷市場狀態，不是保證預測工具。它可協助區分趨勢盤與盤整盤，避免在錯誤環境使用錯誤策略。\n\n👀 實際怎麼看\n- 目前是趨勢盤、盤整盤，還是事件造成的高波動\n- 指標方向是否和價格、成交量互相確認\n- 訊號是否出現在支撐、壓力或關鍵均線附近\n- 大週期趨勢與產業 / 大盤是否配合\n\n✅ 常見有效訊號\n收盤確認、成交量配合、同類或互補指標沒有明顯衝突，且風險報酬位置合理時，訊號通常較有參考價值。\n\n⚠️ 常見誤區\n- 不要只因單一數值達標就下買賣結論\n- 指標多半落後價格，不能忽略當下新聞與流動性\n- 同一指標在趨勢盤與盤整盤的解讀可能完全不同\n\n💡 KKZ 提醒\n先判斷市場環境，再選工具；指標是把圖表變清楚，不是替你承擔風險。\n\n🔗 延伸閱讀\n- Trend（趨勢）\n- Sideways Market（盤整／橫盤）\n- Momentum（動能）\n- Breakout（突破）"
+  },
+  {
+    "id": "obv",
+    "title": "OBV（On-Balance Volume，能量潮）",
+    "aliases": [
+      "OBV",
+      "On-Balance Volume",
+      "能量潮"
+    ],
+    "category": "technical_indicators",
+    "related_terms": [
+      "volume",
+      "relative_volume",
+      "breakout",
+      "rsi_divergence"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "trending",
+      "swing"
+    ],
+    "text": "OBV（On-Balance Volume，能量潮）\n\n📖 是什麼\nOBV 透過上漲日與下跌日成交量累積，觀察量能是否支持價格方向。\n\n🧠 為什麼重要\n它能幫投資人把價格、量能或波動轉成較容易比較的訊號，但重點是用來輔助判斷市場狀態，不是保證預測工具。若價格未創高但 OBV 先轉強，可能代表資金提前布局；反之也可能是警訊。\n\n👀 實際怎麼看\n- 目前是趨勢盤、盤整盤，還是事件造成的高波動\n- 指標方向是否和價格、成交量互相確認\n- 訊號是否出現在支撐、壓力或關鍵均線附近\n- 大週期趨勢與產業 / 大盤是否配合\n\n✅ 常見有效訊號\n收盤確認、成交量配合、同類或互補指標沒有明顯衝突，且風險報酬位置合理時，訊號通常較有參考價值。\n\n⚠️ 常見誤區\n- 不要只因單一數值達標就下買賣結論\n- 指標多半落後價格，不能忽略當下新聞與流動性\n- 同一指標在趨勢盤與盤整盤的解讀可能完全不同\n\n💡 KKZ 提醒\n先判斷市場環境，再選工具；指標是把圖表變清楚，不是替你承擔風險。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Relative Volume（相對成交量／RVOL）\n- Breakout（突破）\n- RSI Divergence（RSI 背離）"
+  },
+  {
+    "id": "stochastic_oscillator",
+    "title": "Stochastic Oscillator（隨機指標／KD 指標）",
+    "aliases": [
+      "Stochastic Oscillator",
+      "Stochastic",
+      "KD",
+      "KD 指標",
+      "隨機指標"
+    ],
+    "category": "technical_indicators",
+    "related_terms": [
+      "rsi",
+      "overbought",
+      "oversold",
+      "sideways_market"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "trending",
+      "swing"
+    ],
+    "text": "Stochastic Oscillator（隨機指標／KD 指標）\n\n📖 是什麼\n隨機指標比較收盤價在近期高低區間中的位置，常用來觀察短線動能。\n\n🧠 為什麼重要\n它能幫投資人把價格、量能或波動轉成較容易比較的訊號，但重點是用來輔助判斷市場狀態，不是保證預測工具。它在盤整環境較有參考性，強趨勢中可能長時間停留在高檔或低檔。\n\n👀 實際怎麼看\n- 目前是趨勢盤、盤整盤，還是事件造成的高波動\n- 指標方向是否和價格、成交量互相確認\n- 訊號是否出現在支撐、壓力或關鍵均線附近\n- 大週期趨勢與產業 / 大盤是否配合\n\n✅ 常見有效訊號\n收盤確認、成交量配合、同類或互補指標沒有明顯衝突，且風險報酬位置合理時，訊號通常較有參考價值。\n\n⚠️ 常見誤區\n- 不要只因單一數值達標就下買賣結論\n- 指標多半落後價格，不能忽略當下新聞與流動性\n- 同一指標在趨勢盤與盤整盤的解讀可能完全不同\n\n💡 KKZ 提醒\n先判斷市場環境，再選工具；指標是把圖表變清楚，不是替你承擔風險。\n\n🔗 延伸閱讀\n- RSI（Relative Strength Index，相對強弱指標）\n- Overbought（超買）\n- Oversold（超賣）\n- Sideways Market（盤整／橫盤）"
+  },
+  {
+    "id": "relative_volume",
+    "title": "Relative Volume（相對成交量／RVOL）",
+    "aliases": [
+      "Relative Volume",
+      "RVOL",
+      "相對成交量",
+      "相對量"
+    ],
+    "category": "technical_indicators",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "gap_up",
+      "gap_down"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "swing"
+    ],
+    "text": "Relative Volume（相對成交量／RVOL）\n\n📖 是什麼\nRelative Volume 比較當前成交量與平均成交量，衡量今天是否異常活躍。\n\n🧠 為什麼重要\n它能幫投資人把價格、量能或波動轉成較容易比較的訊號，但重點是用來輔助判斷市場狀態，不是保證預測工具。突破、跌破或消息日若 RVOL 放大，代表市場參與度提高。\n\n👀 實際怎麼看\n- 目前是趨勢盤、盤整盤，還是事件造成的高波動\n- 指標方向是否和價格、成交量互相確認\n- 訊號是否出現在支撐、壓力或關鍵均線附近\n- 大週期趨勢與產業 / 大盤是否配合\n\n✅ 常見有效訊號\n收盤確認、成交量配合、同類或互補指標沒有明顯衝突，且風險報酬位置合理時，訊號通常較有參考價值。\n\n⚠️ 常見誤區\n- 不要只因單一數值達標就下買賣結論\n- 指標多半落後價格，不能忽略當下新聞與流動性\n- 同一指標在趨勢盤與盤整盤的解讀可能完全不同\n\n💡 KKZ 提醒\n先判斷市場環境，再選工具；指標是把圖表變清楚，不是替你承擔風險。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Gap Up（跳空上漲）\n- Gap Down（跳空下跌）"
+  },
+  {
+    "id": "moving_average_crossover",
+    "title": "Moving Average Crossover（均線交叉）",
+    "aliases": [
+      "Moving Average Crossover",
+      "MA Crossover",
+      "均線交叉",
+      "均線穿越"
+    ],
+    "category": "technical_indicators",
+    "related_terms": [
+      "ma",
+      "golden_cross",
+      "death_cross",
+      "trend"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "swing"
+    ],
+    "image": "moving-average-crossover.png",
+    "text": "Moving Average Crossover（均線交叉）\n\n📖 是什麼\n均線交叉是短期均線穿越長期均線，用來觀察趨勢可能改變。\n\n🧠 為什麼重要\n它能幫投資人把價格、量能或波動轉成較容易比較的訊號，但重點是用來輔助判斷市場狀態，不是保證預測工具。交叉本身通常落後價格，最好搭配價格結構、量能與大盤方向。\n\n👀 實際怎麼看\n- 目前是趨勢盤、盤整盤，還是事件造成的高波動\n- 指標方向是否和價格、成交量互相確認\n- 訊號是否出現在支撐、壓力或關鍵均線附近\n- 大週期趨勢與產業 / 大盤是否配合\n\n✅ 常見有效訊號\n收盤確認、成交量配合、同類或互補指標沒有明顯衝突，且風險報酬位置合理時，訊號通常較有參考價值。\n\n⚠️ 常見誤區\n- 不要只因單一數值達標就下買賣結論\n- 指標多半落後價格，不能忽略當下新聞與流動性\n- 同一指標在趨勢盤與盤整盤的解讀可能完全不同\n\n💡 KKZ 提醒\n先判斷市場環境，再選工具；指標是把圖表變清楚，不是替你承擔風險。\n\n🔗 延伸閱讀\n- MA（Moving Average，移動平均線）\n- Golden Cross（黃金交叉）\n- Death Cross（死亡交叉）\n- Trend（趨勢）"
+  },
+  {
+    "id": "golden_cross",
+    "title": "Golden Cross（黃金交叉）",
+    "aliases": [
+      "Golden Cross",
+      "黃金交叉",
+      "黃金穿越"
+    ],
+    "category": "technical_indicators",
+    "related_terms": [
+      "moving_average_crossover",
+      "ma",
+      "uptrend",
+      "breakout"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "swing"
+    ],
+    "image": "golden-cross.png",
+    "text": "Golden Cross（黃金交叉）\n\n📖 是什麼\n黃金交叉通常指短期均線向上穿越長期均線，常被用來觀察中期轉強。\n\n🧠 為什麼重要\n它能幫投資人把價格、量能或波動轉成較容易比較的訊號，但重點是用來輔助判斷市場狀態，不是保證預測工具。它不是立即買進保證，若價格已大漲，也可能只是落後確認。\n\n👀 實際怎麼看\n- 目前是趨勢盤、盤整盤，還是事件造成的高波動\n- 指標方向是否和價格、成交量互相確認\n- 訊號是否出現在支撐、壓力或關鍵均線附近\n- 大週期趨勢與產業 / 大盤是否配合\n\n✅ 常見有效訊號\n收盤確認、成交量配合、同類或互補指標沒有明顯衝突，且風險報酬位置合理時，訊號通常較有參考價值。\n\n⚠️ 常見誤區\n- 不要只因單一數值達標就下買賣結論\n- 指標多半落後價格，不能忽略當下新聞與流動性\n- 同一指標在趨勢盤與盤整盤的解讀可能完全不同\n\n💡 KKZ 提醒\n先判斷市場環境，再選工具；指標是把圖表變清楚，不是替你承擔風險。\n\n🔗 延伸閱讀\n- Moving Average Crossover（均線交叉）\n- MA（Moving Average，移動平均線）\n- Uptrend（上升趨勢）\n- Breakout（突破）"
+  },
+  {
+    "id": "death_cross",
+    "title": "Death Cross（死亡交叉）",
+    "aliases": [
+      "Death Cross",
+      "死亡交叉",
+      "死亡穿越"
+    ],
+    "category": "technical_indicators",
+    "related_terms": [
+      "moving_average_crossover",
+      "ma",
+      "downtrend",
+      "breakdown"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "swing"
+    ],
+    "image": "death-cross.png",
+    "text": "Death Cross（死亡交叉）\n\n📖 是什麼\n死亡交叉通常指短期均線向下穿越長期均線，常被用來觀察中期轉弱。\n\n🧠 為什麼重要\n它能幫投資人把價格、量能或波動轉成較容易比較的訊號，但重點是用來輔助判斷市場狀態，不是保證預測工具。它可能代表趨勢轉弱，也可能在震盪盤反覆出現假訊號。\n\n👀 實際怎麼看\n- 目前是趨勢盤、盤整盤，還是事件造成的高波動\n- 指標方向是否和價格、成交量互相確認\n- 訊號是否出現在支撐、壓力或關鍵均線附近\n- 大週期趨勢與產業 / 大盤是否配合\n\n✅ 常見有效訊號\n收盤確認、成交量配合、同類或互補指標沒有明顯衝突，且風險報酬位置合理時，訊號通常較有參考價值。\n\n⚠️ 常見誤區\n- 不要只因單一數值達標就下買賣結論\n- 指標多半落後價格，不能忽略當下新聞與流動性\n- 同一指標在趨勢盤與盤整盤的解讀可能完全不同\n\n💡 KKZ 提醒\n先判斷市場環境，再選工具；指標是把圖表變清楚，不是替你承擔風險。\n\n🔗 延伸閱讀\n- Moving Average Crossover（均線交叉）\n- MA（Moving Average，移動平均線）\n- Downtrend（下降趨勢）\n- Breakdown（跌破）"
+  },
+  {
+    "id": "rsi_divergence",
+    "title": "RSI Divergence（RSI 背離）",
+    "aliases": [
+      "RSI Divergence",
+      "RSI 背離",
+      "相對強弱背離"
+    ],
+    "category": "technical_indicators",
+    "related_terms": [
+      "rsi",
+      "momentum",
+      "reversal",
+      "support"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "trending",
+      "swing"
+    ],
+    "image": "rsi-divergence.png",
+    "text": "RSI Divergence（RSI 背離）\n\n📖 是什麼\nRSI 背離是價格創新高或新低，但 RSI 動能沒有同步創高或創低。\n\n🧠 為什麼重要\n它能幫投資人把價格、量能或波動轉成較容易比較的訊號，但重點是用來輔助判斷市場狀態，不是保證預測工具。它提醒動能可能變化，但不等於價格一定反轉，仍需要價格確認。\n\n👀 實際怎麼看\n- 目前是趨勢盤、盤整盤，還是事件造成的高波動\n- 指標方向是否和價格、成交量互相確認\n- 訊號是否出現在支撐、壓力或關鍵均線附近\n- 大週期趨勢與產業 / 大盤是否配合\n\n✅ 常見有效訊號\n收盤確認、成交量配合、同類或互補指標沒有明顯衝突，且風險報酬位置合理時，訊號通常較有參考價值。\n\n⚠️ 常見誤區\n- 不要只因單一數值達標就下買賣結論\n- 指標多半落後價格，不能忽略當下新聞與流動性\n- 同一指標在趨勢盤與盤整盤的解讀可能完全不同\n\n💡 KKZ 提醒\n先判斷市場環境，再選工具；指標是把圖表變清楚，不是替你承擔風險。\n\n🔗 延伸閱讀\n- RSI（Relative Strength Index，相對強弱指標）\n- Momentum（動能）\n- Reversal（反轉）\n- Support（支撐）"
+  },
+  {
+    "id": "volume_profile",
+    "title": "Volume Profile（成交量分布）",
+    "aliases": [
+      "Volume Profile",
+      "成交量分布",
+      "量價分布",
+      "籌碼分布"
+    ],
+    "category": "technical_indicators",
+    "related_terms": [
+      "volume",
+      "support",
+      "resistance",
+      "consolidation"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "trending",
+      "swing"
+    ],
+    "image": "volume-profile.png",
+    "text": "Volume Profile（成交量分布）\n\n📖 是什麼\nVolume Profile 顯示不同價格區間累積的成交量，用來觀察市場主要成交成本區。\n\n🧠 為什麼重要\n它能幫投資人把價格、量能或波動轉成較容易比較的訊號，但重點是用來輔助判斷市場狀態，不是保證預測工具。高成交量區常是市場記憶區，低成交量區則可能價格移動較快。\n\n👀 實際怎麼看\n- 目前是趨勢盤、盤整盤，還是事件造成的高波動\n- 指標方向是否和價格、成交量互相確認\n- 訊號是否出現在支撐、壓力或關鍵均線附近\n- 大週期趨勢與產業 / 大盤是否配合\n\n✅ 常見有效訊號\n收盤確認、成交量配合、同類或互補指標沒有明顯衝突，且風險報酬位置合理時，訊號通常較有參考價值。\n\n⚠️ 常見誤區\n- 不要只因單一數值達標就下買賣結論\n- 指標多半落後價格，不能忽略當下新聞與流動性\n- 同一指標在趨勢盤與盤整盤的解讀可能完全不同\n\n💡 KKZ 提醒\n先判斷市場環境，再選工具；指標是把圖表變清楚，不是替你承擔風險。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Support（支撐）\n- Resistance（壓力）\n- Consolidation（整理）"
   },
   {
     "id": "support",
-    "title": "Support",
-    "aliases": ["Support", "支撐", "支撐位"],
+    "title": "Support（支撐）",
+    "aliases": [
+      "Support",
+      "支撐",
+      "支撐位"
+    ],
     "category": "price_action",
-    "text": "Support（支撐）是價格下跌時容易出現買盤、讓跌勢放慢或反彈的區域。支撐不是單一精準價格，而是一個區間；跌破後若無法重新站回，原支撐有時會轉為壓力。"
+    "related_terms": [
+      "resistance",
+      "breakout",
+      "retest",
+      "volume"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "image": "support-and-resistance.png",
+    "text": "Support（支撐）\n\n📖 是什麼\n支撐是價格下跌時較容易出現買盤或賣壓減弱的區域。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。它代表市場在該區附近曾願意承接。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Resistance（壓力）\n- Breakout（突破）\n- Retest（回測）\n- Volume（成交量）"
   },
   {
     "id": "resistance",
-    "title": "Resistance",
-    "aliases": ["Resistance", "壓力", "壓力位"],
+    "title": "Resistance（壓力）",
+    "aliases": [
+      "Resistance",
+      "壓力",
+      "壓力位"
+    ],
     "category": "price_action",
-    "text": "Resistance（壓力）是價格上漲時容易遇到賣壓、讓漲勢放慢或回落的區域。壓力被有效突破後，若後續回測守住，原壓力可能轉為支撐。"
+    "related_terms": [
+      "support",
+      "breakout",
+      "retest",
+      "volume"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "image": "support-and-resistance.png",
+    "text": "Resistance（壓力）\n\n📖 是什麼\n壓力是價格上漲時較容易遇到賣壓或買盤轉弱的區域。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。它代表市場在該區附近曾出現供給或獲利了結。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Support（支撐）\n- Breakout（突破）\n- Retest（回測）\n- Volume（成交量）"
   },
   {
     "id": "breakout",
-    "title": "Breakout",
-    "aliases": ["Breakout", "突破"],
+    "title": "Breakout（突破）",
+    "aliases": [
+      "Breakout",
+      "突破"
+    ],
     "category": "price_action",
-    "text": "Breakout（突破）是價格離開原本的整理區、壓力或支撐區。有效突破通常會搭配收盤站穩、量能增加，並在回測時不輕易跌回原區間。"
+    "related_terms": [
+      "resistance",
+      "retest",
+      "volume",
+      "fake_breakout"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "image": "breakout-and-retest.png",
+    "text": "Breakout（突破）\n\n📖 是什麼\n突破是價格向上離開壓力或整理區，顯示買方嘗試取得主導權。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。有效突破通常需要收盤、量能與回測共同確認。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Resistance（壓力）\n- Retest（回測）\n- Volume（成交量）\n- Fake Breakout（假突破）"
   },
   {
     "id": "retest",
-    "title": "Retest",
-    "aliases": ["Retest", "回測"],
+    "title": "Retest（回測）",
+    "aliases": [
+      "Retest",
+      "回測"
+    ],
     "category": "price_action",
-    "text": "Retest（回測）是價格突破重要位置後，重新回到該區域附近確認支撐或壓力是否有效。成功回測通常代表突破較有可信度；若回測失敗跌回原區間，可能是假突破。"
+    "related_terms": [
+      "breakout",
+      "support",
+      "resistance",
+      "fake_breakout"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "image": "breakout-and-retest.png",
+    "text": "Retest（回測）\n\n📖 是什麼\n回測是突破或跌破後，價格回到關鍵區域確認支撐或壓力是否轉換。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。成功回測能提高突破可信度，失敗則可能是假突破。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Breakout（突破）\n- Support（支撐）\n- Resistance（壓力）\n- Fake Breakout（假突破）"
+  },
+  {
+    "id": "trend",
+    "title": "Trend（趨勢）",
+    "aliases": [
+      "Trend",
+      "趨勢"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "uptrend",
+      "downtrend",
+      "sideways_market",
+      "trendline"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "image": "market-structure.png",
+    "text": "Trend（趨勢）\n\n📖 是什麼\n趨勢是價格在一段時間內持續朝某方向推進的結構。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。它讓投資人知道順勢、等待拉回或降低曝險哪一種更合理。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Uptrend（上升趨勢）\n- Downtrend（下降趨勢）\n- Sideways Market（盤整／橫盤）\n- Trendline（趨勢線）"
+  },
+  {
+    "id": "uptrend",
+    "title": "Uptrend（上升趨勢）",
+    "aliases": [
+      "Uptrend",
+      "上升趨勢",
+      "多頭趨勢"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "higher_high",
+      "higher_low",
+      "pullback",
+      "trendline"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "text": "Uptrend（上升趨勢）\n\n📖 是什麼\n上升趨勢通常由 Higher High（更高的高點）與 Higher Low（更高的低點）組成。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。它代表買方願意在更高價格承接。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Higher High（更高的高點）\n- Higher Low（更高的低點）\n- Pullback（拉回）\n- Trendline（趨勢線）"
+  },
+  {
+    "id": "downtrend",
+    "title": "Downtrend（下降趨勢）",
+    "aliases": [
+      "Downtrend",
+      "下降趨勢",
+      "空頭趨勢"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "lower_high",
+      "lower_low",
+      "breakdown",
+      "trendline"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "text": "Downtrend（下降趨勢）\n\n📖 是什麼\n下降趨勢通常由 Lower High（更低的高點）與 Lower Low（更低的低點）組成。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。它代表反彈賣壓仍強，買方承接意願不足。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Lower High（更低的高點）\n- Lower Low（更低的低點）\n- Breakdown（跌破）\n- Trendline（趨勢線）"
+  },
+  {
+    "id": "sideways_market",
+    "title": "Sideways Market（盤整／橫盤）",
+    "aliases": [
+      "Sideways Market",
+      "Sideways",
+      "盤整",
+      "橫盤",
+      "區間整理"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "support",
+      "resistance",
+      "consolidation",
+      "breakout"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "text": "Sideways Market（盤整／橫盤）\n\n📖 是什麼\n盤整是價格在相對固定區間內來回震盪，方向尚未明確。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。它常代表市場等待新資訊或多空暫時平衡。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Support（支撐）\n- Resistance（壓力）\n- Consolidation（整理）\n- Breakout（突破）"
+  },
+  {
+    "id": "higher_high",
+    "title": "Higher High（更高的高點）",
+    "aliases": [
+      "Higher High",
+      "HH",
+      "更高的高點",
+      "創更高高點"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "higher_low",
+      "uptrend",
+      "trend"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "text": "Higher High（更高的高點）\n\n📖 是什麼\nHigher High 是新一波高點高於前一波高點。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。它是上升結構的重要線索，但要搭配 Higher Low。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Higher Low（更高的低點）\n- Uptrend（上升趨勢）\n- Trend（趨勢）"
+  },
+  {
+    "id": "higher_low",
+    "title": "Higher Low（更高的低點）",
+    "aliases": [
+      "Higher Low",
+      "HL",
+      "更高的低點",
+      "低點墊高"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "higher_high",
+      "uptrend",
+      "pullback"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "text": "Higher Low（更高的低點）\n\n📖 是什麼\nHigher Low 是回檔低點高於前一波低點。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。它顯示買方願意在較高位置承接。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Higher High（更高的高點）\n- Uptrend（上升趨勢）\n- Pullback（拉回）"
+  },
+  {
+    "id": "lower_high",
+    "title": "Lower High（更低的高點）",
+    "aliases": [
+      "Lower High",
+      "LH",
+      "更低的高點",
+      "高點下移"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "lower_low",
+      "downtrend",
+      "reversal"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "text": "Lower High（更低的高點）\n\n📖 是什麼\nLower High 是反彈高點低於前一波高點。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。它常代表上方賣壓提前出現。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Lower Low（更低的低點）\n- Downtrend（下降趨勢）\n- Reversal（反轉）"
+  },
+  {
+    "id": "lower_low",
+    "title": "Lower Low（更低的低點）",
+    "aliases": [
+      "Lower Low",
+      "LL",
+      "更低的低點",
+      "低點下移"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "lower_high",
+      "downtrend",
+      "breakdown"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "text": "Lower Low（更低的低點）\n\n📖 是什麼\nLower Low 是新低點低於前一波低點。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。它顯示賣方仍在壓低價格。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Lower High（更低的高點）\n- Downtrend（下降趨勢）\n- Breakdown（跌破）"
+  },
+  {
+    "id": "pullback",
+    "title": "Pullback（拉回）",
+    "aliases": [
+      "Pullback",
+      "拉回",
+      "回檔"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "uptrend",
+      "support",
+      "retest",
+      "volume"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "text": "Pullback（拉回）\n\n📖 是什麼\nPullback 是趨勢中的短暫反向修正。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。健康拉回能讓趨勢重新整理成本，但過深可能代表趨勢轉弱。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Uptrend（上升趨勢）\n- Support（支撐）\n- Retest（回測）\n- Volume（成交量）"
+  },
+  {
+    "id": "reversal",
+    "title": "Reversal（反轉）",
+    "aliases": [
+      "Reversal",
+      "反轉",
+      "趨勢反轉"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "lower_high",
+      "higher_low",
+      "head_and_shoulders",
+      "double_top"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "text": "Reversal（反轉）\n\n📖 是什麼\n反轉是原本趨勢失去主導，價格開始形成相反方向結構。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。它通常需要結構改變，而不是只看一根 K 線。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Lower High（更低的高點）\n- Higher Low（更高的低點）\n- Head and Shoulders（頭肩頂）\n- Double Top（雙重頂／M 頭）"
+  },
+  {
+    "id": "consolidation",
+    "title": "Consolidation（整理）",
+    "aliases": [
+      "Consolidation",
+      "整理",
+      "盤整整理"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "sideways_market",
+      "rectangle",
+      "breakout",
+      "volume"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "text": "Consolidation（整理）\n\n📖 是什麼\n整理是價格暫時收斂或橫盤，等待下一個方向。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。整理可發生在趨勢中繼，也可能是反轉前的分歧。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Sideways Market（盤整／橫盤）\n- Rectangle（矩形整理）\n- Breakout（突破）\n- Volume（成交量）"
+  },
+  {
+    "id": "fake_breakout",
+    "title": "Fake Breakout（假突破）",
+    "aliases": [
+      "Fake Breakout",
+      "False Breakout",
+      "假突破",
+      "騙線"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "breakout",
+      "retest",
+      "volume",
+      "support"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "image": "fake-breakout.png",
+    "text": "Fake Breakout（假突破）\n\n📖 是什麼\n假突破是價格短暫突破關鍵位置後，很快跌回原區間。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。它反映追價買盤或賣盤沒有延續。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Breakout（突破）\n- Retest（回測）\n- Volume（成交量）\n- Support（支撐）"
+  },
+  {
+    "id": "breakdown",
+    "title": "Breakdown（跌破）",
+    "aliases": [
+      "Breakdown",
+      "跌破",
+      "向下跌破"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "support",
+      "downtrend",
+      "retest",
+      "fake_breakout"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "text": "Breakdown（跌破）\n\n📖 是什麼\n跌破是價格向下離開支撐或整理區。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。它代表賣方嘗試取得主導權，但仍需收盤與回測確認。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Support（支撐）\n- Downtrend（下降趨勢）\n- Retest（回測）\n- Fake Breakout（假突破）"
+  },
+  {
+    "id": "gap_up",
+    "title": "Gap Up（跳空上漲）",
+    "aliases": [
+      "Gap Up",
+      "跳空上漲",
+      "向上跳空"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "gap_fill",
+      "breakout",
+      "relative_volume",
+      "earnings_yield"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "image": "gap-types.png",
+    "text": "Gap Up（跳空上漲）\n\n📖 是什麼\n跳空上漲是開盤價明顯高於前一交易區間。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。它可能代表消息、財報或市場預期快速改變。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Gap Fill（回補缺口）\n- Breakout（突破）\n- Relative Volume（相對成交量／RVOL）\n- Earnings Yield（盈餘殖利率）"
+  },
+  {
+    "id": "gap_down",
+    "title": "Gap Down（跳空下跌）",
+    "aliases": [
+      "Gap Down",
+      "跳空下跌",
+      "向下跳空"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "gap_fill",
+      "breakdown",
+      "risk_off",
+      "vix"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "image": "gap-types.png",
+    "text": "Gap Down（跳空下跌）\n\n📖 是什麼\n跳空下跌是開盤價明顯低於前一交易區間。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。它可能代表風險重新定價或賣壓集中。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Gap Fill（回補缺口）\n- Breakdown（跌破）\n- Risk-Off（風險趨避）\n- VIX（CBOE Volatility Index，波動率指數／恐慌指數）"
+  },
+  {
+    "id": "gap_fill",
+    "title": "Gap Fill（回補缺口）",
+    "aliases": [
+      "Gap Fill",
+      "回補缺口",
+      "補缺口"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "gap_up",
+      "gap_down",
+      "support",
+      "resistance"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "image": "gap-types.png",
+    "text": "Gap Fill（回補缺口）\n\n📖 是什麼\n回補缺口是價格回到跳空留下的空白區間。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。缺口是否回補能觀察跳空後買賣力道是否延續。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Gap Up（跳空上漲）\n- Gap Down（跳空下跌）\n- Support（支撐）\n- Resistance（壓力）"
+  },
+  {
+    "id": "neckline",
+    "title": "Neckline（頸線）",
+    "aliases": [
+      "Neckline",
+      "頸線",
+      "型態頸線"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "head_and_shoulders",
+      "double_top",
+      "double_bottom",
+      "retest"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "text": "Neckline（頸線）\n\n📖 是什麼\n頸線是部分反轉型態中的關鍵確認線，例如頭肩頂或雙重底。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。跌破或突破頸線通常比型態外觀更重要。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Head and Shoulders（頭肩頂）\n- Double Top（雙重頂／M 頭）\n- Double Bottom（雙重底／W 底）\n- Retest（回測）"
+  },
+  {
+    "id": "trendline",
+    "title": "Trendline（趨勢線）",
+    "aliases": [
+      "Trendline",
+      "趨勢線",
+      "趨勢支撐線",
+      "趨勢壓力線"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "trend",
+      "uptrend",
+      "downtrend",
+      "breakout"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "text": "Trendline（趨勢線）\n\n📖 是什麼\n趨勢線是連接高點或低點，用來觀察趨勢斜率與可能轉弱位置。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。它能協助辨識趨勢是否仍被市場尊重。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Trend（趨勢）\n- Uptrend（上升趨勢）\n- Downtrend（下降趨勢）\n- Breakout（突破）"
+  },
+  {
+    "id": "price_target",
+    "title": "Price Target（型態目標價）",
+    "aliases": [
+      "Price Target",
+      "型態目標價",
+      "目標價估算"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "breakout",
+      "neckline",
+      "head_and_shoulders",
+      "rectangle"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "text": "Price Target（型態目標價）\n\n📖 是什麼\n型態目標價是用型態高度或區間幅度推估可能移動範圍。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。它只能作為風險報酬估算，不是價格保證。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Breakout（突破）\n- Neckline（頸線）\n- Head and Shoulders（頭肩頂）\n- Rectangle（矩形整理）"
+  },
+  {
+    "id": "relative_strength",
+    "title": "Relative Strength（相對強勢）",
+    "aliases": [
+      "Relative Strength",
+      "相對強勢",
+      "相對強度"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "rsi",
+      "relative_weakness",
+      "relative_strength",
+      "momentum"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "text": "Relative Strength（相對強勢）\n\n📖 是什麼\nRelative Strength 是比較某標的相對大盤或同族群是否表現更強。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。它和 RSI 不同；RSI 是單一標的內部動能指標。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- RSI（Relative Strength Index，相對強弱指標）\n- Relative Weakness（相對弱勢）\n- Momentum（動能）"
+  },
+  {
+    "id": "relative_weakness",
+    "title": "Relative Weakness（相對弱勢）",
+    "aliases": [
+      "Relative Weakness",
+      "相對弱勢"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "relative_strength",
+      "risk_off",
+      "downtrend"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "text": "Relative Weakness（相對弱勢）\n\n📖 是什麼\nRelative Weakness 是某標的相對大盤或同族群表現更弱。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。它可協助避免只看個股漲跌，而忽略資金輪動。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Relative Strength（相對強勢）\n- Risk-Off（風險趨避）\n- Downtrend（下降趨勢）"
+  },
+  {
+    "id": "momentum",
+    "title": "Momentum（動能）",
+    "aliases": [
+      "Momentum",
+      "動能",
+      "價格動能"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "rsi",
+      "macd",
+      "breakout",
+      "relative_strength"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "text": "Momentum（動能）\n\n📖 是什麼\n動能是價格延續某方向的速度與力道。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。動能變強常伴隨價格擴張與量能增加，動能轉弱則要防範趨勢衰退。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- RSI（Relative Strength Index，相對強弱指標）\n- MACD（Moving Average Convergence Divergence，移動平均收斂發散指標）\n- Breakout（突破）\n- Relative Strength（相對強勢）"
+  },
+  {
+    "id": "mean_reversion",
+    "title": "Mean Reversion（均值回歸）",
+    "aliases": [
+      "Mean Reversion",
+      "均值回歸",
+      "回歸均值"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "bollinger_bands",
+      "overbought",
+      "oversold",
+      "sideways_market"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "text": "Mean Reversion（均值回歸）\n\n📖 是什麼\n均值回歸是價格偏離平均過遠後，可能往平均區域修正的概念。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。它較常用於盤整或過度延伸情境，不適合逆著強趨勢硬做。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- Bollinger Bands（布林通道）\n- Overbought（超買）\n- Oversold（超賣）\n- Sideways Market（盤整／橫盤）"
+  },
+  {
+    "id": "overbought",
+    "title": "Overbought（超買）",
+    "aliases": [
+      "Overbought",
+      "超買",
+      "過熱"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "rsi",
+      "stochastic_oscillator",
+      "momentum",
+      "pullback"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "text": "Overbought（超買）\n\n📖 是什麼\n超買代表近期價格或動能偏強、偏熱，但不等於一定下跌。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。強趨勢中超買可能持續很久。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- RSI（Relative Strength Index，相對強弱指標）\n- Stochastic Oscillator（隨機指標／KD 指標）\n- Momentum（動能）\n- Pullback（拉回）"
+  },
+  {
+    "id": "oversold",
+    "title": "Oversold（超賣）",
+    "aliases": [
+      "Oversold",
+      "超賣",
+      "過冷"
+    ],
+    "category": "price_action",
+    "related_terms": [
+      "rsi",
+      "stochastic_oscillator",
+      "support",
+      "reversal"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "trending",
+      "sideways"
+    ],
+    "text": "Oversold（超賣）\n\n📖 是什麼\n超賣代表近期價格或動能偏弱、偏冷，但不等於一定反彈。\n\n🧠 為什麼重要\nPrice Action（價格行為）讓投資人直接觀察買方與賣方在關鍵價格附近的反應。下降趨勢中超賣可能反覆出現。\n\n👀 實際怎麼看\n- 高點與低點是否持續改變\n- 收盤是否站穩或跌破關鍵區域\n- 成交量是否支持價格移動\n- 突破後是否成功回測\n- 大盤、產業與個股是否同方向\n\n✅ 常見有效訊號\n關鍵位置被收盤確認、量能配合、回測沒有快速失守，且停損點與目標區間清楚時，訊號較可信。\n\n⚠️ 常見誤區\n- 把單一價位當成絕對支撐或壓力\n- 在確認前預設一定突破或反轉\n- 忽略假突破與大盤環境\n\n💡 KKZ 提醒\n先畫區域，再看反應；真正有用的是市場在那個區域做了什麼。\n\n🔗 延伸閱讀\n- RSI（Relative Strength Index，相對強弱指標）\n- Stochastic Oscillator（隨機指標／KD 指標）\n- Support（支撐）\n- Reversal（反轉）"
+  },
+  {
+    "id": "pennant",
+    "title": "Pennant（旗尖形／三角旗形）",
+    "aliases": [
+      "Pennant",
+      "旗尖形",
+      "三角旗形"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "price_target"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "pennant.png",
+    "text": "Pennant（旗尖形／三角旗形）\n\n📖 是什麼\n旗尖形通常出現在急漲或急跌後，價格短暫收斂。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。多空在窄幅區間內整理，等待下一段方向。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n沿原趨勢方向突破收斂區，並有量能確認時較可信。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- Price Target（型態目標價）"
+  },
+  {
+    "id": "ascending_triangle",
+    "title": "Ascending Triangle（上升三角形）",
+    "aliases": [
+      "Ascending Triangle",
+      "上升三角形"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "price_target"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "ascending-triangle.png",
+    "text": "Ascending Triangle（上升三角形）\n\n📖 是什麼\n上升三角形有水平壓力與逐步墊高低點，常見於整理後可能向上突破。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。買方願意在越來越高的位置承接，但上方仍有固定賣壓。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n突破水平壓力並收盤站穩，是較正式確認。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- Price Target（型態目標價）"
+  },
+  {
+    "id": "descending_triangle",
+    "title": "Descending Triangle（下降三角形）",
+    "aliases": [
+      "Descending Triangle",
+      "下降三角形"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "price_target"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "descending-triangle.png",
+    "text": "Descending Triangle（下降三角形）\n\n📖 是什麼\n下降三角形有水平支撐與逐步下移高點，常見於可能向下跌破的整理。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。賣方在越來越低的位置施壓，買方守同一支撐。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n跌破水平支撐並收盤確認時，型態較完整。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- Price Target（型態目標價）"
+  },
+  {
+    "id": "symmetrical_triangle",
+    "title": "Symmetrical Triangle（對稱三角形）",
+    "aliases": [
+      "Symmetrical Triangle",
+      "對稱三角形"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "price_target"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "symmetrical-triangle.png",
+    "text": "Symmetrical Triangle（對稱三角形）\n\n📖 是什麼\n對稱三角形由高點下移與低點上移形成收斂。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。多空力量暫時收縮，方向需等突破確認。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n任一方向突破收斂邊界，搭配量能與回測才較有參考性。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- Price Target（型態目標價）"
+  },
+  {
+    "id": "cup_and_handle",
+    "title": "Cup and Handle（杯柄型態）",
+    "aliases": [
+      "Cup and Handle",
+      "杯柄型態",
+      "杯柄"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "price_target"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "cup-and-handle.png",
+    "text": "Cup and Handle（杯柄型態）\n\n📖 是什麼\n杯柄型態通常是先形成圓弧底，再出現較小整理柄。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。長時間修復籌碼後，買方嘗試突破前高壓力。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n突破杯緣或柄部壓力，收盤站穩且量能放大較可信。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- Price Target（型態目標價）"
+  },
+  {
+    "id": "rectangle",
+    "title": "Rectangle（矩形整理）",
+    "aliases": [
+      "Rectangle",
+      "矩形整理",
+      "箱型整理"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "price_target"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "rectangle.png",
+    "text": "Rectangle（矩形整理）\n\n📖 是什麼\n矩形整理是價格在清楚支撐與壓力之間震盪。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。多空在區間內反覆交換籌碼，方向尚未決定。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n突破箱頂或跌破箱底並收盤確認，才算離開區間。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- Price Target（型態目標價）"
+  },
+  {
+    "id": "ascending_channel",
+    "title": "Ascending Channel（上升通道）",
+    "aliases": [
+      "Ascending Channel",
+      "上升通道"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "price_target"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "ascending-channel.png",
+    "text": "Ascending Channel（上升通道）\n\n📖 是什麼\n上升通道由上升支撐線與上升壓力線組成。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。買方維持趨勢，但每次接近上緣也可能遇到獲利賣壓。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n守住下緣並持續創高代表趨勢仍在，跌破下緣需警覺。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- Price Target（型態目標價）"
+  },
+  {
+    "id": "descending_channel",
+    "title": "Descending Channel（下降通道）",
+    "aliases": [
+      "Descending Channel",
+      "下降通道"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "price_target"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "descending-channel.png",
+    "text": "Descending Channel（下降通道）\n\n📖 是什麼\n下降通道由下降壓力線與下降支撐線組成。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。賣方維持趨勢，反彈多半受壓。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n突破上緣並回測守住，才可能代表下降結構改變。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- Price Target（型態目標價）"
+  },
+  {
+    "id": "base_pattern",
+    "title": "Base Pattern（底部整理型態）",
+    "aliases": [
+      "Base Pattern",
+      "底部整理型態",
+      "Base"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "price_target"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "base-pattern.png",
+    "text": "Base Pattern（底部整理型態）\n\n📖 是什麼\nBase Pattern 是上漲前常見的長時間整理區。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。市場透過橫盤消化賣壓並重新累積籌碼。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n突破整理區上緣且量能擴大，並非所有 base 都會成功。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- Price Target（型態目標價）"
+  },
+  {
+    "id": "flat_base",
+    "title": "Flat Base（平底型態）",
+    "aliases": [
+      "Flat Base",
+      "平底型態",
+      "平底整理"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "price_target"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "flat-base.png",
+    "text": "Flat Base（平底型態）\n\n📖 是什麼\nFlat Base 是波動相對收斂、低點穩定的整理型態。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。賣壓逐漸被吸收，價格維持在狹窄範圍。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n突破上緣且回測不破，型態較有參考價值。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- Price Target（型態目標價）"
+  },
+  {
+    "id": "high_tight_flag",
+    "title": "High Tight Flag（高而窄旗形）",
+    "aliases": [
+      "High Tight Flag",
+      "高而窄旗形"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "price_target"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "high-tight-flag.png",
+    "text": "High Tight Flag（高而窄旗形）\n\n📖 是什麼\n高而窄旗形通常出現在強勢急漲後的短暫窄幅整理。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。市場追價力強但風險也高，失敗時回落可能很快。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n突破整理上緣且成交量明顯配合，仍需嚴格控管風險。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- Price Target（型態目標價）"
+  },
+  {
+    "id": "head_and_shoulders",
+    "title": "Head and Shoulders（頭肩頂）",
+    "aliases": [
+      "Head and Shoulders",
+      "Head & Shoulders",
+      "頭肩頂",
+      "頭肩型",
+      "頭肩頸"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "price_target"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "head-and-shoulders.png",
+    "text": "Head and Shoulders（頭肩頂）\n\n📖 是什麼\n頭肩頂由左肩、頭、右肩與頸線組成，常見於上升趨勢末段。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。左肩後回落，頭部創更高高點，右肩無法再次創高，可能代表動能遞減。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n跌破頸線才是較正式確認，跌破時若伴隨量能較可信。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- Price Target（型態目標價）"
+  },
+  {
+    "id": "inverse_head_and_shoulders",
+    "title": "Inverse Head and Shoulders（頭肩底／倒頭肩）",
+    "aliases": [
+      "Inverse Head and Shoulders",
+      "倒頭肩",
+      "頭肩底"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "price_target"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "inverse-head-and-shoulders.png",
+    "text": "Inverse Head and Shoulders（頭肩底／倒頭肩）\n\n📖 是什麼\n頭肩底是頭肩頂的反向型態，常見於下降趨勢末段。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。左肩後反彈，頭部創低，右肩不再破低，可能代表賣壓減弱。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n突破頸線並收盤站穩，回測守住時較完整。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- Price Target（型態目標價）"
+  },
+  {
+    "id": "triple_top",
+    "title": "Triple Top（三重頂）",
+    "aliases": [
+      "Triple Top",
+      "三重頂"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "price_target"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "triple-top.png",
+    "text": "Triple Top（三重頂）\n\n📖 是什麼\n三重頂是價格三次挑戰相近高點但無法突破。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。多次上攻失敗顯示壓力區供給強。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n跌破區間支撐或頸線並收盤確認，才較像完成。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- Price Target（型態目標價）"
+  },
+  {
+    "id": "triple_bottom",
+    "title": "Triple Bottom（三重底）",
+    "aliases": [
+      "Triple Bottom",
+      "三重底"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "price_target"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "triple-bottom.png",
+    "text": "Triple Bottom（三重底）\n\n📖 是什麼\n三重底是價格三次回測相近低點後守住。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。多次下探失敗可能代表低檔承接穩定。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n突破上方頸線或壓力區後回測守住較可信。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- Price Target（型態目標價）"
+  },
+  {
+    "id": "rising_wedge",
+    "title": "Rising Wedge（上升楔形）",
+    "aliases": [
+      "Rising Wedge",
+      "上升楔形"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "price_target"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "rising-wedge.png",
+    "text": "Rising Wedge（上升楔形）\n\n📖 是什麼\n上升楔形由上升但逐漸收斂的高低點組成。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。價格仍上升，但推升幅度變小，動能可能衰退。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n跌破下緣趨勢線並收盤確認時，轉弱訊號較明確。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- Price Target（型態目標價）"
+  },
+  {
+    "id": "falling_wedge",
+    "title": "Falling Wedge（下降楔形）",
+    "aliases": [
+      "Falling Wedge",
+      "下降楔形"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "price_target"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "falling-wedge.png",
+    "text": "Falling Wedge（下降楔形）\n\n📖 是什麼\n下降楔形由下降但逐漸收斂的高低點組成。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。價格仍下跌，但賣壓可能逐步減弱。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n突破上緣趨勢線並回測守住時，轉強訊號較完整。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- Price Target（型態目標價）"
+  },
+  {
+    "id": "rounding_bottom",
+    "title": "Rounding Bottom（圓弧底）",
+    "aliases": [
+      "Rounding Bottom",
+      "圓弧底"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "price_target"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "rounding-bottom.png",
+    "text": "Rounding Bottom（圓弧底）\n\n📖 是什麼\n圓弧底是價格長時間由下跌轉為平緩再逐步上升。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。它反映賣壓慢慢消化，買方逐漸恢復。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n突破右側壓力並有量能回升時較可信。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- Price Target（型態目標價）"
+  },
+  {
+    "id": "rounding_top",
+    "title": "Rounding Top（圓弧頂）",
+    "aliases": [
+      "Rounding Top",
+      "圓弧頂"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "price_target"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "rounding-top.png",
+    "text": "Rounding Top（圓弧頂）\n\n📖 是什麼\n圓弧頂是價格長時間由上漲轉為平緩再逐步下滑。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。它反映買盤逐漸減弱，賣壓慢慢增加。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n跌破右側支撐並收盤確認時較完整。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- Price Target（型態目標價）"
+  },
+  {
+    "id": "v_shaped_recovery",
+    "title": "V-Shaped Recovery（V 型反轉）",
+    "aliases": [
+      "V-Shaped Recovery",
+      "V 型反轉",
+      "V轉"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "price_target"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "v-shaped-recovery.png",
+    "text": "V-Shaped Recovery（V 型反轉）\n\n📖 是什麼\nV 型反轉是價格急跌後快速收復跌幅。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。它常由恐慌賣壓結束、政策或重大消息改變預期造成。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n重新站回關鍵壓力並守住回測，才較能確認反轉延續。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- Price Target（型態目標價）"
+  },
+  {
+    "id": "island_reversal",
+    "title": "Island Reversal（島狀反轉）",
+    "aliases": [
+      "Island Reversal",
+      "島狀反轉"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "price_target"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "island-reversal.png",
+    "text": "Island Reversal（島狀反轉）\n\n📖 是什麼\n島狀反轉由跳空形成孤立價格區，再用反向跳空離開。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。市場情緒在短時間內劇烈翻轉，留下明顯缺口。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n第二個反向缺口成立後，若缺口不被快速回補，訊號較強。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- Price Target（型態目標價）"
+  },
+  {
+    "id": "bull_flag",
+    "title": "Bull Flag（多頭旗形）",
+    "aliases": [
+      "Bull Flag",
+      "牛旗",
+      "多頭旗形"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "volume",
+      "breakout",
+      "retest",
+      "high_tight_flag"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "bull-flag.png",
+    "text": "Bull Flag（多頭旗形）\n\n📖 是什麼\n多頭旗形通常出現在急漲後的短暫整理。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。買方暫時休息，賣壓沒有明顯擴大，若整理受控可能延續原趨勢。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n向上突破旗面壓力、收盤站穩且量能放大，再觀察回測是否守住。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Breakout（突破）\n- Retest（回測）\n- High Tight Flag（高而窄旗形）"
+  },
+  {
+    "id": "bear_flag",
+    "title": "Bear Flag（空頭旗形）",
+    "aliases": [
+      "Bear Flag",
+      "熊旗",
+      "空頭旗形"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "breakdown",
+      "retest",
+      "volume",
+      "downtrend"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "bear-flag.png",
+    "text": "Bear Flag（空頭旗形）\n\n📖 是什麼\n空頭旗形通常出現在急跌後的短暫反彈或橫盤。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。買方反彈力道有限，若跌破旗面支撐可能延續下跌。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n向下跌破旗面支撐、收盤確認且反彈無法站回，是較完整確認。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Breakdown（跌破）\n- Retest（回測）\n- Volume（成交量）\n- Downtrend（下降趨勢）"
+  },
+  {
+    "id": "double_top",
+    "title": "Double Top（雙重頂／M 頭）",
+    "aliases": [
+      "Double Top",
+      "雙重頂",
+      "M頭",
+      "M 頭"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "neckline",
+      "resistance",
+      "breakdown",
+      "retest"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "double-top.png",
+    "text": "Double Top（雙重頂／M 頭）\n\n📖 是什麼\n雙重頂是價格兩次挑戰相近高點但未有效突破。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。第二次上攻無法創出明顯新高，可能代表買方動能轉弱。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n跌破頸線並收盤確認，若伴隨量能放大或反彈回測失敗，可信度較高。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Neckline（頸線）\n- Resistance（壓力）\n- Breakdown（跌破）\n- Retest（回測）"
+  },
+  {
+    "id": "double_bottom",
+    "title": "Double Bottom（雙重底／W 底）",
+    "aliases": [
+      "Double Bottom",
+      "雙重底",
+      "W底",
+      "W 底"
+    ],
+    "category": "chart_patterns",
+    "related_terms": [
+      "neckline",
+      "support",
+      "breakout",
+      "retest"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "swing",
+      "trending"
+    ],
+    "image": "double-bottom.png",
+    "text": "Double Bottom（雙重底／W 底）\n\n📖 是什麼\n雙重底是價格兩次回測相近低點後守住。\n\n🧠 為什麼重要\n線型反映一段時間內買賣雙方攻防的節奏。第二次回測不再破低，可能代表低檔承接轉強。\n\n👀 實際怎麼看\n- 型態出現前是上漲、下跌還是盤整\n- 壓力線、支撐線、頸線或趨勢線是否清楚\n- 成交量是否在整理時收縮、突破時放大\n- 突破或跌破後是否有回測確認\n- 型態目標價只能當估算，不能當保證\n\n✅ 常見有效訊號\n突破頸線並收盤站穩，若回測頸線守住，型態較完整。\n\n⚠️ 常見誤區\n- 型態尚未完成就太早預判\n- 忽略假突破與收盤確認\n- 把目標價當成一定會到的價格\n\n💡 KKZ 提醒\n線型不是圖形辨識遊戲；確認點、量能與回測，比形狀漂不漂亮更重要。\n\n🔗 延伸閱讀\n- Neckline（頸線）\n- Support（支撐）\n- Breakout（突破）\n- Retest（回測）"
+  },
+  {
+    "id": "doji",
+    "title": "Doji（十字線）",
+    "aliases": [
+      "Doji",
+      "十字線",
+      "十字 K"
+    ],
+    "category": "candlestick_patterns",
+    "related_terms": [
+      "support",
+      "resistance",
+      "volume",
+      "trend"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "intraday"
+    ],
+    "image": "doji.png",
+    "text": "Doji（十字線）\n\n📖 是什麼\nDoji 是開盤與收盤接近，顯示當根 K 棒多空拉扯接近平衡。\n\n🧠 為什麼重要\nK 線型態能顯示單一或數根 K 棒中的多空拉扯。高檔可能代表猶豫，低檔可能代表賣壓放緩，盤整區則可能只是雜訊。\n\n👀 實際怎麼看\n- 出現位置：高檔、低檔、支撐壓力或盤整區\n- 下一根 K 線是否確認方向\n- 成交量是否放大\n- 是否和趨勢線、均線或缺口互相配合\n- 單一 K 線不可獨立當成交易理由\n\n✅ 常見有效訊號\n出現在關鍵位置，下一根 K 線延續方向，且成交量與大盤環境配合時，參考價值較高。\n\n⚠️ 常見誤區\n- 只看形狀，不看位置\n- 把反轉 K 線當成一定反轉\n- 忽略隔天確認與風險位置\n\n💡 KKZ 提醒\nK 線先問位置，再問形狀；沒有位置脈絡的漂亮 K 棒，常常只是雜訊。\n\n🔗 延伸閱讀\n- Support（支撐）\n- Resistance（壓力）\n- Volume（成交量）\n- Trend（趨勢）"
+  },
+  {
+    "id": "hammer",
+    "title": "Hammer（錘子線）",
+    "aliases": [
+      "Hammer",
+      "錘子線",
+      "錘頭"
+    ],
+    "category": "candlestick_patterns",
+    "related_terms": [
+      "support",
+      "resistance",
+      "volume",
+      "trend"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "intraday"
+    ],
+    "image": "hammer.png",
+    "text": "Hammer（錘子線）\n\n📖 是什麼\nHammer 有小實體與長下影線，常見於下跌後。\n\n🧠 為什麼重要\nK 線型態能顯示單一或數根 K 棒中的多空拉扯。它代表盤中賣壓被買方拉回，但需要下一根 K 線確認。\n\n👀 實際怎麼看\n- 出現位置：高檔、低檔、支撐壓力或盤整區\n- 下一根 K 線是否確認方向\n- 成交量是否放大\n- 是否和趨勢線、均線或缺口互相配合\n- 單一 K 線不可獨立當成交易理由\n\n✅ 常見有效訊號\n出現在關鍵位置，下一根 K 線延續方向，且成交量與大盤環境配合時，參考價值較高。\n\n⚠️ 常見誤區\n- 只看形狀，不看位置\n- 把反轉 K 線當成一定反轉\n- 忽略隔天確認與風險位置\n\n💡 KKZ 提醒\nK 線先問位置，再問形狀；沒有位置脈絡的漂亮 K 棒，常常只是雜訊。\n\n🔗 延伸閱讀\n- Support（支撐）\n- Resistance（壓力）\n- Volume（成交量）\n- Trend（趨勢）"
+  },
+  {
+    "id": "inverted_hammer",
+    "title": "Inverted Hammer（倒錘子線）",
+    "aliases": [
+      "Inverted Hammer",
+      "倒錘子線"
+    ],
+    "category": "candlestick_patterns",
+    "related_terms": [
+      "support",
+      "resistance",
+      "volume",
+      "trend"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "intraday"
+    ],
+    "image": "inverted-hammer.png",
+    "text": "Inverted Hammer（倒錘子線）\n\n📖 是什麼\n倒錘子線有小實體與長上影線，常見於下跌後。\n\n🧠 為什麼重要\nK 線型態能顯示單一或數根 K 棒中的多空拉扯。它顯示買方曾嘗試上攻，但是否反轉要看後續確認。\n\n👀 實際怎麼看\n- 出現位置：高檔、低檔、支撐壓力或盤整區\n- 下一根 K 線是否確認方向\n- 成交量是否放大\n- 是否和趨勢線、均線或缺口互相配合\n- 單一 K 線不可獨立當成交易理由\n\n✅ 常見有效訊號\n出現在關鍵位置，下一根 K 線延續方向，且成交量與大盤環境配合時，參考價值較高。\n\n⚠️ 常見誤區\n- 只看形狀，不看位置\n- 把反轉 K 線當成一定反轉\n- 忽略隔天確認與風險位置\n\n💡 KKZ 提醒\nK 線先問位置，再問形狀；沒有位置脈絡的漂亮 K 棒，常常只是雜訊。\n\n🔗 延伸閱讀\n- Support（支撐）\n- Resistance（壓力）\n- Volume（成交量）\n- Trend（趨勢）"
+  },
+  {
+    "id": "hanging_man",
+    "title": "Hanging Man（吊人線）",
+    "aliases": [
+      "Hanging Man",
+      "吊人線",
+      "上吊線"
+    ],
+    "category": "candlestick_patterns",
+    "related_terms": [
+      "support",
+      "resistance",
+      "volume",
+      "trend"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "intraday"
+    ],
+    "image": "hanging-man.png",
+    "text": "Hanging Man（吊人線）\n\n📖 是什麼\nHanging Man 外形接近 Hammer，但通常出現在上升趨勢高檔。\n\n🧠 為什麼重要\nK 線型態能顯示單一或數根 K 棒中的多空拉扯。它代表高檔盤中曾出現明顯賣壓，需下一根轉弱確認。\n\n👀 實際怎麼看\n- 出現位置：高檔、低檔、支撐壓力或盤整區\n- 下一根 K 線是否確認方向\n- 成交量是否放大\n- 是否和趨勢線、均線或缺口互相配合\n- 單一 K 線不可獨立當成交易理由\n\n✅ 常見有效訊號\n出現在關鍵位置，下一根 K 線延續方向，且成交量與大盤環境配合時，參考價值較高。\n\n⚠️ 常見誤區\n- 只看形狀，不看位置\n- 把反轉 K 線當成一定反轉\n- 忽略隔天確認與風險位置\n\n💡 KKZ 提醒\nK 線先問位置，再問形狀；沒有位置脈絡的漂亮 K 棒，常常只是雜訊。\n\n🔗 延伸閱讀\n- Support（支撐）\n- Resistance（壓力）\n- Volume（成交量）\n- Trend（趨勢）"
+  },
+  {
+    "id": "shooting_star",
+    "title": "Shooting Star（流星線）",
+    "aliases": [
+      "Shooting Star",
+      "流星線",
+      "射擊之星"
+    ],
+    "category": "candlestick_patterns",
+    "related_terms": [
+      "support",
+      "resistance",
+      "volume",
+      "trend"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "intraday"
+    ],
+    "image": "shooting-star.png",
+    "text": "Shooting Star（流星線）\n\n📖 是什麼\nShooting Star 外形接近倒錘子線，但通常出現在上升趨勢高檔。\n\n🧠 為什麼重要\nK 線型態能顯示單一或數根 K 棒中的多空拉扯。它顯示高檔上攻失敗，買方追價意願可能轉弱。\n\n👀 實際怎麼看\n- 出現位置：高檔、低檔、支撐壓力或盤整區\n- 下一根 K 線是否確認方向\n- 成交量是否放大\n- 是否和趨勢線、均線或缺口互相配合\n- 單一 K 線不可獨立當成交易理由\n\n✅ 常見有效訊號\n出現在關鍵位置，下一根 K 線延續方向，且成交量與大盤環境配合時，參考價值較高。\n\n⚠️ 常見誤區\n- 只看形狀，不看位置\n- 把反轉 K 線當成一定反轉\n- 忽略隔天確認與風險位置\n\n💡 KKZ 提醒\nK 線先問位置，再問形狀；沒有位置脈絡的漂亮 K 棒，常常只是雜訊。\n\n🔗 延伸閱讀\n- Support（支撐）\n- Resistance（壓力）\n- Volume（成交量）\n- Trend（趨勢）"
+  },
+  {
+    "id": "bullish_engulfing",
+    "title": "Bullish Engulfing（多頭吞噬）",
+    "aliases": [
+      "Bullish Engulfing",
+      "多頭吞噬",
+      "看漲吞噬"
+    ],
+    "category": "candlestick_patterns",
+    "related_terms": [
+      "support",
+      "resistance",
+      "volume",
+      "trend"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "intraday"
+    ],
+    "image": "bullish-engulfing.png",
+    "text": "Bullish Engulfing（多頭吞噬）\n\n📖 是什麼\n多頭吞噬是後一根多方 K 棒包覆前一根空方實體。\n\n🧠 為什麼重要\nK 線型態能顯示單一或數根 K 棒中的多空拉扯。出現在低檔或支撐附近時，可能代表買方重新取得主導。\n\n👀 實際怎麼看\n- 出現位置：高檔、低檔、支撐壓力或盤整區\n- 下一根 K 線是否確認方向\n- 成交量是否放大\n- 是否和趨勢線、均線或缺口互相配合\n- 單一 K 線不可獨立當成交易理由\n\n✅ 常見有效訊號\n出現在關鍵位置，下一根 K 線延續方向，且成交量與大盤環境配合時，參考價值較高。\n\n⚠️ 常見誤區\n- 只看形狀，不看位置\n- 把反轉 K 線當成一定反轉\n- 忽略隔天確認與風險位置\n\n💡 KKZ 提醒\nK 線先問位置，再問形狀；沒有位置脈絡的漂亮 K 棒，常常只是雜訊。\n\n🔗 延伸閱讀\n- Support（支撐）\n- Resistance（壓力）\n- Volume（成交量）\n- Trend（趨勢）"
+  },
+  {
+    "id": "bearish_engulfing",
+    "title": "Bearish Engulfing（空頭吞噬）",
+    "aliases": [
+      "Bearish Engulfing",
+      "空頭吞噬",
+      "看跌吞噬"
+    ],
+    "category": "candlestick_patterns",
+    "related_terms": [
+      "support",
+      "resistance",
+      "volume",
+      "trend"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "intraday"
+    ],
+    "image": "bearish-engulfing.png",
+    "text": "Bearish Engulfing（空頭吞噬）\n\n📖 是什麼\n空頭吞噬是後一根空方 K 棒包覆前一根多方實體。\n\n🧠 為什麼重要\nK 線型態能顯示單一或數根 K 棒中的多空拉扯。出現在高檔或壓力附近時，可能代表賣方轉強。\n\n👀 實際怎麼看\n- 出現位置：高檔、低檔、支撐壓力或盤整區\n- 下一根 K 線是否確認方向\n- 成交量是否放大\n- 是否和趨勢線、均線或缺口互相配合\n- 單一 K 線不可獨立當成交易理由\n\n✅ 常見有效訊號\n出現在關鍵位置，下一根 K 線延續方向，且成交量與大盤環境配合時，參考價值較高。\n\n⚠️ 常見誤區\n- 只看形狀，不看位置\n- 把反轉 K 線當成一定反轉\n- 忽略隔天確認與風險位置\n\n💡 KKZ 提醒\nK 線先問位置，再問形狀；沒有位置脈絡的漂亮 K 棒，常常只是雜訊。\n\n🔗 延伸閱讀\n- Support（支撐）\n- Resistance（壓力）\n- Volume（成交量）\n- Trend（趨勢）"
+  },
+  {
+    "id": "morning_star",
+    "title": "Morning Star（晨星）",
+    "aliases": [
+      "Morning Star",
+      "晨星"
+    ],
+    "category": "candlestick_patterns",
+    "related_terms": [
+      "support",
+      "resistance",
+      "volume",
+      "trend"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "intraday"
+    ],
+    "image": "morning-star.png",
+    "text": "Morning Star（晨星）\n\n📖 是什麼\n晨星通常由下跌 K、猶豫 K 與反彈 K 組成。\n\n🧠 為什麼重要\nK 線型態能顯示單一或數根 K 棒中的多空拉扯。出現在下降趨勢低檔時，可能顯示賣壓衰退後買方回來。\n\n👀 實際怎麼看\n- 出現位置：高檔、低檔、支撐壓力或盤整區\n- 下一根 K 線是否確認方向\n- 成交量是否放大\n- 是否和趨勢線、均線或缺口互相配合\n- 單一 K 線不可獨立當成交易理由\n\n✅ 常見有效訊號\n出現在關鍵位置，下一根 K 線延續方向，且成交量與大盤環境配合時，參考價值較高。\n\n⚠️ 常見誤區\n- 只看形狀，不看位置\n- 把反轉 K 線當成一定反轉\n- 忽略隔天確認與風險位置\n\n💡 KKZ 提醒\nK 線先問位置，再問形狀；沒有位置脈絡的漂亮 K 棒，常常只是雜訊。\n\n🔗 延伸閱讀\n- Support（支撐）\n- Resistance（壓力）\n- Volume（成交量）\n- Trend（趨勢）"
+  },
+  {
+    "id": "evening_star",
+    "title": "Evening Star（暮星）",
+    "aliases": [
+      "Evening Star",
+      "暮星"
+    ],
+    "category": "candlestick_patterns",
+    "related_terms": [
+      "support",
+      "resistance",
+      "volume",
+      "trend"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "intraday"
+    ],
+    "image": "evening-star.png",
+    "text": "Evening Star（暮星）\n\n📖 是什麼\n暮星通常由上漲 K、猶豫 K 與下跌 K 組成。\n\n🧠 為什麼重要\nK 線型態能顯示單一或數根 K 棒中的多空拉扯。出現在上升趨勢高檔時，可能顯示買盤轉弱。\n\n👀 實際怎麼看\n- 出現位置：高檔、低檔、支撐壓力或盤整區\n- 下一根 K 線是否確認方向\n- 成交量是否放大\n- 是否和趨勢線、均線或缺口互相配合\n- 單一 K 線不可獨立當成交易理由\n\n✅ 常見有效訊號\n出現在關鍵位置，下一根 K 線延續方向，且成交量與大盤環境配合時，參考價值較高。\n\n⚠️ 常見誤區\n- 只看形狀，不看位置\n- 把反轉 K 線當成一定反轉\n- 忽略隔天確認與風險位置\n\n💡 KKZ 提醒\nK 線先問位置，再問形狀；沒有位置脈絡的漂亮 K 棒，常常只是雜訊。\n\n🔗 延伸閱讀\n- Support（支撐）\n- Resistance（壓力）\n- Volume（成交量）\n- Trend（趨勢）"
+  },
+  {
+    "id": "inside_bar",
+    "title": "Inside Bar（母子線／內包線）",
+    "aliases": [
+      "Inside Bar",
+      "母子線",
+      "內包線"
+    ],
+    "category": "candlestick_patterns",
+    "related_terms": [
+      "support",
+      "resistance",
+      "volume",
+      "trend"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "intraday"
+    ],
+    "image": "inside-bar.png",
+    "text": "Inside Bar（母子線／內包線）\n\n📖 是什麼\nInside Bar 是後一根 K 線完全落在前一根高低點範圍內。\n\n🧠 為什麼重要\nK 線型態能顯示單一或數根 K 棒中的多空拉扯。它代表波動收縮，方向通常要等突破母線高低點。\n\n👀 實際怎麼看\n- 出現位置：高檔、低檔、支撐壓力或盤整區\n- 下一根 K 線是否確認方向\n- 成交量是否放大\n- 是否和趨勢線、均線或缺口互相配合\n- 單一 K 線不可獨立當成交易理由\n\n✅ 常見有效訊號\n出現在關鍵位置，下一根 K 線延續方向，且成交量與大盤環境配合時，參考價值較高。\n\n⚠️ 常見誤區\n- 只看形狀，不看位置\n- 把反轉 K 線當成一定反轉\n- 忽略隔天確認與風險位置\n\n💡 KKZ 提醒\nK 線先問位置，再問形狀；沒有位置脈絡的漂亮 K 棒，常常只是雜訊。\n\n🔗 延伸閱讀\n- Support（支撐）\n- Resistance（壓力）\n- Volume（成交量）\n- Trend（趨勢）"
+  },
+  {
+    "id": "outside_bar",
+    "title": "Outside Bar（外包線）",
+    "aliases": [
+      "Outside Bar",
+      "外包線"
+    ],
+    "category": "candlestick_patterns",
+    "related_terms": [
+      "support",
+      "resistance",
+      "volume",
+      "trend"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "intraday"
+    ],
+    "image": "outside-bar.png",
+    "text": "Outside Bar（外包線）\n\n📖 是什麼\nOutside Bar 是後一根 K 線高低點包覆前一根 K 線。\n\n🧠 為什麼重要\nK 線型態能顯示單一或數根 K 棒中的多空拉扯。它代表波動擴大，需看收盤方向與位置判斷多空。\n\n👀 實際怎麼看\n- 出現位置：高檔、低檔、支撐壓力或盤整區\n- 下一根 K 線是否確認方向\n- 成交量是否放大\n- 是否和趨勢線、均線或缺口互相配合\n- 單一 K 線不可獨立當成交易理由\n\n✅ 常見有效訊號\n出現在關鍵位置，下一根 K 線延續方向，且成交量與大盤環境配合時，參考價值較高。\n\n⚠️ 常見誤區\n- 只看形狀，不看位置\n- 把反轉 K 線當成一定反轉\n- 忽略隔天確認與風險位置\n\n💡 KKZ 提醒\nK 線先問位置，再問形狀；沒有位置脈絡的漂亮 K 棒，常常只是雜訊。\n\n🔗 延伸閱讀\n- Support（支撐）\n- Resistance（壓力）\n- Volume（成交量）\n- Trend（趨勢）"
+  },
+  {
+    "id": "marubozu",
+    "title": "Marubozu（光頭光腳 K 線）",
+    "aliases": [
+      "Marubozu",
+      "光頭光腳 K 線",
+      "光頭光腳"
+    ],
+    "category": "candlestick_patterns",
+    "related_terms": [
+      "support",
+      "resistance",
+      "volume",
+      "trend"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "intraday"
+    ],
+    "image": "marubozu.png",
+    "text": "Marubozu（光頭光腳 K 線）\n\n📖 是什麼\nMarubozu 幾乎沒有上下影線，顯示單邊力量明顯。\n\n🧠 為什麼重要\nK 線型態能顯示單一或數根 K 棒中的多空拉扯。但若出現在延伸很久後，也可能是情緒極端。\n\n👀 實際怎麼看\n- 出現位置：高檔、低檔、支撐壓力或盤整區\n- 下一根 K 線是否確認方向\n- 成交量是否放大\n- 是否和趨勢線、均線或缺口互相配合\n- 單一 K 線不可獨立當成交易理由\n\n✅ 常見有效訊號\n出現在關鍵位置，下一根 K 線延續方向，且成交量與大盤環境配合時，參考價值較高。\n\n⚠️ 常見誤區\n- 只看形狀，不看位置\n- 把反轉 K 線當成一定反轉\n- 忽略隔天確認與風險位置\n\n💡 KKZ 提醒\nK 線先問位置，再問形狀；沒有位置脈絡的漂亮 K 棒，常常只是雜訊。\n\n🔗 延伸閱讀\n- Support（支撐）\n- Resistance（壓力）\n- Volume（成交量）\n- Trend（趨勢）"
+  },
+  {
+    "id": "pin_bar",
+    "title": "Pin Bar（針形 K 線）",
+    "aliases": [
+      "Pin Bar",
+      "針形 K 線",
+      "長影線 K"
+    ],
+    "category": "candlestick_patterns",
+    "related_terms": [
+      "support",
+      "resistance",
+      "volume",
+      "trend"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "intraday"
+    ],
+    "image": "pin-bar.png",
+    "text": "Pin Bar（針形 K 線）\n\n📖 是什麼\nPin Bar 有明顯長影線，代表價格曾往一邊推進但被拉回。\n\n🧠 為什麼重要\nK 線型態能顯示單一或數根 K 棒中的多空拉扯。影線方向與出現位置能提示拒絕某個價格區。\n\n👀 實際怎麼看\n- 出現位置：高檔、低檔、支撐壓力或盤整區\n- 下一根 K 線是否確認方向\n- 成交量是否放大\n- 是否和趨勢線、均線或缺口互相配合\n- 單一 K 線不可獨立當成交易理由\n\n✅ 常見有效訊號\n出現在關鍵位置，下一根 K 線延續方向，且成交量與大盤環境配合時，參考價值較高。\n\n⚠️ 常見誤區\n- 只看形狀，不看位置\n- 把反轉 K 線當成一定反轉\n- 忽略隔天確認與風險位置\n\n💡 KKZ 提醒\nK 線先問位置，再問形狀；沒有位置脈絡的漂亮 K 棒，常常只是雜訊。\n\n🔗 延伸閱讀\n- Support（支撐）\n- Resistance（壓力）\n- Volume（成交量）\n- Trend（趨勢）"
+  },
+  {
+    "id": "spinning_top",
+    "title": "Spinning Top（紡錘線）",
+    "aliases": [
+      "Spinning Top",
+      "紡錘線"
+    ],
+    "category": "candlestick_patterns",
+    "related_terms": [
+      "support",
+      "resistance",
+      "volume",
+      "trend"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "intraday"
+    ],
+    "image": "spinning-top.png",
+    "text": "Spinning Top（紡錘線）\n\n📖 是什麼\nSpinning Top 有小實體與上下影線，代表多空都曾嘗試但沒有明確勝出。\n\n🧠 為什麼重要\nK 線型態能顯示單一或數根 K 棒中的多空拉扯。它常代表猶豫，需搭配下一根 K 線。\n\n👀 實際怎麼看\n- 出現位置：高檔、低檔、支撐壓力或盤整區\n- 下一根 K 線是否確認方向\n- 成交量是否放大\n- 是否和趨勢線、均線或缺口互相配合\n- 單一 K 線不可獨立當成交易理由\n\n✅ 常見有效訊號\n出現在關鍵位置，下一根 K 線延續方向，且成交量與大盤環境配合時，參考價值較高。\n\n⚠️ 常見誤區\n- 只看形狀，不看位置\n- 把反轉 K 線當成一定反轉\n- 忽略隔天確認與風險位置\n\n💡 KKZ 提醒\nK 線先問位置，再問形狀；沒有位置脈絡的漂亮 K 棒，常常只是雜訊。\n\n🔗 延伸閱讀\n- Support（支撐）\n- Resistance（壓力）\n- Volume（成交量）\n- Trend（趨勢）"
+  },
+  {
+    "id": "three_white_soldiers",
+    "title": "Three White Soldiers（紅三兵／三白兵）",
+    "aliases": [
+      "Three White Soldiers",
+      "紅三兵",
+      "三白兵"
+    ],
+    "category": "candlestick_patterns",
+    "related_terms": [
+      "support",
+      "resistance",
+      "volume",
+      "trend"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "intraday"
+    ],
+    "image": "three-white-soldiers.png",
+    "text": "Three White Soldiers（紅三兵／三白兵）\n\n📖 是什麼\n紅三兵由連續三根強勢多方 K 線組成。\n\n🧠 為什麼重要\nK 線型態能顯示單一或數根 K 棒中的多空拉扯。出現在低檔反彈初期可能代表買方轉強，但追高仍需注意風險。\n\n👀 實際怎麼看\n- 出現位置：高檔、低檔、支撐壓力或盤整區\n- 下一根 K 線是否確認方向\n- 成交量是否放大\n- 是否和趨勢線、均線或缺口互相配合\n- 單一 K 線不可獨立當成交易理由\n\n✅ 常見有效訊號\n出現在關鍵位置，下一根 K 線延續方向，且成交量與大盤環境配合時，參考價值較高。\n\n⚠️ 常見誤區\n- 只看形狀，不看位置\n- 把反轉 K 線當成一定反轉\n- 忽略隔天確認與風險位置\n\n💡 KKZ 提醒\nK 線先問位置，再問形狀；沒有位置脈絡的漂亮 K 棒，常常只是雜訊。\n\n🔗 延伸閱讀\n- Support（支撐）\n- Resistance（壓力）\n- Volume（成交量）\n- Trend（趨勢）"
+  },
+  {
+    "id": "three_black_crows",
+    "title": "Three Black Crows（黑三鴉）",
+    "aliases": [
+      "Three Black Crows",
+      "黑三鴉"
+    ],
+    "category": "candlestick_patterns",
+    "related_terms": [
+      "support",
+      "resistance",
+      "volume",
+      "trend"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "intraday"
+    ],
+    "image": "three-black-crows.png",
+    "text": "Three Black Crows（黑三鴉）\n\n📖 是什麼\n黑三鴉由連續三根強勢空方 K 線組成。\n\n🧠 為什麼重要\nK 線型態能顯示單一或數根 K 棒中的多空拉扯。出現在高檔轉弱初期可能代表賣方接管，但短線也可能過度延伸。\n\n👀 實際怎麼看\n- 出現位置：高檔、低檔、支撐壓力或盤整區\n- 下一根 K 線是否確認方向\n- 成交量是否放大\n- 是否和趨勢線、均線或缺口互相配合\n- 單一 K 線不可獨立當成交易理由\n\n✅ 常見有效訊號\n出現在關鍵位置，下一根 K 線延續方向，且成交量與大盤環境配合時，參考價值較高。\n\n⚠️ 常見誤區\n- 只看形狀，不看位置\n- 把反轉 K 線當成一定反轉\n- 忽略隔天確認與風險位置\n\n💡 KKZ 提醒\nK 線先問位置，再問形狀；沒有位置脈絡的漂亮 K 棒，常常只是雜訊。\n\n🔗 延伸閱讀\n- Support（支撐）\n- Resistance（壓力）\n- Volume（成交量）\n- Trend（趨勢）"
   },
   {
     "id": "long_call",
-    "title": "Long Call",
-    "aliases": ["Long Call", "買進買權", "買 Call"],
+    "title": "Long Call（買進買權）",
+    "aliases": [
+      "Long Call",
+      "買進買權",
+      "買 Call",
+      "買權多單"
+    ],
     "category": "options_positions",
-    "text": "Long Call 是買進買權，付出權利金取得在到期前或到期日用履約價買進標的的權利。它通常用在看多情境，最大損失為權利金，潛在獲利隨標的上漲而增加，但會受到時間價值耗損影響。"
+    "related_terms": [
+      "option_premium",
+      "strike_price",
+      "theta",
+      "delta"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "long-call-payoff.png",
+    "text": "Long Call（買進買權）\n\n📖 是什麼\nLong Call 是付出權利金買進買權，取得用履約價買進標的的權利。\n\n🧠 為什麼重要\n它決定你的方向曝險、時間價值曝險與波動率曝險。偏看多，受益於標的上漲與 IV 上升，但會承受時間價值流失。\n\n👀 實際怎麼看\n- 最大損失與最大獲利是否清楚\n- 到期日與履約價是否符合原本假設\n- 權利金、買賣價差與流動性\n- IV（Implied Volatility，隱含波動率）高低\n- 被指派或提前指派風險\n\n✅ 常見有效訊號\n最大損失是權利金；潛在獲利隨標的上漲增加。\n\n⚠️ 常見誤區\n- 忽略 Theta 耗損\n- 在 IV 很高時追買\n- 到期太近導致時間不足\n\n💡 KKZ 提醒\n選擇權先看風險曲線，再看方向；方向看對但時間、波動率或流動性錯，也可能虧損。\n\n🔗 延伸閱讀\n- Option Premium（選擇權權利金）\n- Strike Price（履約價）\n- Theta（西塔／時間價值耗損）\n- Delta（德爾塔）"
   },
   {
     "id": "short_call",
-    "title": "Short Call",
-    "aliases": ["Short Call", "賣出買權", "賣 Call"],
+    "title": "Short Call（賣出買權）",
+    "aliases": [
+      "Short Call",
+      "賣出買權",
+      "賣 Call",
+      "買權空單"
+    ],
     "category": "options_positions",
-    "text": "Short Call 是賣出買權，收取權利金並承擔標的上漲時的履約義務。若沒有持有標的作為保護，風險可能很高；因此實務上常和持股搭配形成 Covered Call。"
+    "related_terms": [
+      "covered_call",
+      "assignment",
+      "theta",
+      "gamma"
+    ],
+    "difficulty": "advanced",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "short-call-payoff.png",
+    "text": "Short Call（賣出買權）\n\n📖 是什麼\nShort Call 是賣出買權收取權利金，承擔標的上漲時履約義務。\n\n🧠 為什麼重要\n它決定你的方向曝險、時間價值曝險與波動率曝險。偏看空或中性，但裸賣買權風險很高。\n\n👀 實際怎麼看\n- 最大損失與最大獲利是否清楚\n- 到期日與履約價是否符合原本假設\n- 權利金、買賣價差與流動性\n- IV（Implied Volatility，隱含波動率）高低\n- 被指派或提前指派風險\n\n✅ 常見有效訊號\n最大獲利是權利金；裸賣最大損失理論上很高。\n\n⚠️ 常見誤區\n- 裸賣買權風險可能無上限\n- 忽略提前指派\n- 被大幅跳空上漲傷害\n\n💡 KKZ 提醒\n選擇權先看風險曲線，再看方向；方向看對但時間、波動率或流動性錯，也可能虧損。\n\n🔗 延伸閱讀\n- Covered Call（備兌買權）\n- Assignment（被指派履約）\n- Theta（西塔／時間價值耗損）\n- Gamma（伽瑪）"
   },
   {
     "id": "long_put",
-    "title": "Long Put",
-    "aliases": ["Long Put", "買進賣權", "買 Put"],
+    "title": "Long Put（買進賣權）",
+    "aliases": [
+      "Long Put",
+      "買進賣權",
+      "買 Put",
+      "賣權多單"
+    ],
     "category": "options_positions",
-    "text": "Long Put 是買進賣權，付出權利金取得用履約價賣出標的的權利。它通常用在看空或避險情境，最大損失為權利金，標的下跌時價值通常上升。"
+    "related_terms": [
+      "protective_put",
+      "delta",
+      "iv_crush",
+      "expiration_date"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "long-put-payoff.png",
+    "text": "Long Put（買進賣權）\n\n📖 是什麼\nLong Put 是付出權利金買進賣權，取得用履約價賣出標的的權利。\n\n🧠 為什麼重要\n它決定你的方向曝險、時間價值曝險與波動率曝險。偏看空或避險，受益於下跌與 IV 上升。\n\n👀 實際怎麼看\n- 最大損失與最大獲利是否清楚\n- 到期日與履約價是否符合原本假設\n- 權利金、買賣價差與流動性\n- IV（Implied Volatility，隱含波動率）高低\n- 被指派或提前指派風險\n\n✅ 常見有效訊號\n最大損失是權利金；獲利隨標的下跌增加。\n\n⚠️ 常見誤區\n- 把避險成本忽略不計\n- IV 過高時買入後遇到 IV Crush\n- 到期時間不足\n\n💡 KKZ 提醒\n選擇權先看風險曲線，再看方向；方向看對但時間、波動率或流動性錯，也可能虧損。\n\n🔗 延伸閱讀\n- Protective Put（保護性賣權）\n- Delta（德爾塔）\n- IV Crush（隱含波動率崩跌）\n- Expiration Date（到期日）"
   },
   {
     "id": "short_put",
-    "title": "Short Put",
-    "aliases": ["Short Put", "賣出賣權", "賣 Put"],
+    "title": "Short Put（賣出賣權）",
+    "aliases": [
+      "Short Put",
+      "賣出賣權",
+      "賣 Put",
+      "賣權空單"
+    ],
     "category": "options_positions",
-    "text": "Short Put 是賣出賣權，收取權利金並承擔標的跌破履約價時買進標的的義務。它常被用於願意用較低價格承接股票的情境，但仍需要準備足夠資金並承擔下跌風險。"
+    "related_terms": [
+      "cash_secured_put",
+      "assignment",
+      "breakeven_price",
+      "theta"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "short-put-payoff.png",
+    "text": "Short Put（賣出賣權）\n\n📖 是什麼\nShort Put 是賣出賣權收取權利金，承擔標的跌破履約價時買進義務。\n\n🧠 為什麼重要\n它決定你的方向曝險、時間價值曝險與波動率曝險。偏看多或願意承接標的，受益於時間價值流失。\n\n👀 實際怎麼看\n- 最大損失與最大獲利是否清楚\n- 到期日與履約價是否符合原本假設\n- 權利金、買賣價差與流動性\n- IV（Implied Volatility，隱含波動率）高低\n- 被指派或提前指派風險\n\n✅ 常見有效訊號\n最大獲利是權利金；最大損失接近履約價扣除權利金。\n\n⚠️ 常見誤區\n- 沒準備足夠現金\n- 把收權利金當低風險收入\n- 忽略大跌時被指派\n\n💡 KKZ 提醒\n選擇權先看風險曲線，再看方向；方向看對但時間、波動率或流動性錯，也可能虧損。\n\n🔗 延伸閱讀\n- Cash-Secured Put（現金擔保賣權）\n- Assignment（被指派履約）\n- Breakeven Price（損益兩平點）\n- Theta（西塔／時間價值耗損）"
+  },
+  {
+    "id": "option_premium",
+    "title": "Option Premium（選擇權權利金）",
+    "aliases": [
+      "Option Premium",
+      "Premium",
+      "選擇權權利金",
+      "權利金"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "intrinsic_value",
+      "extrinsic_value",
+      "implied_volatility",
+      "bid_ask_spread"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Option Premium（選擇權權利金）\n\n📖 是什麼\n權利金是買方支付、賣方收取的選擇權價格。\n\n🧠 為什麼重要\n它包含內含價值與外含價值，會受標的價格、到期時間、IV 與利率影響。\n\n👀 實際怎麼看\n- 權利金中有多少是內含價值\n- 到期前時間價值還剩多少\n- 買賣價差是否過大\n- IV 是否偏高\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- Intrinsic Value（內含價值）\n- Extrinsic Value（外含價值／時間價值）\n- Implied Volatility／IV（隱含波動率）\n- Bid-Ask Spread（買賣價差）"
+  },
+  {
+    "id": "strike_price",
+    "title": "Strike Price（履約價）",
+    "aliases": [
+      "Strike Price",
+      "Strike",
+      "履約價",
+      "行使價"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "in_the_money",
+      "at_the_money",
+      "out_of_the_money",
+      "breakeven_price"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Strike Price（履約價）\n\n📖 是什麼\n履約價是選擇權合約約定買進或賣出標的的價格。\n\n🧠 為什麼重要\n它決定合約價內、價平或價外，也影響權利金與風險報酬。\n\n👀 實際怎麼看\n- 履約價相對現價的位置\n- 是否接近支撐壓力\n- 到期前是否有足夠時間\n- 流動性是否集中\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- In the Money／ITM（價內）\n- At the Money／ATM（價平）\n- Out of the Money／OTM（價外）\n- Breakeven Price（損益兩平點）"
+  },
+  {
+    "id": "expiration_date",
+    "title": "Expiration Date（到期日）",
+    "aliases": [
+      "Expiration Date",
+      "Expiration",
+      "Expiry",
+      "到期日"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "theta",
+      "gamma",
+      "iv_crush",
+      "expected_move"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Expiration Date（到期日）\n\n📖 是什麼\n到期日是選擇權合約最後有效日期。\n\n🧠 為什麼重要\n越接近到期，時間價值變化通常越快，Gamma 也可能升高。\n\n👀 實際怎麼看\n- 剩餘天數\n- 是否跨過財報或重大事件\n- Theta 耗損速度\n- 是否有流動性\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- Theta（西塔／時間價值耗損）\n- Gamma（伽瑪）\n- IV Crush（隱含波動率崩跌）\n- Expected Move（預期波動區間）"
+  },
+  {
+    "id": "in_the_money",
+    "title": "In the Money／ITM（價內）",
+    "aliases": [
+      "In the Money",
+      "ITM",
+      "價內"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "intrinsic_value",
+      "delta",
+      "exercise",
+      "assignment"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "option-moneyness.png",
+    "text": "In the Money／ITM（價內）\n\n📖 是什麼\n價內代表選擇權已有內含價值。\n\n🧠 為什麼重要\nITM 合約通常 Delta 較高，權利金較貴，時間價值比例可能較低。\n\n👀 實際怎麼看\n- 內含價值占比\n- Delta 高低\n- 流動性與買賣價差\n- 到期被履約可能性\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- Intrinsic Value（內含價值）\n- Delta（德爾塔）\n- Exercise（執行履約）\n- Assignment（被指派履約）"
+  },
+  {
+    "id": "at_the_money",
+    "title": "At the Money／ATM（價平）",
+    "aliases": [
+      "At the Money",
+      "ATM",
+      "價平"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "gamma",
+      "vega",
+      "extrinsic_value",
+      "expected_move"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "option-moneyness.png",
+    "text": "At the Money／ATM（價平）\n\n📖 是什麼\n價平代表標的價格接近履約價。\n\n🧠 為什麼重要\nATM 合約通常時間價值較高，Gamma 與 Vega 敏感度也較明顯。\n\n👀 實際怎麼看\n- 到期天數\n- IV 水位\n- Gamma 變化\n- 事件風險\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- Gamma（伽瑪）\n- Vega（隱含波動率敏感度）\n- Extrinsic Value（外含價值／時間價值）\n- Expected Move（預期波動區間）"
+  },
+  {
+    "id": "out_of_the_money",
+    "title": "Out of the Money／OTM（價外）",
+    "aliases": [
+      "Out of the Money",
+      "OTM",
+      "價外"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "extrinsic_value",
+      "theta",
+      "probability_of_profit",
+      "open_interest"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "option-moneyness.png",
+    "text": "Out of the Money／OTM（價外）\n\n📖 是什麼\n價外代表目前沒有內含價值，權利金主要是外含價值。\n\n🧠 為什麼重要\nOTM 合約便宜但需要標的有足夠移動，否則可能歸零。\n\n👀 實際怎麼看\n- 距離履約價多遠\n- 到期前是否有足夠時間\n- IV 是否過高\n- 成交量與 OI\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- Extrinsic Value（外含價值／時間價值）\n- Theta（西塔／時間價值耗損）\n- Probability of Profit（獲利機率）\n- Open Interest／OI（未平倉量）"
+  },
+  {
+    "id": "intrinsic_value",
+    "title": "Intrinsic Value（內含價值）",
+    "aliases": [
+      "Intrinsic Value",
+      "內含價值"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "in_the_money",
+      "option_premium",
+      "extrinsic_value",
+      "exercise"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Intrinsic Value（內含價值）\n\n📖 是什麼\n內含價值是選擇權若立即履約可以取得的價值。\n\n🧠 為什麼重要\n它讓投資人區分權利金中哪一部分已由標的價格支持。\n\n👀 實際怎麼看\n- 合約是否價內\n- 內含價值與權利金差距\n- 到期時是否可能保留價值\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- In the Money／ITM（價內）\n- Option Premium（選擇權權利金）\n- Extrinsic Value（外含價值／時間價值）\n- Exercise（執行履約）"
+  },
+  {
+    "id": "extrinsic_value",
+    "title": "Extrinsic Value（外含價值／時間價值）",
+    "aliases": [
+      "Extrinsic Value",
+      "Time Value",
+      "外含價值",
+      "時間價值"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "theta",
+      "implied_volatility",
+      "iv_crush",
+      "option_premium"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Extrinsic Value（外含價值／時間價值）\n\n📖 是什麼\n外含價值是權利金中超過內含價值的部分。\n\n🧠 為什麼重要\n它反映時間、IV 與不確定性，會隨到期接近而流失。\n\n👀 實際怎麼看\n- Theta 耗損\n- IV 高低\n- 是否跨事件\n- 價內價外位置\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- Theta（西塔／時間價值耗損）\n- Implied Volatility／IV（隱含波動率）\n- IV Crush（隱含波動率崩跌）\n- Option Premium（選擇權權利金）"
+  },
+  {
+    "id": "implied_volatility",
+    "title": "Implied Volatility／IV（隱含波動率）",
+    "aliases": [
+      "Implied Volatility",
+      "IV",
+      "隱含波動率"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "vega",
+      "iv_rank",
+      "iv_percentile",
+      "iv_crush"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Implied Volatility／IV（隱含波動率）\n\n📖 是什麼\nIV 是市場透過選擇權價格反推出的未來波動預期。\n\n🧠 為什麼重要\nIV 上升通常推高權利金，IV 下降通常壓低權利金。\n\n👀 實際怎麼看\n- IV 相對歷史區間\n- 是否接近財報或數據公布\n- Vega 曝險\n- 事件後 IV Crush 風險\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- Vega（隱含波動率敏感度）\n- IV Rank（隱含波動率排名）\n- IV Percentile（隱含波動率百分位）\n- IV Crush（隱含波動率崩跌）"
+  },
+  {
+    "id": "historical_volatility",
+    "title": "Historical Volatility（歷史波動率）",
+    "aliases": [
+      "Historical Volatility",
+      "HV",
+      "歷史波動率"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "implied_volatility",
+      "atr",
+      "expected_move",
+      "vix"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Historical Volatility（歷史波動率）\n\n📖 是什麼\n歷史波動率是標的過去實際波動的統計。\n\n🧠 為什麼重要\n它可拿來和 IV 比較，判斷選擇權定價是否反映較高未來波動。\n\n👀 實際怎麼看\n- 計算期間\n- 是否有異常事件\n- IV 與 HV 差距\n- 標的波動是否改變\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- Implied Volatility／IV（隱含波動率）\n- ATR（Average True Range，平均真實波幅）\n- Expected Move（預期波動區間）\n- VIX（CBOE Volatility Index，波動率指數／恐慌指數）"
+  },
+  {
+    "id": "iv_rank",
+    "title": "IV Rank（隱含波動率排名）",
+    "aliases": [
+      "IV Rank",
+      "隱含波動率排名"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "implied_volatility",
+      "iv_percentile",
+      "strangle",
+      "iron_condor"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "IV Rank（隱含波動率排名）\n\n📖 是什麼\nIV Rank 比較目前 IV 在過去一年高低區間的位置。\n\n🧠 為什麼重要\n它幫助判斷目前 IV 是偏高或偏低，但會受極端值影響。\n\n👀 實際怎麼看\n- 回看期間\n- 是否被極端高點拉扯\n- 與 IV Percentile 是否一致\n- 策略是否適合高 IV\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- Implied Volatility／IV（隱含波動率）\n- IV Percentile（隱含波動率百分位）\n- Strangle（勒式策略）\n- Iron Condor（鐵兀鷹）"
+  },
+  {
+    "id": "iv_percentile",
+    "title": "IV Percentile（隱含波動率百分位）",
+    "aliases": [
+      "IV Percentile",
+      "隱含波動率百分位"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "iv_rank",
+      "implied_volatility",
+      "iv_crush",
+      "vega"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "IV Percentile（隱含波動率百分位）\n\n📖 是什麼\nIV Percentile 衡量過去期間有多少天 IV 低於目前水位。\n\n🧠 為什麼重要\n它比 IV Rank 更重視分布，而不是只看高低端點。\n\n👀 實際怎麼看\n- 回看期間\n- 與 IV Rank 差異\n- 事件是否扭曲 IV\n- 流動性是否足夠\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- IV Rank（隱含波動率排名）\n- Implied Volatility／IV（隱含波動率）\n- IV Crush（隱含波動率崩跌）\n- Vega（隱含波動率敏感度）"
+  },
+  {
+    "id": "iv_crush",
+    "title": "IV Crush（隱含波動率崩跌）",
+    "aliases": [
+      "IV Crush",
+      "隱含波動率崩跌",
+      "波動率崩跌"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "implied_volatility",
+      "vega",
+      "straddle",
+      "option_premium"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "iv-crush.png",
+    "text": "IV Crush（隱含波動率崩跌）\n\n📖 是什麼\nIV Crush 是重大事件後不確定性下降，導致 IV 快速回落。\n\n🧠 為什麼重要\n買方即使方向看對，也可能因 IV 下跌而獲利受壓。\n\n👀 實際怎麼看\n- 是否跨財報或 FOMC\n- 事件前 IV 是否偏高\n- Vega 曝險\n- 策略是否受益於 IV 下降\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- Implied Volatility／IV（隱含波動率）\n- Vega（隱含波動率敏感度）\n- Straddle（跨式策略）\n- Option Premium（選擇權權利金）"
+  },
+  {
+    "id": "open_interest",
+    "title": "Open Interest／OI（未平倉量）",
+    "aliases": [
+      "Open Interest",
+      "OI",
+      "未平倉量"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "option_volume",
+      "bid_ask_spread",
+      "gamma_exposure",
+      "strike_price"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Open Interest／OI（未平倉量）\n\n📖 是什麼\nOI 是尚未平倉的合約數量。\n\n🧠 為什麼重要\n它反映該履約價是否有市場部位累積，但不直接代表方向。\n\n👀 實際怎麼看\n- OI 是否集中在特定履約價\n- 成交量是否同步增加\n- 買賣價差\n- 到期日分布\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- Option Volume（選擇權成交量）\n- Bid-Ask Spread（買賣價差）\n- Gamma Exposure／GEX（Gamma 曝險）\n- Strike Price（履約價）"
+  },
+  {
+    "id": "option_volume",
+    "title": "Option Volume（選擇權成交量）",
+    "aliases": [
+      "Option Volume",
+      "選擇權成交量",
+      "合約成交量"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "open_interest",
+      "relative_volume",
+      "bid_ask_spread",
+      "gamma_exposure"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Option Volume（選擇權成交量）\n\n📖 是什麼\n選擇權成交量是一段時間內成交的合約數。\n\n🧠 為什麼重要\n成交量上升代表活動增加，但要分辨開倉、平倉與避險。\n\n👀 實際怎麼看\n- 是否高於平常水準\n- OI 是否同步變化\n- 買賣價差\n- 是否接近事件\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- Open Interest／OI（未平倉量）\n- Relative Volume（相對成交量／RVOL）\n- Bid-Ask Spread（買賣價差）\n- Gamma Exposure／GEX（Gamma 曝險）"
+  },
+  {
+    "id": "bid_ask_spread",
+    "title": "Bid-Ask Spread（買賣價差）",
+    "aliases": [
+      "Bid-Ask Spread",
+      "買賣價差",
+      "Bid Ask Spread"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "option_volume",
+      "open_interest",
+      "option_premium",
+      "vertical_spread"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Bid-Ask Spread（買賣價差）\n\n📖 是什麼\n買賣價差是買價與賣價之間的差距。\n\n🧠 為什麼重要\n價差越大，進出場成本越高，策略勝率也更容易被吃掉。\n\n👀 實際怎麼看\n- 價差占權利金比例\n- 成交量與 OI\n- 是否使用限價單\n- 多腿策略總價差\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- Option Volume（選擇權成交量）\n- Open Interest／OI（未平倉量）\n- Option Premium（選擇權權利金）\n- Vertical Spread（垂直價差）"
+  },
+  {
+    "id": "assignment",
+    "title": "Assignment（被指派履約）",
+    "aliases": [
+      "Assignment",
+      "被指派履約",
+      "指派"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "exercise",
+      "early_assignment",
+      "short_call",
+      "short_put"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Assignment（被指派履約）\n\n📖 是什麼\n被指派是賣方被要求履行合約義務。\n\n🧠 為什麼重要\n賣方必須理解被指派後會持有或賣出標的。\n\n👀 實際怎麼看\n- 合約是否價內\n- 除息與提前指派風險\n- 帳戶資金是否足夠\n- 策略是否有保護腿\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- Exercise（執行履約）\n- Early Assignment（提前指派）\n- Short Call（賣出買權）\n- Short Put（賣出賣權）"
+  },
+  {
+    "id": "exercise",
+    "title": "Exercise（執行履約）",
+    "aliases": [
+      "Exercise",
+      "執行履約",
+      "履約"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "assignment",
+      "intrinsic_value",
+      "extrinsic_value",
+      "expiration_date"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Exercise（執行履約）\n\n📖 是什麼\n執行履約是買方使用合約權利買進或賣出標的。\n\n🧠 為什麼重要\n美式選擇權可能提前履約，但多數情境會先評估賣出合約是否更有效率。\n\n👀 實際怎麼看\n- 合約是否價內\n- 是否仍有外含價值\n- 手續費與資金需求\n- 到期規則\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- Assignment（被指派履約）\n- Intrinsic Value（內含價值）\n- Extrinsic Value（外含價值／時間價值）\n- Expiration Date（到期日）"
+  },
+  {
+    "id": "early_assignment",
+    "title": "Early Assignment（提前指派）",
+    "aliases": [
+      "Early Assignment",
+      "提前指派",
+      "提前履約指派"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "assignment",
+      "exercise",
+      "short_call",
+      "covered_call"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Early Assignment（提前指派）\n\n📖 是什麼\n提前指派是到期前賣方被要求履約。\n\n🧠 為什麼重要\n常見風險出現在深價內、外含價值很低或除息附近。\n\n👀 實際怎麼看\n- 是否深價內\n- 外含價值是否接近零\n- 除息日\n- 空方策略保護是否完整\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- Assignment（被指派履約）\n- Exercise（執行履約）\n- Short Call（賣出買權）\n- Covered Call（備兌買權）"
+  },
+  {
+    "id": "breakeven_price",
+    "title": "Breakeven Price（損益兩平點）",
+    "aliases": [
+      "Breakeven Price",
+      "Breakeven",
+      "損益兩平點",
+      "兩平點"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "option_premium",
+      "strike_price",
+      "probability_of_profit",
+      "expected_move"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Breakeven Price（損益兩平點）\n\n📖 是什麼\n損益兩平點是到期時策略不賺不賠的標的價格。\n\n🧠 為什麼重要\n它幫助投資人把方向判斷轉成需要達到的價格條件。\n\n👀 實際怎麼看\n- 到期損益兩平\n- 權利金成本\n- 多腿策略總成本\n- 現價距離\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- Option Premium（選擇權權利金）\n- Strike Price（履約價）\n- Probability of Profit（獲利機率）\n- Expected Move（預期波動區間）"
+  },
+  {
+    "id": "probability_of_profit",
+    "title": "Probability of Profit（獲利機率）",
+    "aliases": [
+      "Probability of Profit",
+      "POP",
+      "獲利機率"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "expected_move",
+      "breakeven_price",
+      "iron_condor",
+      "short_put"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Probability of Profit（獲利機率）\n\n📖 是什麼\n獲利機率是模型估算策略到期獲利的可能性。\n\n🧠 為什麼重要\n高機率通常伴隨較小單次獲利或尾端風險，不能單獨追求。\n\n👀 實際怎麼看\n- 模型假設\n- 最大損失\n- IV 是否合理\n- 損益兩平位置\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- Expected Move（預期波動區間）\n- Breakeven Price（損益兩平點）\n- Iron Condor（鐵兀鷹）\n- Short Put（賣出賣權）"
+  },
+  {
+    "id": "expected_move",
+    "title": "Expected Move（預期波動區間）",
+    "aliases": [
+      "Expected Move",
+      "預期波動區間",
+      "預期波動"
+    ],
+    "category": "options_basics",
+    "related_terms": [
+      "implied_volatility",
+      "straddle",
+      "atr",
+      "iv_crush"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Expected Move（預期波動區間）\n\n📖 是什麼\n預期波動區間是市場從選擇權價格推估標的可能移動範圍。\n\n🧠 為什麼重要\n它可用於評估事件前後市場已定價多少波動。\n\n👀 實際怎麼看\n- 到期日\n- IV 水位\n- 是否跨重大事件\n- 實際移動是否超出定價\n\n✅ 常見有效訊號\n和價格方向、到期時間、隱含波動率、成交量與買賣價差一起看，通常比單獨看一個數字更可靠。\n\n⚠️ 常見誤區\n- 把理論值當成保證結果\n- 忽略流動性與買賣價差\n- 沒有先理解到期與履約規則\n\n💡 KKZ 提醒\n選擇權的每個數字都在回答不同問題；先弄懂問題，再看數字。\n\n🔗 延伸閱讀\n- Implied Volatility／IV（隱含波動率）\n- Straddle（跨式策略）\n- ATR（Average True Range，平均真實波幅）\n- IV Crush（隱含波動率崩跌）"
   },
   {
     "id": "delta",
-    "title": "Delta",
-    "aliases": ["Delta", "德爾塔"],
+    "title": "Delta（德爾塔）",
+    "aliases": [
+      "Delta",
+      "德爾塔"
+    ],
     "category": "options_greeks",
-    "text": "Delta 衡量標的價格變動 1 單位時，選擇權價格大約會變動多少。Call 的 Delta 通常為正，Put 的 Delta 通常為負；Delta 也常被粗略用來理解價內機率或部位方向曝險。"
+    "related_terms": [
+      "gamma",
+      "long_call",
+      "long_put",
+      "in_the_money"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "delta-curve.png",
+    "text": "Delta（德爾塔）\n\n📖 是什麼\nDelta 衡量標的價格變動 1 單位時，選擇權價格大約變動多少。\n\n🧠 為什麼重要\n它也能粗略表示部位方向曝險；Call 通常為正，Put 通常為負。\n\n👀 實際怎麼看\n- 標的價格、時間、IV 與利率哪一個正在主導價格\n- Greek 數值是否因接近價平或到期而快速變化\n- 多腿策略的整體 Greek 合計\n- 事件前後波動率變化\n\n✅ 常見有效訊號\nGreeks 搭配部位方向、到期日與 IV 一起看，才能判斷主要風險來源。\n\n⚠️ 常見誤區\n- 只看單一 Greek\n- 忘記 Greek 會隨價格與時間改變\n- 把模型估算當成固定不變的事實\n\n💡 KKZ 提醒\nGreeks 是風險儀表板，不是方向預言；用它找出部位怕什麼。\n\n🔗 延伸閱讀\n- Gamma（伽瑪）\n- Long Call（買進買權）\n- Long Put（買進賣權）\n- In the Money／ITM（價內）"
   },
   {
     "id": "gamma",
-    "title": "Gamma",
-    "aliases": ["Gamma", "伽瑪"],
+    "title": "Gamma（伽瑪）",
+    "aliases": [
+      "Gamma",
+      "伽瑪"
+    ],
     "category": "options_greeks",
-    "text": "Gamma 衡量 Delta 對標的價格變動的敏感度。Gamma 越高，代表標的價格稍微移動時 Delta 變化越快；接近到期且接近價平的選擇權通常 Gamma 較高。"
+    "related_terms": [
+      "delta",
+      "gamma_exposure",
+      "at_the_money",
+      "expiration_date"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "gamma-curve.png",
+    "text": "Gamma（伽瑪）\n\n📖 是什麼\nGamma 衡量 Delta 對標的價格變動的敏感度。\n\n🧠 為什麼重要\n接近價平與到期時 Gamma 可能升高，使部位方向曝險快速改變。\n\n👀 實際怎麼看\n- 標的價格、時間、IV 與利率哪一個正在主導價格\n- Greek 數值是否因接近價平或到期而快速變化\n- 多腿策略的整體 Greek 合計\n- 事件前後波動率變化\n\n✅ 常見有效訊號\nGreeks 搭配部位方向、到期日與 IV 一起看，才能判斷主要風險來源。\n\n⚠️ 常見誤區\n- 只看單一 Greek\n- 忘記 Greek 會隨價格與時間改變\n- 把模型估算當成固定不變的事實\n\n💡 KKZ 提醒\nGreeks 是風險儀表板，不是方向預言；用它找出部位怕什麼。\n\n🔗 延伸閱讀\n- Delta（德爾塔）\n- Gamma Exposure／GEX（Gamma 曝險）\n- At the Money／ATM（價平）\n- Expiration Date（到期日）"
   },
   {
     "id": "theta",
-    "title": "Theta",
-    "aliases": ["Theta", "西塔", "時間價值"],
+    "title": "Theta（西塔／時間價值耗損）",
+    "aliases": [
+      "Theta",
+      "西塔",
+      "時間價值",
+      "時間價值耗損"
+    ],
     "category": "options_greeks",
-    "text": "Theta 衡量時間流逝對選擇權價格的影響，也就是時間價值耗損。買方通常承受 Theta 流失，賣方通常受益於時間價值流失，但賣方仍需承擔價格大幅波動的風險。"
+    "related_terms": [
+      "extrinsic_value",
+      "expiration_date",
+      "short_put",
+      "covered_call"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "theta-decay.png",
+    "text": "Theta（西塔／時間價值耗損）\n\n📖 是什麼\nTheta 衡量時間流逝對選擇權價格的影響。\n\n🧠 為什麼重要\n買方通常承受時間價值流失，賣方通常受益但承擔價格大幅波動風險。\n\n👀 實際怎麼看\n- 標的價格、時間、IV 與利率哪一個正在主導價格\n- Greek 數值是否因接近價平或到期而快速變化\n- 多腿策略的整體 Greek 合計\n- 事件前後波動率變化\n\n✅ 常見有效訊號\nGreeks 搭配部位方向、到期日與 IV 一起看，才能判斷主要風險來源。\n\n⚠️ 常見誤區\n- 只看單一 Greek\n- 忘記 Greek 會隨價格與時間改變\n- 把模型估算當成固定不變的事實\n\n💡 KKZ 提醒\nGreeks 是風險儀表板，不是方向預言；用它找出部位怕什麼。\n\n🔗 延伸閱讀\n- Extrinsic Value（外含價值／時間價值）\n- Expiration Date（到期日）\n- Short Put（賣出賣權）\n- Covered Call（備兌買權）"
   },
   {
     "id": "vega",
-    "title": "Vega",
-    "aliases": ["Vega", "隱含波動率敏感度"],
+    "title": "Vega（隱含波動率敏感度）",
+    "aliases": [
+      "Vega",
+      "隱含波動率敏感度"
+    ],
     "category": "options_greeks",
-    "text": "Vega 衡量隱含波動率變動對選擇權價格的影響。當隱含波動率上升，買權與賣權價格通常都會上升；事件前波動率升高、事件後波動率回落，是選擇權交易中常見的風險。"
+    "related_terms": [
+      "implied_volatility",
+      "iv_crush",
+      "straddle",
+      "strangle"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Vega（隱含波動率敏感度）\n\n📖 是什麼\nVega 衡量 IV 變動對選擇權價格的影響。\n\n🧠 為什麼重要\n事件前 IV 上升、事件後 IV 回落，常讓 Vega 成為主要風險。\n\n👀 實際怎麼看\n- 標的價格、時間、IV 與利率哪一個正在主導價格\n- Greek 數值是否因接近價平或到期而快速變化\n- 多腿策略的整體 Greek 合計\n- 事件前後波動率變化\n\n✅ 常見有效訊號\nGreeks 搭配部位方向、到期日與 IV 一起看，才能判斷主要風險來源。\n\n⚠️ 常見誤區\n- 只看單一 Greek\n- 忘記 Greek 會隨價格與時間改變\n- 把模型估算當成固定不變的事實\n\n💡 KKZ 提醒\nGreeks 是風險儀表板，不是方向預言；用它找出部位怕什麼。\n\n🔗 延伸閱讀\n- Implied Volatility／IV（隱含波動率）\n- IV Crush（隱含波動率崩跌）\n- Straddle（跨式策略）\n- Strangle（勒式策略）"
+  },
+  {
+    "id": "rho",
+    "title": "Rho（利率敏感度）",
+    "aliases": [
+      "Rho",
+      "利率敏感度"
+    ],
+    "category": "options_greeks",
+    "related_terms": [
+      "fed_funds_rate",
+      "leaps",
+      "treasury_yield",
+      "option_premium"
+    ],
+    "difficulty": "advanced",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Rho（利率敏感度）\n\n📖 是什麼\nRho 衡量利率變動對選擇權價格的影響。\n\n🧠 為什麼重要\n對長天期選擇權較有影響，短天期通常不是主要風險。\n\n👀 實際怎麼看\n- 標的價格、時間、IV 與利率哪一個正在主導價格\n- Greek 數值是否因接近價平或到期而快速變化\n- 多腿策略的整體 Greek 合計\n- 事件前後波動率變化\n\n✅ 常見有效訊號\nGreeks 搭配部位方向、到期日與 IV 一起看，才能判斷主要風險來源。\n\n⚠️ 常見誤區\n- 只看單一 Greek\n- 忘記 Greek 會隨價格與時間改變\n- 把模型估算當成固定不變的事實\n\n💡 KKZ 提醒\nGreeks 是風險儀表板，不是方向預言；用它找出部位怕什麼。\n\n🔗 延伸閱讀\n- Fed Funds Rate（聯邦基金利率）\n- LEAPS（長天期選擇權）\n- Treasury Yield（美國公債殖利率）\n- Option Premium（選擇權權利金）"
+  },
+  {
+    "id": "charm",
+    "title": "Charm（Delta 衰減）",
+    "aliases": [
+      "Charm",
+      "Delta 衰減",
+      "Delta Decay"
+    ],
+    "category": "options_greeks",
+    "related_terms": [
+      "delta",
+      "theta",
+      "gamma",
+      "expiration_date"
+    ],
+    "difficulty": "advanced",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Charm（Delta 衰減）\n\n📖 是什麼\nCharm 衡量時間流逝對 Delta 的影響。\n\n🧠 為什麼重要\n接近到期時，價平附近部位的方向曝險可能快速變化。\n\n👀 實際怎麼看\n- 標的價格、時間、IV 與利率哪一個正在主導價格\n- Greek 數值是否因接近價平或到期而快速變化\n- 多腿策略的整體 Greek 合計\n- 事件前後波動率變化\n\n✅ 常見有效訊號\nGreeks 搭配部位方向、到期日與 IV 一起看，才能判斷主要風險來源。\n\n⚠️ 常見誤區\n- 只看單一 Greek\n- 忘記 Greek 會隨價格與時間改變\n- 把模型估算當成固定不變的事實\n\n💡 KKZ 提醒\nGreeks 是風險儀表板，不是方向預言；用它找出部位怕什麼。\n\n🔗 延伸閱讀\n- Delta（德爾塔）\n- Theta（西塔／時間價值耗損）\n- Gamma（伽瑪）\n- Expiration Date（到期日）"
+  },
+  {
+    "id": "gamma_exposure",
+    "title": "Gamma Exposure／GEX（Gamma 曝險）",
+    "aliases": [
+      "Gamma Exposure",
+      "GEX",
+      "Gamma 曝險"
+    ],
+    "category": "options_greeks",
+    "related_terms": [
+      "gamma",
+      "open_interest",
+      "option_volume",
+      "strike_price"
+    ],
+    "difficulty": "advanced",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Gamma Exposure／GEX（Gamma 曝險）\n\n📖 是什麼\nGEX 估算市場做市商或選擇權部位的 Gamma 集中程度。\n\n🧠 為什麼重要\n它常被用來理解特定履約價附近價格是否容易被壓住或加速波動。\n\n👀 實際怎麼看\n- 標的價格、時間、IV 與利率哪一個正在主導價格\n- Greek 數值是否因接近價平或到期而快速變化\n- 多腿策略的整體 Greek 合計\n- 事件前後波動率變化\n\n✅ 常見有效訊號\nGreeks 搭配部位方向、到期日與 IV 一起看，才能判斷主要風險來源。\n\n⚠️ 常見誤區\n- 只看單一 Greek\n- 忘記 Greek 會隨價格與時間改變\n- 把模型估算當成固定不變的事實\n\n💡 KKZ 提醒\nGreeks 是風險儀表板，不是方向預言；用它找出部位怕什麼。\n\n🔗 延伸閱讀\n- Gamma（伽瑪）\n- Open Interest／OI（未平倉量）\n- Option Volume（選擇權成交量）\n- Strike Price（履約價）"
   },
   {
     "id": "leaps",
-    "title": "LEAPS",
-    "aliases": ["LEAPS", "長天期選擇權"],
+    "title": "LEAPS（長天期選擇權）",
+    "aliases": [
+      "LEAPS",
+      "長天期選擇權"
+    ],
     "category": "options_strategies",
-    "text": "LEAPS 是長天期選擇權，通常指到期時間超過一年的合約。它常被用來建立較長期方向性部位，時間價值耗損相對短天期慢，但仍會受到標的價格、波動率與流動性影響。"
+    "related_terms": [
+      "long_call",
+      "long_put",
+      "theta",
+      "rho"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "LEAPS（長天期選擇權）\n\n📖 是什麼\nLEAPS 是到期時間通常超過一年的長天期選擇權。\n\n🧠 為什麼重要\n這是用多個選擇權或股票組合，把方向、時間與波動率曝險重新分配的策略。偏方向性或長線替代持股，時間價值耗損較短天期慢。\n\n👀 實際怎麼看\n- 市場假設：偏方向性或長線替代持股，時間價值耗損較短天期慢。\n- 最大獲利：看多買權或看空賣權方向正確時有上方空間。\n- 最大損失：最大損失通常是付出的權利金。\n- 主要風險：流動性、買賣價差與 IV 變化。\n- 時間價值與 IV 變化是否有利\n- 是否適合目前流動性與帳戶規模\n\n✅ 常見有效訊號\n進場前已定義損益兩平點、最大損失、到期情境與調整方式，且標的流動性足夠時，策略較可控。\n\n⚠️ 常見誤區\n- 只看收權利金，忽略尾端風險\n- 不理解被指派與提前指派\n- 在 IV 或流動性不合適時硬做策略\n\n💡 KKZ 提醒\n策略名稱不重要，曝險組合才重要；先知道自己賺哪種錢、怕哪種風險。\n\n🔗 延伸閱讀\n- Long Call（買進買權）\n- Long Put（買進賣權）\n- Theta（西塔／時間價值耗損）\n- Rho（利率敏感度）"
   },
   {
     "id": "covered_call",
-    "title": "Covered Call",
-    "aliases": ["Covered Call", "備兌買權"],
+    "title": "Covered Call（備兌買權）",
+    "aliases": [
+      "Covered Call",
+      "備兌買權"
+    ],
     "category": "options_strategies",
-    "text": "Covered Call 是持有股票同時賣出買權，透過收取權利金增加收益。代價是若股價大幅上漲，股票可能被履約賣出，上方獲利會被履約價限制。"
+    "related_terms": [
+      "short_call",
+      "assignment",
+      "theta",
+      "option_premium"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "covered-call-payoff.png",
+    "text": "Covered Call（備兌買權）\n\n📖 是什麼\nCovered Call 是持有股票同時賣出買權。\n\n🧠 為什麼重要\n這是用多個選擇權或股票組合，把方向、時間與波動率曝險重新分配的策略。偏中性到溫和看多，用權利金增加收益但限制上方獲利。\n\n👀 實際怎麼看\n- 市場假設：偏中性到溫和看多，用權利金增加收益但限制上方獲利。\n- 最大獲利：最大獲利約為股價到履約價的價差加權利金。\n- 最大損失：下方仍承擔持股跌價風險。\n- 主要風險：股價大漲被履約賣出與提前指派。\n- 時間價值與 IV 變化是否有利\n- 是否適合目前流動性與帳戶規模\n\n✅ 常見有效訊號\n進場前已定義損益兩平點、最大損失、到期情境與調整方式，且標的流動性足夠時，策略較可控。\n\n⚠️ 常見誤區\n- 只看收權利金，忽略尾端風險\n- 不理解被指派與提前指派\n- 在 IV 或流動性不合適時硬做策略\n\n💡 KKZ 提醒\n策略名稱不重要，曝險組合才重要；先知道自己賺哪種錢、怕哪種風險。\n\n🔗 延伸閱讀\n- Short Call（賣出買權）\n- Assignment（被指派履約）\n- Theta（西塔／時間價值耗損）\n- Option Premium（選擇權權利金）"
   },
   {
     "id": "cash_secured_put",
-    "title": "Cash-Secured Put",
-    "aliases": ["Cash-Secured Put", "現金擔保賣權", "CSP"],
+    "title": "Cash-Secured Put（現金擔保賣權）",
+    "aliases": [
+      "Cash-Secured Put",
+      "CSP",
+      "現金擔保賣權"
+    ],
     "category": "options_strategies",
-    "text": "Cash-Secured Put 是準備足夠現金後賣出賣權，若標的跌破履約價並被指派，就用該履約價買進股票。它適合本來就願意承接標的的情境，但仍會承擔股價下跌風險。"
+    "related_terms": [
+      "short_put",
+      "assignment",
+      "breakeven_price",
+      "theta"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "cash-secured-put-payoff.png",
+    "text": "Cash-Secured Put（現金擔保賣權）\n\n📖 是什麼\nCash-Secured Put 是準備現金後賣出賣權。\n\n🧠 為什麼重要\n這是用多個選擇權或股票組合，把方向、時間與波動率曝險重新分配的策略。偏溫和看多或願意用履約價承接股票。\n\n👀 實際怎麼看\n- 市場假設：偏溫和看多或願意用履約價承接股票。\n- 最大獲利：最大獲利是權利金。\n- 最大損失：最大損失接近履約價扣除權利金。\n- 主要風險：標的大跌時被指派承接。\n- 時間價值與 IV 變化是否有利\n- 是否適合目前流動性與帳戶規模\n\n✅ 常見有效訊號\n進場前已定義損益兩平點、最大損失、到期情境與調整方式，且標的流動性足夠時，策略較可控。\n\n⚠️ 常見誤區\n- 只看收權利金，忽略尾端風險\n- 不理解被指派與提前指派\n- 在 IV 或流動性不合適時硬做策略\n\n💡 KKZ 提醒\n策略名稱不重要，曝險組合才重要；先知道自己賺哪種錢、怕哪種風險。\n\n🔗 延伸閱讀\n- Short Put（賣出賣權）\n- Assignment（被指派履約）\n- Breakeven Price（損益兩平點）\n- Theta（西塔／時間價值耗損）"
   },
   {
     "id": "protective_put",
-    "title": "Protective Put",
-    "aliases": ["Protective Put", "保護性賣權"],
+    "title": "Protective Put（保護性賣權）",
+    "aliases": [
+      "Protective Put",
+      "保護性賣權"
+    ],
     "category": "options_strategies",
-    "text": "Protective Put 是持有股票同時買進賣權，像替持股買保險。它可以限制下跌損失，但需要支付權利金，因此會降低整體報酬。"
+    "related_terms": [
+      "long_put",
+      "option_premium",
+      "collar",
+      "protective_collar"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "protective-put-payoff.png",
+    "text": "Protective Put（保護性賣權）\n\n📖 是什麼\nProtective Put 是持有股票同時買進賣權。\n\n🧠 為什麼重要\n這是用多個選擇權或股票組合，把方向、時間與波動率曝險重新分配的策略。偏避險，用權利金換取下方保護。\n\n👀 實際怎麼看\n- 市場假設：偏避險，用權利金換取下方保護。\n- 最大獲利：上方保留持股獲利，扣除權利金成本。\n- 最大損失：最大損失約為持股成本與履約價差額加權利金。\n- 主要風險：保護成本降低長期報酬。\n- 時間價值與 IV 變化是否有利\n- 是否適合目前流動性與帳戶規模\n\n✅ 常見有效訊號\n進場前已定義損益兩平點、最大損失、到期情境與調整方式，且標的流動性足夠時，策略較可控。\n\n⚠️ 常見誤區\n- 只看收權利金，忽略尾端風險\n- 不理解被指派與提前指派\n- 在 IV 或流動性不合適時硬做策略\n\n💡 KKZ 提醒\n策略名稱不重要，曝險組合才重要；先知道自己賺哪種錢、怕哪種風險。\n\n🔗 延伸閱讀\n- Long Put（買進賣權）\n- Option Premium（選擇權權利金）\n- Collar（領口策略）\n- Protective Collar（保護性領口策略）"
+  },
+  {
+    "id": "collar",
+    "title": "Collar（領口策略）",
+    "aliases": [
+      "Collar",
+      "領口策略"
+    ],
+    "category": "options_strategies",
+    "related_terms": [
+      "protective_put",
+      "covered_call",
+      "protective_collar",
+      "assignment"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "collar-payoff.png",
+    "text": "Collar（領口策略）\n\n📖 是什麼\nCollar 是持股、買進保護性賣權並賣出買權。\n\n🧠 為什麼重要\n這是用多個選擇權或股票組合，把方向、時間與波動率曝險重新分配的策略。偏避險，限制下方風險，也限制上方獲利。\n\n👀 實際怎麼看\n- 市場假設：偏避險，限制下方風險，也限制上方獲利。\n- 最大獲利：最大獲利受賣出買權履約價限制。\n- 最大損失：最大損失由保護性賣權降低。\n- 主要風險：上漲空間被封頂與提前指派。\n- 時間價值與 IV 變化是否有利\n- 是否適合目前流動性與帳戶規模\n\n✅ 常見有效訊號\n進場前已定義損益兩平點、最大損失、到期情境與調整方式，且標的流動性足夠時，策略較可控。\n\n⚠️ 常見誤區\n- 只看收權利金，忽略尾端風險\n- 不理解被指派與提前指派\n- 在 IV 或流動性不合適時硬做策略\n\n💡 KKZ 提醒\n策略名稱不重要，曝險組合才重要；先知道自己賺哪種錢、怕哪種風險。\n\n🔗 延伸閱讀\n- Protective Put（保護性賣權）\n- Covered Call（備兌買權）\n- Protective Collar（保護性領口策略）\n- Assignment（被指派履約）"
+  },
+  {
+    "id": "bull_call_spread",
+    "title": "Bull Call Spread（多頭買權價差）",
+    "aliases": [
+      "Bull Call Spread",
+      "多頭買權價差"
+    ],
+    "category": "options_strategies",
+    "related_terms": [
+      "long_call",
+      "vertical_spread",
+      "breakeven_price",
+      "theta"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "bull-call-spread-payoff.png",
+    "text": "Bull Call Spread（多頭買權價差）\n\n📖 是什麼\nBull Call Spread 是買低履約價 Call、賣高履約價 Call。\n\n🧠 為什麼重要\n這是用多個選擇權或股票組合，把方向、時間與波動率曝險重新分配的策略。偏看多，用較低成本換取有限上方獲利。\n\n👀 實際怎麼看\n- 市場假設：偏看多，用較低成本換取有限上方獲利。\n- 最大獲利：最大獲利是履約價差減淨成本。\n- 最大損失：最大損失是淨權利金成本。\n- 主要風險：方向不如預期與時間價值流失。\n- 時間價值與 IV 變化是否有利\n- 是否適合目前流動性與帳戶規模\n\n✅ 常見有效訊號\n進場前已定義損益兩平點、最大損失、到期情境與調整方式，且標的流動性足夠時，策略較可控。\n\n⚠️ 常見誤區\n- 只看收權利金，忽略尾端風險\n- 不理解被指派與提前指派\n- 在 IV 或流動性不合適時硬做策略\n\n💡 KKZ 提醒\n策略名稱不重要，曝險組合才重要；先知道自己賺哪種錢、怕哪種風險。\n\n🔗 延伸閱讀\n- Long Call（買進買權）\n- Vertical Spread（垂直價差）\n- Breakeven Price（損益兩平點）\n- Theta（西塔／時間價值耗損）"
+  },
+  {
+    "id": "bear_put_spread",
+    "title": "Bear Put Spread（空頭賣權價差）",
+    "aliases": [
+      "Bear Put Spread",
+      "空頭賣權價差"
+    ],
+    "category": "options_strategies",
+    "related_terms": [
+      "long_put",
+      "vertical_spread",
+      "breakeven_price",
+      "theta"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "bear-put-spread-payoff.png",
+    "text": "Bear Put Spread（空頭賣權價差）\n\n📖 是什麼\nBear Put Spread 是買高履約價 Put、賣低履約價 Put。\n\n🧠 為什麼重要\n這是用多個選擇權或股票組合，把方向、時間與波動率曝險重新分配的策略。偏看空，用較低成本建立有限下方獲利。\n\n👀 實際怎麼看\n- 市場假設：偏看空，用較低成本建立有限下方獲利。\n- 最大獲利：最大獲利是履約價差減淨成本。\n- 最大損失：最大損失是淨權利金成本。\n- 主要風險：標的不跌或 IV 回落。\n- 時間價值與 IV 變化是否有利\n- 是否適合目前流動性與帳戶規模\n\n✅ 常見有效訊號\n進場前已定義損益兩平點、最大損失、到期情境與調整方式，且標的流動性足夠時，策略較可控。\n\n⚠️ 常見誤區\n- 只看收權利金，忽略尾端風險\n- 不理解被指派與提前指派\n- 在 IV 或流動性不合適時硬做策略\n\n💡 KKZ 提醒\n策略名稱不重要，曝險組合才重要；先知道自己賺哪種錢、怕哪種風險。\n\n🔗 延伸閱讀\n- Long Put（買進賣權）\n- Vertical Spread（垂直價差）\n- Breakeven Price（損益兩平點）\n- Theta（西塔／時間價值耗損）"
+  },
+  {
+    "id": "bull_put_spread",
+    "title": "Bull Put Spread（多頭賣權價差）",
+    "aliases": [
+      "Bull Put Spread",
+      "多頭賣權價差"
+    ],
+    "category": "options_strategies",
+    "related_terms": [
+      "short_put",
+      "vertical_spread",
+      "probability_of_profit",
+      "assignment"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "bull-put-spread-payoff.png",
+    "text": "Bull Put Spread（多頭賣權價差）\n\n📖 是什麼\nBull Put Spread 是賣高履約價 Put、買低履約價 Put。\n\n🧠 為什麼重要\n這是用多個選擇權或股票組合，把方向、時間與波動率曝險重新分配的策略。偏溫和看多，透過信用價差收權利金。\n\n👀 實際怎麼看\n- 市場假設：偏溫和看多，透過信用價差收權利金。\n- 最大獲利：最大獲利是收取的淨權利金。\n- 最大損失：最大損失是履約價差減淨收款。\n- 主要風險：標的大跌接近或跌破賣出腿。\n- 時間價值與 IV 變化是否有利\n- 是否適合目前流動性與帳戶規模\n\n✅ 常見有效訊號\n進場前已定義損益兩平點、最大損失、到期情境與調整方式，且標的流動性足夠時，策略較可控。\n\n⚠️ 常見誤區\n- 只看收權利金，忽略尾端風險\n- 不理解被指派與提前指派\n- 在 IV 或流動性不合適時硬做策略\n\n💡 KKZ 提醒\n策略名稱不重要，曝險組合才重要；先知道自己賺哪種錢、怕哪種風險。\n\n🔗 延伸閱讀\n- Short Put（賣出賣權）\n- Vertical Spread（垂直價差）\n- Probability of Profit（獲利機率）\n- Assignment（被指派履約）"
+  },
+  {
+    "id": "bear_call_spread",
+    "title": "Bear Call Spread（空頭買權價差）",
+    "aliases": [
+      "Bear Call Spread",
+      "空頭買權價差"
+    ],
+    "category": "options_strategies",
+    "related_terms": [
+      "short_call",
+      "vertical_spread",
+      "assignment",
+      "gamma"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "bear-call-spread-payoff.png",
+    "text": "Bear Call Spread（空頭買權價差）\n\n📖 是什麼\nBear Call Spread 是賣低履約價 Call、買高履約價 Call。\n\n🧠 為什麼重要\n這是用多個選擇權或股票組合，把方向、時間與波動率曝險重新分配的策略。偏溫和看空，透過信用價差收權利金。\n\n👀 實際怎麼看\n- 市場假設：偏溫和看空，透過信用價差收權利金。\n- 最大獲利：最大獲利是收取的淨權利金。\n- 最大損失：最大損失是履約價差減淨收款。\n- 主要風險：標的大漲接近或突破賣出腿。\n- 時間價值與 IV 變化是否有利\n- 是否適合目前流動性與帳戶規模\n\n✅ 常見有效訊號\n進場前已定義損益兩平點、最大損失、到期情境與調整方式，且標的流動性足夠時，策略較可控。\n\n⚠️ 常見誤區\n- 只看收權利金，忽略尾端風險\n- 不理解被指派與提前指派\n- 在 IV 或流動性不合適時硬做策略\n\n💡 KKZ 提醒\n策略名稱不重要，曝險組合才重要；先知道自己賺哪種錢、怕哪種風險。\n\n🔗 延伸閱讀\n- Short Call（賣出買權）\n- Vertical Spread（垂直價差）\n- Assignment（被指派履約）\n- Gamma（伽瑪）"
+  },
+  {
+    "id": "vertical_spread",
+    "title": "Vertical Spread（垂直價差）",
+    "aliases": [
+      "Vertical Spread",
+      "垂直價差"
+    ],
+    "category": "options_strategies",
+    "related_terms": [
+      "bull_call_spread",
+      "bear_put_spread",
+      "bull_put_spread",
+      "bear_call_spread"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Vertical Spread（垂直價差）\n\n📖 是什麼\nVertical Spread 是同到期日、不同履約價的一買一賣組合。\n\n🧠 為什麼重要\n這是用多個選擇權或股票組合，把方向、時間與波動率曝險重新分配的策略。可設計成看多、看空或信用收款策略。\n\n👀 實際怎麼看\n- 市場假設：可設計成看多、看空或信用收款策略。\n- 最大獲利：依策略不同，通常為有限獲利。\n- 最大損失：通常為有限損失。\n- 主要風險：流動性、價差與到期前 Gamma 變化。\n- 時間價值與 IV 變化是否有利\n- 是否適合目前流動性與帳戶規模\n\n✅ 常見有效訊號\n進場前已定義損益兩平點、最大損失、到期情境與調整方式，且標的流動性足夠時，策略較可控。\n\n⚠️ 常見誤區\n- 只看收權利金，忽略尾端風險\n- 不理解被指派與提前指派\n- 在 IV 或流動性不合適時硬做策略\n\n💡 KKZ 提醒\n策略名稱不重要，曝險組合才重要；先知道自己賺哪種錢、怕哪種風險。\n\n🔗 延伸閱讀\n- Bull Call Spread（多頭買權價差）\n- Bear Put Spread（空頭賣權價差）\n- Bull Put Spread（多頭賣權價差）\n- Bear Call Spread（空頭買權價差）"
+  },
+  {
+    "id": "calendar_spread",
+    "title": "Calendar Spread（日曆價差／時間價差）",
+    "aliases": [
+      "Calendar Spread",
+      "日曆價差",
+      "時間價差"
+    ],
+    "category": "options_strategies",
+    "related_terms": [
+      "theta",
+      "vega",
+      "expiration_date",
+      "implied_volatility"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Calendar Spread（日曆價差／時間價差）\n\n📖 是什麼\nCalendar Spread 是不同到期日、相同或相近履約價的一買一賣。\n\n🧠 為什麼重要\n這是用多個選擇權或股票組合，把方向、時間與波動率曝險重新分配的策略。偏中性或事件時間差交易，常利用近月 Theta 與遠月 Vega。\n\n👀 實際怎麼看\n- 市場假設：偏中性或事件時間差交易，常利用近月 Theta 與遠月 Vega。\n- 最大獲利：最大獲利取決於到期時價格接近履約價與 IV。\n- 最大損失：最大損失通常是淨成本。\n- 主要風險：IV 變化與價格大幅離開履約價。\n- 時間價值與 IV 變化是否有利\n- 是否適合目前流動性與帳戶規模\n\n✅ 常見有效訊號\n進場前已定義損益兩平點、最大損失、到期情境與調整方式，且標的流動性足夠時，策略較可控。\n\n⚠️ 常見誤區\n- 只看收權利金，忽略尾端風險\n- 不理解被指派與提前指派\n- 在 IV 或流動性不合適時硬做策略\n\n💡 KKZ 提醒\n策略名稱不重要，曝險組合才重要；先知道自己賺哪種錢、怕哪種風險。\n\n🔗 延伸閱讀\n- Theta（西塔／時間價值耗損）\n- Vega（隱含波動率敏感度）\n- Expiration Date（到期日）\n- Implied Volatility／IV（隱含波動率）"
+  },
+  {
+    "id": "diagonal_spread",
+    "title": "Diagonal Spread（對角價差）",
+    "aliases": [
+      "Diagonal Spread",
+      "對角價差"
+    ],
+    "category": "options_strategies",
+    "related_terms": [
+      "calendar_spread",
+      "vertical_spread",
+      "theta",
+      "assignment"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Diagonal Spread（對角價差）\n\n📖 是什麼\nDiagonal Spread 是不同到期日且不同履約價的一買一賣。\n\n🧠 為什麼重要\n這是用多個選擇權或股票組合，把方向、時間與波動率曝險重新分配的策略。可結合方向、時間價值與波動率假設。\n\n👀 實際怎麼看\n- 市場假設：可結合方向、時間價值與波動率假設。\n- 最大獲利：最大獲利依結構而定，通常不是固定直觀。\n- 最大損失：最大損失通常接近淨成本或價差風險。\n- 主要風險：結構複雜與提前指派。\n- 時間價值與 IV 變化是否有利\n- 是否適合目前流動性與帳戶規模\n\n✅ 常見有效訊號\n進場前已定義損益兩平點、最大損失、到期情境與調整方式，且標的流動性足夠時，策略較可控。\n\n⚠️ 常見誤區\n- 只看收權利金，忽略尾端風險\n- 不理解被指派與提前指派\n- 在 IV 或流動性不合適時硬做策略\n\n💡 KKZ 提醒\n策略名稱不重要，曝險組合才重要；先知道自己賺哪種錢、怕哪種風險。\n\n🔗 延伸閱讀\n- Calendar Spread（日曆價差／時間價差）\n- Vertical Spread（垂直價差）\n- Theta（西塔／時間價值耗損）\n- Assignment（被指派履約）"
+  },
+  {
+    "id": "straddle",
+    "title": "Straddle（跨式策略）",
+    "aliases": [
+      "Straddle",
+      "跨式策略"
+    ],
+    "category": "options_strategies",
+    "related_terms": [
+      "expected_move",
+      "implied_volatility",
+      "iv_crush",
+      "vega"
+    ],
+    "difficulty": "advanced",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "straddle-payoff.png",
+    "text": "Straddle（跨式策略）\n\n📖 是什麼\nStraddle 是同履約價同到期日買進或賣出 Call 與 Put。\n\n🧠 為什麼重要\n這是用多個選擇權或股票組合，把方向、時間與波動率曝險重新分配的策略。買方偏押注大波動，賣方偏押注波動不足。\n\n👀 實際怎麼看\n- 市場假設：買方偏押注大波動，賣方偏押注波動不足。\n- 最大獲利：買方獲利隨大幅波動增加；賣方最大獲利是權利金。\n- 最大損失：買方最大損失是權利金；賣方風險很高。\n- 主要風險：IV Crush、時間價值與尾端風險。\n- 時間價值與 IV 變化是否有利\n- 是否適合目前流動性與帳戶規模\n\n✅ 常見有效訊號\n進場前已定義損益兩平點、最大損失、到期情境與調整方式，且標的流動性足夠時，策略較可控。\n\n⚠️ 常見誤區\n- 只看收權利金，忽略尾端風險\n- 不理解被指派與提前指派\n- 在 IV 或流動性不合適時硬做策略\n\n💡 KKZ 提醒\n策略名稱不重要，曝險組合才重要；先知道自己賺哪種錢、怕哪種風險。\n\n🔗 延伸閱讀\n- Expected Move（預期波動區間）\n- Implied Volatility／IV（隱含波動率）\n- IV Crush（隱含波動率崩跌）\n- Vega（隱含波動率敏感度）"
+  },
+  {
+    "id": "strangle",
+    "title": "Strangle（勒式策略）",
+    "aliases": [
+      "Strangle",
+      "勒式策略"
+    ],
+    "category": "options_strategies",
+    "related_terms": [
+      "straddle",
+      "expected_move",
+      "iv_rank",
+      "vega"
+    ],
+    "difficulty": "advanced",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "strangle-payoff.png",
+    "text": "Strangle（勒式策略）\n\n📖 是什麼\nStrangle 是不同履約價同到期日買進或賣出 Call 與 Put。\n\n🧠 為什麼重要\n這是用多個選擇權或股票組合，把方向、時間與波動率曝險重新分配的策略。買方押注大波動，賣方押注價格留在區間內。\n\n👀 實際怎麼看\n- 市場假設：買方押注大波動，賣方押注價格留在區間內。\n- 最大獲利：買方需大幅波動才有利；賣方最大獲利是權利金。\n- 最大損失：買方最大損失是權利金；賣方尾端風險高。\n- 主要風險：IV、事件與價格跳空。\n- 時間價值與 IV 變化是否有利\n- 是否適合目前流動性與帳戶規模\n\n✅ 常見有效訊號\n進場前已定義損益兩平點、最大損失、到期情境與調整方式，且標的流動性足夠時，策略較可控。\n\n⚠️ 常見誤區\n- 只看收權利金，忽略尾端風險\n- 不理解被指派與提前指派\n- 在 IV 或流動性不合適時硬做策略\n\n💡 KKZ 提醒\n策略名稱不重要，曝險組合才重要；先知道自己賺哪種錢、怕哪種風險。\n\n🔗 延伸閱讀\n- Straddle（跨式策略）\n- Expected Move（預期波動區間）\n- IV Rank（隱含波動率排名）\n- Vega（隱含波動率敏感度）"
+  },
+  {
+    "id": "iron_condor",
+    "title": "Iron Condor（鐵兀鷹）",
+    "aliases": [
+      "Iron Condor",
+      "鐵兀鷹"
+    ],
+    "category": "options_strategies",
+    "related_terms": [
+      "vertical_spread",
+      "probability_of_profit",
+      "iv_rank",
+      "theta"
+    ],
+    "difficulty": "advanced",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "image": "iron-condor-payoff.png",
+    "text": "Iron Condor（鐵兀鷹）\n\n📖 是什麼\nIron Condor 是同時建立賣出 Call Spread 與賣出 Put Spread。\n\n🧠 為什麼重要\n這是用多個選擇權或股票組合，把方向、時間與波動率曝險重新分配的策略。偏中性，期待價格留在區間內並收取權利金。\n\n👀 實際怎麼看\n- 市場假設：偏中性，期待價格留在區間內並收取權利金。\n- 最大獲利：最大獲利是淨收款。\n- 最大損失：最大損失是單邊價差寬度減淨收款。\n- 主要風險：單邊突破區間與高 Gamma 風險。\n- 時間價值與 IV 變化是否有利\n- 是否適合目前流動性與帳戶規模\n\n✅ 常見有效訊號\n進場前已定義損益兩平點、最大損失、到期情境與調整方式，且標的流動性足夠時，策略較可控。\n\n⚠️ 常見誤區\n- 只看收權利金，忽略尾端風險\n- 不理解被指派與提前指派\n- 在 IV 或流動性不合適時硬做策略\n\n💡 KKZ 提醒\n策略名稱不重要，曝險組合才重要；先知道自己賺哪種錢、怕哪種風險。\n\n🔗 延伸閱讀\n- Vertical Spread（垂直價差）\n- Probability of Profit（獲利機率）\n- IV Rank（隱含波動率排名）\n- Theta（西塔／時間價值耗損）"
+  },
+  {
+    "id": "poor_mans_covered_call",
+    "title": "Poor Man’s Covered Call／PMCC（窮人備兌買權）",
+    "aliases": [
+      "Poor Man’s Covered Call",
+      "PMCC",
+      "窮人備兌買權"
+    ],
+    "category": "options_strategies",
+    "related_terms": [
+      "leaps",
+      "covered_call",
+      "short_call",
+      "delta"
+    ],
+    "difficulty": "advanced",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Poor Man’s Covered Call／PMCC（窮人備兌買權）\n\n📖 是什麼\nPMCC 用長天期深價內 Call 取代持股，再賣短天期 Call。\n\n🧠 為什麼重要\n這是用多個選擇權或股票組合，把方向、時間與波動率曝險重新分配的策略。偏溫和看多，降低資金需求但增加選擇權結構風險。\n\n👀 實際怎麼看\n- 市場假設：偏溫和看多，降低資金需求但增加選擇權結構風險。\n- 最大獲利：最大獲利依長短腿與股價位置而定。\n- 最大損失：最大損失通常接近長腿成本減剩餘價值。\n- 主要風險：長腿流動性、IV 變化與短腿指派。\n- 時間價值與 IV 變化是否有利\n- 是否適合目前流動性與帳戶規模\n\n✅ 常見有效訊號\n進場前已定義損益兩平點、最大損失、到期情境與調整方式，且標的流動性足夠時，策略較可控。\n\n⚠️ 常見誤區\n- 只看收權利金，忽略尾端風險\n- 不理解被指派與提前指派\n- 在 IV 或流動性不合適時硬做策略\n\n💡 KKZ 提醒\n策略名稱不重要，曝險組合才重要；先知道自己賺哪種錢、怕哪種風險。\n\n🔗 延伸閱讀\n- LEAPS（長天期選擇權）\n- Covered Call（備兌買權）\n- Short Call（賣出買權）\n- Delta（德爾塔）"
+  },
+  {
+    "id": "wheel_strategy",
+    "title": "Wheel Strategy（輪轉策略）",
+    "aliases": [
+      "Wheel Strategy",
+      "輪轉策略",
+      "Wheel"
+    ],
+    "category": "options_strategies",
+    "related_terms": [
+      "cash_secured_put",
+      "covered_call",
+      "assignment",
+      "short_put"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Wheel Strategy（輪轉策略）\n\n📖 是什麼\nWheel Strategy 通常先賣現金擔保賣權，被指派後再賣備兌買權。\n\n🧠 為什麼重要\n這是用多個選擇權或股票組合，把方向、時間與波動率曝險重新分配的策略。偏願意持有標的並用權利金管理進出。\n\n👀 實際怎麼看\n- 市場假設：偏願意持有標的並用權利金管理進出。\n- 最大獲利：最大獲利取決於權利金與股票被賣出價格。\n- 最大損失：主要下方風險仍是持股下跌。\n- 主要風險：標的品質、資金占用與連續下跌。\n- 時間價值與 IV 變化是否有利\n- 是否適合目前流動性與帳戶規模\n\n✅ 常見有效訊號\n進場前已定義損益兩平點、最大損失、到期情境與調整方式，且標的流動性足夠時，策略較可控。\n\n⚠️ 常見誤區\n- 只看收權利金，忽略尾端風險\n- 不理解被指派與提前指派\n- 在 IV 或流動性不合適時硬做策略\n\n💡 KKZ 提醒\n策略名稱不重要，曝險組合才重要；先知道自己賺哪種錢、怕哪種風險。\n\n🔗 延伸閱讀\n- Cash-Secured Put（現金擔保賣權）\n- Covered Call（備兌買權）\n- Assignment（被指派履約）\n- Short Put（賣出賣權）"
+  },
+  {
+    "id": "protective_collar",
+    "title": "Protective Collar（保護性領口策略）",
+    "aliases": [
+      "Protective Collar",
+      "保護性領口策略"
+    ],
+    "category": "options_strategies",
+    "related_terms": [
+      "collar",
+      "protective_put",
+      "covered_call",
+      "assignment"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Protective Collar（保護性領口策略）\n\n📖 是什麼\nProtective Collar 是用賣出買權補貼買進保護性賣權。\n\n🧠 為什麼重要\n這是用多個選擇權或股票組合，把方向、時間與波動率曝險重新分配的策略。偏避險，常用於已有獲利持股的風險管理。\n\n👀 實際怎麼看\n- 市場假設：偏避險，常用於已有獲利持股的風險管理。\n- 最大獲利：最大獲利受買權履約價限制。\n- 最大損失：最大損失由賣權履約價保護。\n- 主要風險：上方被封頂與提前指派。\n- 時間價值與 IV 變化是否有利\n- 是否適合目前流動性與帳戶規模\n\n✅ 常見有效訊號\n進場前已定義損益兩平點、最大損失、到期情境與調整方式，且標的流動性足夠時，策略較可控。\n\n⚠️ 常見誤區\n- 只看收權利金，忽略尾端風險\n- 不理解被指派與提前指派\n- 在 IV 或流動性不合適時硬做策略\n\n💡 KKZ 提醒\n策略名稱不重要，曝險組合才重要；先知道自己賺哪種錢、怕哪種風險。\n\n🔗 延伸閱讀\n- Collar（領口策略）\n- Protective Put（保護性賣權）\n- Covered Call（備兌買權）\n- Assignment（被指派履約）"
+  },
+  {
+    "id": "rolling_options",
+    "title": "Rolling Options（選擇權展期）",
+    "aliases": [
+      "Rolling Options",
+      "Roll Options",
+      "選擇權展期",
+      "展期"
+    ],
+    "category": "options_strategies",
+    "related_terms": [
+      "expiration_date",
+      "theta",
+      "assignment",
+      "vertical_spread"
+    ],
+    "difficulty": "intermediate",
+    "market_context": [
+      "event_driven",
+      "swing"
+    ],
+    "text": "Rolling Options（選擇權展期）\n\n📖 是什麼\n展期是平掉原合約並建立新到期日或新履約價合約。\n\n🧠 為什麼重要\n這是用多個選擇權或股票組合，把方向、時間與波動率曝險重新分配的策略。可用於調整時間、履約價或風險，但不是讓虧損消失。\n\n👀 實際怎麼看\n- 市場假設：可用於調整時間、履約價或風險，但不是讓虧損消失。\n- 最大獲利：最大獲利依新策略而定。\n- 最大損失：最大損失可能因延後處理而擴大。\n- 主要風險：把展期當成逃避停損，忽略總成本。\n- 時間價值與 IV 變化是否有利\n- 是否適合目前流動性與帳戶規模\n\n✅ 常見有效訊號\n進場前已定義損益兩平點、最大損失、到期情境與調整方式，且標的流動性足夠時，策略較可控。\n\n⚠️ 常見誤區\n- 只看收權利金，忽略尾端風險\n- 不理解被指派與提前指派\n- 在 IV 或流動性不合適時硬做策略\n\n💡 KKZ 提醒\n策略名稱不重要，曝險組合才重要；先知道自己賺哪種錢、怕哪種風險。\n\n🔗 延伸閱讀\n- Expiration Date（到期日）\n- Theta（西塔／時間價值耗損）\n- Assignment（被指派履約）\n- Vertical Spread（垂直價差）"
   },
   {
     "id": "cpi",
-    "title": "CPI",
-    "aliases": ["CPI", "消費者物價指數"],
+    "title": "CPI（Consumer Price Index，消費者物價指數）",
+    "aliases": [
+      "CPI",
+      "Consumer Price Index",
+      "消費者物價指數"
+    ],
     "category": "macro",
-    "text": "CPI（Consumer Price Index，消費者物價指數）衡量消費者端一籃子商品與服務的價格變化，是市場觀察通膨的重要指標。CPI 高於預期時，市場通常會重新評估利率路徑與風險資產估值。"
+    "related_terms": [
+      "core_cpi",
+      "ppi",
+      "fed_funds_rate",
+      "treasury_yield"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "CPI（Consumer Price Index，消費者物價指數）\n\n📖 是什麼\nCPI 衡量消費者端一籃子商品與服務價格變化。\n\n🧠 為什麼重要\n它是市場觀察通膨與 Fed 政策預期的重要指標。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Core CPI（核心消費者物價指數）\n- PPI（Producer Price Index，生產者物價指數）\n- Fed Funds Rate（聯邦基金利率）\n- Treasury Yield（美國公債殖利率）"
   },
   {
     "id": "pce",
-    "title": "PCE",
-    "aliases": ["PCE", "個人消費支出物價指數"],
+    "title": "PCE（Personal Consumption Expenditures，個人消費支出物價指數）",
+    "aliases": [
+      "PCE",
+      "Personal Consumption Expenditures",
+      "個人消費支出物價指數"
+    ],
     "category": "macro",
-    "text": "PCE（Personal Consumption Expenditures）是美國聯準會偏好的通膨觀察指標之一。相較 CPI，PCE 權重調整方式不同，能反映消費者替代行為；核心 PCE 會排除食品與能源。"
+    "related_terms": [
+      "core_pce",
+      "cpi",
+      "fed_funds_rate",
+      "treasury_yield"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "PCE（Personal Consumption Expenditures，個人消費支出物價指數）\n\n📖 是什麼\nPCE 衡量美國個人消費支出價格變化。\n\n🧠 為什麼重要\nFed 較常參考 PCE，因其權重調整方式能反映消費替代行為。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Core PCE（核心個人消費支出物價指數）\n- CPI（Consumer Price Index，消費者物價指數）\n- Fed Funds Rate（聯邦基金利率）\n- Treasury Yield（美國公債殖利率）"
   },
   {
     "id": "ppi",
-    "title": "PPI",
-    "aliases": ["PPI", "生產者物價指數"],
+    "title": "PPI（Producer Price Index，生產者物價指數）",
+    "aliases": [
+      "PPI",
+      "Producer Price Index",
+      "生產者物價指數"
+    ],
     "category": "macro",
-    "text": "PPI（Producer Price Index，生產者物價指數）衡量生產端商品與服務價格的變化，常被用來觀察企業成本壓力與未來通膨傳導。PPI 高於預期時，市場可能擔心成本推升最終售價，進而影響利率預期與股市估值。"
+    "related_terms": [
+      "cpi",
+      "core_cpi",
+      "treasury_yield",
+      "rate_hike"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "PPI（Producer Price Index，生產者物價指數）\n\n📖 是什麼\nPPI 衡量生產端商品與服務價格變化。\n\n🧠 為什麼重要\n它可觀察企業成本壓力與未來通膨傳導，但不一定會完整轉嫁到消費端。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- CPI（Consumer Price Index，消費者物價指數）\n- Core CPI（核心消費者物價指數）\n- Treasury Yield（美國公債殖利率）\n- Rate Hike（升息）"
   },
   {
     "id": "fomc",
-    "title": "FOMC",
-    "aliases": ["FOMC", "聯準會利率會議", "Fed 會議"],
+    "title": "FOMC（Federal Open Market Committee，聯邦公開市場委員會）",
+    "aliases": [
+      "FOMC",
+      "Federal Open Market Committee",
+      "聯邦公開市場委員會",
+      "聯準會利率會議"
+    ],
     "category": "macro",
-    "text": "FOMC 是美國聯準會決定利率與貨幣政策方向的會議。市場會關注利率決策、聲明措辭、點陣圖與主席記者會，因為這些會影響美元、債券殖利率與股市風險偏好。"
+    "related_terms": [
+      "dot_plot",
+      "fed_funds_rate",
+      "rate_cut",
+      "rate_hike"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "FOMC（Federal Open Market Committee，聯邦公開市場委員會）\n\n📖 是什麼\nFOMC 是 Fed 決定利率與貨幣政策方向的會議。\n\n🧠 為什麼重要\n市場會關注聲明、點陣圖、主席談話與政策路徑變化。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Dot Plot（點陣圖）\n- Fed Funds Rate（聯邦基金利率）\n- Rate Cut（降息）\n- Rate Hike（升息）"
   },
   {
     "id": "dxy",
-    "title": "DXY",
-    "aliases": ["DXY", "美元指數"],
+    "title": "DXY（U.S. Dollar Index，美元指數）",
+    "aliases": [
+      "DXY",
+      "U.S. Dollar Index",
+      "US Dollar Index",
+      "美元指數"
+    ],
     "category": "macro",
-    "text": "DXY 是美元指數，用來衡量美元相對一籃子主要貨幣的強弱。美元走強時，常會影響商品價格、新興市場資金流與跨國企業匯率換算；但實際影響仍需看當時市場主題。"
+    "related_terms": [
+      "treasury_yield",
+      "risk_off",
+      "liquidity",
+      "real_yield"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "DXY（U.S. Dollar Index，美元指數）\n\n📖 是什麼\nDXY 衡量美元相對一籃子主要貨幣的強弱。\n\n🧠 為什麼重要\n美元變化會影響商品、新興市場、跨國企業獲利與風險偏好。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Treasury Yield（美國公債殖利率）\n- Risk-Off（風險趨避）\n- Liquidity（市場流動性）\n- Real Yield（實質殖利率）"
   },
   {
     "id": "vix",
-    "title": "VIX",
-    "aliases": ["VIX", "恐慌指數", "波動率指數"],
+    "title": "VIX（CBOE Volatility Index，波動率指數／恐慌指數）",
+    "aliases": [
+      "VIX",
+      "CBOE Volatility Index",
+      "波動率指數",
+      "恐慌指數"
+    ],
     "category": "macro",
-    "text": "VIX 常被稱為恐慌指數，反映市場對 S&P 500 未來波動率的預期。VIX 上升通常代表避險需求增加或市場不確定性升高；VIX 回落則常見於風險情緒改善。"
+    "related_terms": [
+      "risk_off",
+      "implied_volatility",
+      "atr",
+      "liquidity"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "VIX（CBOE Volatility Index，波動率指數／恐慌指數）\n\n📖 是什麼\nVIX 反映市場對 S&P 500 未來波動率的預期。\n\n🧠 為什麼重要\nVIX 上升通常代表避險需求提高，但不等於股市必然下跌。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Risk-Off（風險趨避）\n- Implied Volatility／IV（隱含波動率）\n- ATR（Average True Range，平均真實波幅）\n- Liquidity（市場流動性）"
+  },
+  {
+    "id": "core_cpi",
+    "title": "Core CPI（核心消費者物價指數）",
+    "aliases": [
+      "Core CPI",
+      "核心消費者物價指數"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "cpi",
+      "core_pce",
+      "rate_hike",
+      "treasury_yield"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Core CPI（核心消費者物價指數）\n\n📖 是什麼\nCore CPI 排除食品與能源後觀察消費端通膨。\n\n🧠 為什麼重要\n它較能反映較黏著的價格壓力。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- CPI（Consumer Price Index，消費者物價指數）\n- Core PCE（核心個人消費支出物價指數）\n- Rate Hike（升息）\n- Treasury Yield（美國公債殖利率）"
+  },
+  {
+    "id": "core_pce",
+    "title": "Core PCE（核心個人消費支出物價指數）",
+    "aliases": [
+      "Core PCE",
+      "核心個人消費支出物價指數"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "pce",
+      "core_cpi",
+      "fed_funds_rate",
+      "rate_cut"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Core PCE（核心個人消費支出物價指數）\n\n📖 是什麼\nCore PCE 排除食品與能源後觀察個人消費通膨。\n\n🧠 為什麼重要\n它是 Fed 評估中期通膨趨勢的重要參考。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- PCE（Personal Consumption Expenditures，個人消費支出物價指數）\n- Core CPI（核心消費者物價指數）\n- Fed Funds Rate（聯邦基金利率）\n- Rate Cut（降息）"
+  },
+  {
+    "id": "nfp",
+    "title": "NFP（Nonfarm Payrolls，非農就業人數）",
+    "aliases": [
+      "NFP",
+      "Nonfarm Payrolls",
+      "非農就業人數",
+      "非農"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "unemployment_rate",
+      "average_hourly_earnings",
+      "fed_funds_rate",
+      "treasury_yield"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "NFP（Nonfarm Payrolls，非農就業人數）\n\n📖 是什麼\nNFP 衡量美國非農部門新增就業人數。\n\n🧠 為什麼重要\n它影響市場對成長、薪資與 Fed 政策的預期。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Unemployment Rate（失業率）\n- Average Hourly Earnings（平均時薪）\n- Fed Funds Rate（聯邦基金利率）\n- Treasury Yield（美國公債殖利率）"
+  },
+  {
+    "id": "unemployment_rate",
+    "title": "Unemployment Rate（失業率）",
+    "aliases": [
+      "Unemployment Rate",
+      "失業率"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "nfp",
+      "initial_jobless_claims",
+      "recession",
+      "soft_landing"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Unemployment Rate（失業率）\n\n📖 是什麼\n失業率衡量勞動人口中沒有工作且正在找工作者的比例。\n\n🧠 為什麼重要\n它是判斷勞動市場鬆緊與景氣循環的重要數據。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- NFP（Nonfarm Payrolls，非農就業人數）\n- Initial Jobless Claims（初領失業救濟金人數）\n- Recession（經濟衰退）\n- Soft Landing（軟著陸）"
+  },
+  {
+    "id": "initial_jobless_claims",
+    "title": "Initial Jobless Claims（初領失業救濟金人數）",
+    "aliases": [
+      "Initial Jobless Claims",
+      "Jobless Claims",
+      "初領失業救濟金人數",
+      "初領失業金"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "unemployment_rate",
+      "nfp",
+      "recession",
+      "risk_off"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Initial Jobless Claims（初領失業救濟金人數）\n\n📖 是什麼\n初領失業救濟金人數反映每週新申請失業救濟的人數。\n\n🧠 為什麼重要\n它頻率高，常被用來及早觀察勞動市場轉弱跡象。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Unemployment Rate（失業率）\n- NFP（Nonfarm Payrolls，非農就業人數）\n- Recession（經濟衰退）\n- Risk-Off（風險趨避）"
+  },
+  {
+    "id": "jolts",
+    "title": "JOLTS（職位空缺與勞動流動調查）",
+    "aliases": [
+      "JOLTS",
+      "Job Openings and Labor Turnover Survey",
+      "職位空缺與勞動流動調查"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "nfp",
+      "unemployment_rate",
+      "average_hourly_earnings",
+      "fed_funds_rate"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "JOLTS（職位空缺與勞動流動調查）\n\n📖 是什麼\nJOLTS 觀察職位空缺、離職與聘僱情況。\n\n🧠 為什麼重要\n它能補充 NFP，顯示勞動需求是否降溫。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- NFP（Nonfarm Payrolls，非農就業人數）\n- Unemployment Rate（失業率）\n- Average Hourly Earnings（平均時薪）\n- Fed Funds Rate（聯邦基金利率）"
+  },
+  {
+    "id": "average_hourly_earnings",
+    "title": "Average Hourly Earnings（平均時薪）",
+    "aliases": [
+      "Average Hourly Earnings",
+      "平均時薪"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "nfp",
+      "core_pce",
+      "rate_hike",
+      "fed_funds_rate"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Average Hourly Earnings（平均時薪）\n\n📖 是什麼\n平均時薪衡量勞工薪資成長。\n\n🧠 為什麼重要\n薪資成長會影響服務通膨與 Fed 對通膨黏著性的判斷。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- NFP（Nonfarm Payrolls，非農就業人數）\n- Core PCE（核心個人消費支出物價指數）\n- Rate Hike（升息）\n- Fed Funds Rate（聯邦基金利率）"
+  },
+  {
+    "id": "gdp",
+    "title": "GDP（Gross Domestic Product，國內生產毛額）",
+    "aliases": [
+      "GDP",
+      "Gross Domestic Product",
+      "國內生產毛額"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "recession",
+      "soft_landing",
+      "hard_landing",
+      "retail_sales"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "GDP（Gross Domestic Product，國內生產毛額）\n\n📖 是什麼\nGDP 衡量一國一段期間內的經濟產出。\n\n🧠 為什麼重要\n它反映整體景氣，但公布較慢，市場常更重視細項與修正。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Recession（經濟衰退）\n- Soft Landing（軟著陸）\n- Hard Landing（硬著陸）\n- Retail Sales（零售銷售）"
+  },
+  {
+    "id": "pmi",
+    "title": "PMI（Purchasing Managers’ Index，採購經理人指數）",
+    "aliases": [
+      "PMI",
+      "Purchasing Managers Index",
+      "採購經理人指數"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "ism_manufacturing_pmi",
+      "ism_services_pmi",
+      "gdp",
+      "risk_on"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "PMI（Purchasing Managers’ Index，採購經理人指數）\n\n📖 是什麼\nPMI 是企業採購經理人對景氣狀況的調查指標。\n\n🧠 為什麼重要\n50 通常是擴張與收縮分界，但市場更看趨勢與預期差。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- ISM Manufacturing PMI（ISM 製造業指數）\n- ISM Services PMI（ISM 服務業指數）\n- GDP（Gross Domestic Product，國內生產毛額）\n- Risk-On（風險偏好）"
+  },
+  {
+    "id": "ism_manufacturing_pmi",
+    "title": "ISM Manufacturing PMI（ISM 製造業指數）",
+    "aliases": [
+      "ISM Manufacturing PMI",
+      "ISM 製造業指數"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "pmi",
+      "ism_services_pmi",
+      "ppi",
+      "gdp"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "ISM Manufacturing PMI（ISM 製造業指數）\n\n📖 是什麼\nISM 製造業指數衡量美國製造業景氣。\n\n🧠 為什麼重要\n它可反映新訂單、庫存、就業與價格壓力。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- PMI（Purchasing Managers’ Index，採購經理人指數）\n- ISM Services PMI（ISM 服務業指數）\n- PPI（Producer Price Index，生產者物價指數）\n- GDP（Gross Domestic Product，國內生產毛額）"
+  },
+  {
+    "id": "ism_services_pmi",
+    "title": "ISM Services PMI（ISM 服務業指數）",
+    "aliases": [
+      "ISM Services PMI",
+      "ISM 服務業指數"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "pmi",
+      "core_pce",
+      "average_hourly_earnings",
+      "gdp"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "ISM Services PMI（ISM 服務業指數）\n\n📖 是什麼\nISM 服務業指數衡量美國服務業景氣。\n\n🧠 為什麼重要\n美國經濟服務業占比高，因此服務業價格與就業很重要。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- PMI（Purchasing Managers’ Index，採購經理人指數）\n- Core PCE（核心個人消費支出物價指數）\n- Average Hourly Earnings（平均時薪）\n- GDP（Gross Domestic Product，國內生產毛額）"
+  },
+  {
+    "id": "retail_sales",
+    "title": "Retail Sales（零售銷售）",
+    "aliases": [
+      "Retail Sales",
+      "零售銷售"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "consumer_confidence",
+      "gdp",
+      "risk_on",
+      "hard_landing"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Retail Sales（零售銷售）\n\n📖 是什麼\n零售銷售衡量消費者商品支出變化。\n\n🧠 為什麼重要\n消費是美國經濟重要支柱，會影響成長與企業營收預期。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Consumer Confidence（消費者信心）\n- GDP（Gross Domestic Product，國內生產毛額）\n- Risk-On（風險偏好）\n- Hard Landing（硬著陸）"
+  },
+  {
+    "id": "consumer_confidence",
+    "title": "Consumer Confidence（消費者信心）",
+    "aliases": [
+      "Consumer Confidence",
+      "消費者信心"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "retail_sales",
+      "unemployment_rate",
+      "soft_landing",
+      "risk_on"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Consumer Confidence（消費者信心）\n\n📖 是什麼\n消費者信心反映民眾對景氣、工作與收入的看法。\n\n🧠 為什麼重要\n信心變化可能影響消費意願與風險偏好。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Retail Sales（零售銷售）\n- Unemployment Rate（失業率）\n- Soft Landing（軟著陸）\n- Risk-On（風險偏好）"
+  },
+  {
+    "id": "dot_plot",
+    "title": "Dot Plot（點陣圖）",
+    "aliases": [
+      "Dot Plot",
+      "點陣圖"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "fomc",
+      "fed_funds_rate",
+      "rate_cut",
+      "rate_hike"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Dot Plot（點陣圖）\n\n📖 是什麼\n點陣圖顯示 FOMC 官員對未來利率的預估。\n\n🧠 為什麼重要\n市場會用它判斷 Fed 內部政策路徑偏鷹或偏鴿。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- FOMC（Federal Open Market Committee，聯邦公開市場委員會）\n- Fed Funds Rate（聯邦基金利率）\n- Rate Cut（降息）\n- Rate Hike（升息）"
+  },
+  {
+    "id": "fed_funds_rate",
+    "title": "Fed Funds Rate（聯邦基金利率）",
+    "aliases": [
+      "Fed Funds Rate",
+      "Federal Funds Rate",
+      "聯邦基金利率"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "fomc",
+      "rate_cut",
+      "rate_hike",
+      "treasury_yield"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Fed Funds Rate（聯邦基金利率）\n\n📖 是什麼\n聯邦基金利率是美國銀行間隔夜資金利率目標區間。\n\n🧠 為什麼重要\n它是美元利率定價與金融條件的核心基準。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- FOMC（Federal Open Market Committee，聯邦公開市場委員會）\n- Rate Cut（降息）\n- Rate Hike（升息）\n- Treasury Yield（美國公債殖利率）"
+  },
+  {
+    "id": "rate_cut",
+    "title": "Rate Cut（降息）",
+    "aliases": [
+      "Rate Cut",
+      "降息"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "fed_funds_rate",
+      "soft_landing",
+      "hard_landing",
+      "risk_on"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Rate Cut（降息）\n\n📖 是什麼\n降息是央行降低政策利率。\n\n🧠 為什麼重要\n它通常降低資金成本，但市場反應取決於是預防性降息還是衰退壓力。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Fed Funds Rate（聯邦基金利率）\n- Soft Landing（軟著陸）\n- Hard Landing（硬著陸）\n- Risk-On（風險偏好）"
+  },
+  {
+    "id": "rate_hike",
+    "title": "Rate Hike（升息）",
+    "aliases": [
+      "Rate Hike",
+      "升息"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "fed_funds_rate",
+      "cpi",
+      "real_yield",
+      "risk_off"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Rate Hike（升息）\n\n📖 是什麼\n升息是央行提高政策利率。\n\n🧠 為什麼重要\n它常用於抑制通膨，但也可能壓抑估值與經濟活動。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Fed Funds Rate（聯邦基金利率）\n- CPI（Consumer Price Index，消費者物價指數）\n- Real Yield（實質殖利率）\n- Risk-Off（風險趨避）"
+  },
+  {
+    "id": "quantitative_easing",
+    "title": "Quantitative Easing／QE（量化寬鬆）",
+    "aliases": [
+      "Quantitative Easing",
+      "QE",
+      "量化寬鬆"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "liquidity",
+      "treasury_yield",
+      "risk_on",
+      "fed_funds_rate"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Quantitative Easing／QE（量化寬鬆）\n\n📖 是什麼\nQE 是央行買入資產以增加金融體系流動性。\n\n🧠 為什麼重要\n它可能壓低殖利率並改善風險偏好。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Liquidity（市場流動性）\n- Treasury Yield（美國公債殖利率）\n- Risk-On（風險偏好）\n- Fed Funds Rate（聯邦基金利率）"
+  },
+  {
+    "id": "quantitative_tightening",
+    "title": "Quantitative Tightening／QT（量化緊縮）",
+    "aliases": [
+      "Quantitative Tightening",
+      "QT",
+      "量化緊縮"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "liquidity",
+      "treasury_yield",
+      "risk_off",
+      "real_yield"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Quantitative Tightening／QT（量化緊縮）\n\n📖 是什麼\nQT 是央行縮減資產負債表，降低市場流動性。\n\n🧠 為什麼重要\n它可能推升資金成本並影響風險資產估值。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Liquidity（市場流動性）\n- Treasury Yield（美國公債殖利率）\n- Risk-Off（風險趨避）\n- Real Yield（實質殖利率）"
+  },
+  {
+    "id": "treasury_yield",
+    "title": "Treasury Yield（美國公債殖利率）",
+    "aliases": [
+      "Treasury Yield",
+      "美國公債殖利率",
+      "公債殖利率"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "two_year_treasury_yield",
+      "ten_year_treasury_yield",
+      "real_yield",
+      "yield_curve"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Treasury Yield（美國公債殖利率）\n\n📖 是什麼\n美國公債殖利率反映市場對利率、通膨與成長的定價。\n\n🧠 為什麼重要\n殖利率變化會影響股票估值、美元與資產配置。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- 2-Year Treasury Yield（美國二年期公債殖利率）\n- 10-Year Treasury Yield（美國十年期公債殖利率）\n- Real Yield（實質殖利率）\n- Yield Curve（殖利率曲線）"
+  },
+  {
+    "id": "two_year_treasury_yield",
+    "title": "2-Year Treasury Yield（美國二年期公債殖利率）",
+    "aliases": [
+      "2-Year Treasury Yield",
+      "Two Year Treasury Yield",
+      "2Y Yield",
+      "美國二年期公債殖利率"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "fed_funds_rate",
+      "rate_cut",
+      "rate_hike",
+      "yield_curve"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "2-Year Treasury Yield（美國二年期公債殖利率）\n\n📖 是什麼\n二年期殖利率通常對 Fed 政策預期較敏感。\n\n🧠 為什麼重要\n它常用來觀察市場對未來幾次利率決策的看法。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Fed Funds Rate（聯邦基金利率）\n- Rate Cut（降息）\n- Rate Hike（升息）\n- Yield Curve（殖利率曲線）"
+  },
+  {
+    "id": "ten_year_treasury_yield",
+    "title": "10-Year Treasury Yield（美國十年期公債殖利率）",
+    "aliases": [
+      "10-Year Treasury Yield",
+      "Ten Year Treasury Yield",
+      "10Y Yield",
+      "美國十年期公債殖利率"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "treasury_yield",
+      "real_yield",
+      "equity_risk_premium",
+      "yield_curve"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "10-Year Treasury Yield（美國十年期公債殖利率）\n\n📖 是什麼\n十年期殖利率反映長期成長、通膨與期限溢酬。\n\n🧠 為什麼重要\n它是股票估值與房貸、企業融資成本的重要參考。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Treasury Yield（美國公債殖利率）\n- Real Yield（實質殖利率）\n- Equity Risk Premium（股票風險溢酬）\n- Yield Curve（殖利率曲線）"
+  },
+  {
+    "id": "real_yield",
+    "title": "Real Yield（實質殖利率）",
+    "aliases": [
+      "Real Yield",
+      "實質殖利率"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "treasury_yield",
+      "cpi",
+      "dxy",
+      "equity_risk_premium"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Real Yield（實質殖利率）\n\n📖 是什麼\n實質殖利率約等於名目殖利率扣除通膨預期。\n\n🧠 為什麼重要\n它影響成長股估值、黃金與美元等資產。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Treasury Yield（美國公債殖利率）\n- CPI（Consumer Price Index，消費者物價指數）\n- DXY（U.S. Dollar Index，美元指數）\n- Equity Risk Premium（股票風險溢酬）"
+  },
+  {
+    "id": "yield_curve",
+    "title": "Yield Curve（殖利率曲線）",
+    "aliases": [
+      "Yield Curve",
+      "殖利率曲線"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "yield_curve_inversion",
+      "two_year_treasury_yield",
+      "ten_year_treasury_yield",
+      "recession"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Yield Curve（殖利率曲線）\n\n📖 是什麼\n殖利率曲線顯示不同到期天期公債的殖利率。\n\n🧠 為什麼重要\n曲線形狀反映市場對成長、通膨與政策路徑的預期。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Yield Curve Inversion（殖利率曲線倒掛）\n- 2-Year Treasury Yield（美國二年期公債殖利率）\n- 10-Year Treasury Yield（美國十年期公債殖利率）\n- Recession（經濟衰退）"
+  },
+  {
+    "id": "yield_curve_inversion",
+    "title": "Yield Curve Inversion（殖利率曲線倒掛）",
+    "aliases": [
+      "Yield Curve Inversion",
+      "殖利率曲線倒掛",
+      "倒掛"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "yield_curve",
+      "recession",
+      "hard_landing",
+      "fed_funds_rate"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Yield Curve Inversion（殖利率曲線倒掛）\n\n📖 是什麼\n殖利率曲線倒掛通常指短天期殖利率高於長天期殖利率。\n\n🧠 為什麼重要\n它常被視為經濟放緩風險訊號，但時間落差可能很長。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Yield Curve（殖利率曲線）\n- Recession（經濟衰退）\n- Hard Landing（硬著陸）\n- Fed Funds Rate（聯邦基金利率）"
+  },
+  {
+    "id": "soft_landing",
+    "title": "Soft Landing（軟著陸）",
+    "aliases": [
+      "Soft Landing",
+      "軟著陸"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "rate_cut",
+      "unemployment_rate",
+      "gdp",
+      "risk_on"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Soft Landing（軟著陸）\n\n📖 是什麼\n軟著陸是通膨降溫但經濟沒有明顯衰退的情境。\n\n🧠 為什麼重要\n它通常有利風險偏好，但需要數據持續支持。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Rate Cut（降息）\n- Unemployment Rate（失業率）\n- GDP（Gross Domestic Product，國內生產毛額）\n- Risk-On（風險偏好）"
+  },
+  {
+    "id": "hard_landing",
+    "title": "Hard Landing（硬著陸）",
+    "aliases": [
+      "Hard Landing",
+      "硬著陸"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "recession",
+      "unemployment_rate",
+      "risk_off",
+      "rate_cut"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Hard Landing（硬著陸）\n\n📖 是什麼\n硬著陸是經濟明顯放緩或衰退的情境。\n\n🧠 為什麼重要\n市場會重新評估企業盈餘、信用風險與政策反應。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Recession（經濟衰退）\n- Unemployment Rate（失業率）\n- Risk-Off（風險趨避）\n- Rate Cut（降息）"
+  },
+  {
+    "id": "recession",
+    "title": "Recession（經濟衰退）",
+    "aliases": [
+      "Recession",
+      "經濟衰退",
+      "衰退"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "hard_landing",
+      "yield_curve_inversion",
+      "unemployment_rate",
+      "risk_off"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Recession（經濟衰退）\n\n📖 是什麼\n經濟衰退是經濟活動廣泛且持續下降。\n\n🧠 為什麼重要\n它會影響企業盈餘、就業與風險資產定價。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Hard Landing（硬著陸）\n- Yield Curve Inversion（殖利率曲線倒掛）\n- Unemployment Rate（失業率）\n- Risk-Off（風險趨避）"
+  },
+  {
+    "id": "stagflation",
+    "title": "Stagflation（停滯性通膨）",
+    "aliases": [
+      "Stagflation",
+      "停滯性通膨"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "cpi",
+      "gdp",
+      "rate_hike",
+      "risk_off"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Stagflation（停滯性通膨）\n\n📖 是什麼\n停滯性通膨是經濟成長疲弱但通膨仍高。\n\n🧠 為什麼重要\n它讓政策選擇困難，對股票估值與消費都可能不利。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- CPI（Consumer Price Index，消費者物價指數）\n- GDP（Gross Domestic Product，國內生產毛額）\n- Rate Hike（升息）\n- Risk-Off（風險趨避）"
+  },
+  {
+    "id": "liquidity",
+    "title": "Liquidity（市場流動性）",
+    "aliases": [
+      "Liquidity",
+      "市場流動性",
+      "流動性"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "quantitative_easing",
+      "quantitative_tightening",
+      "risk_on",
+      "risk_off"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Liquidity（市場流動性）\n\n📖 是什麼\n市場流動性是資金進出市場與交易執行的容易程度。\n\n🧠 為什麼重要\n流動性充足時風險資產較容易被支撐，收縮時波動可能放大。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Quantitative Easing／QE（量化寬鬆）\n- Quantitative Tightening／QT（量化緊縮）\n- Risk-On（風險偏好）\n- Risk-Off（風險趨避）"
+  },
+  {
+    "id": "risk_on",
+    "title": "Risk-On（風險偏好）",
+    "aliases": [
+      "Risk-On",
+      "Risk On",
+      "風險偏好"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "liquidity",
+      "soft_landing",
+      "dxy",
+      "vix"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Risk-On（風險偏好）\n\n📖 是什麼\nRisk-On 是市場願意承擔風險、偏好股票與成長資產的狀態。\n\n🧠 為什麼重要\n它通常與流動性改善、成長預期穩定或利率壓力下降有關。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Liquidity（市場流動性）\n- Soft Landing（軟著陸）\n- DXY（U.S. Dollar Index，美元指數）\n- VIX（CBOE Volatility Index，波動率指數／恐慌指數）"
+  },
+  {
+    "id": "risk_off",
+    "title": "Risk-Off（風險趨避）",
+    "aliases": [
+      "Risk-Off",
+      "Risk Off",
+      "風險趨避"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "vix",
+      "dxy",
+      "hard_landing",
+      "liquidity"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Risk-Off（風險趨避）\n\n📖 是什麼\nRisk-Off 是市場降低風險曝險、偏好現金或避險資產的狀態。\n\n🧠 為什麼重要\n它通常伴隨波動上升、美元走強或信用壓力增加。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- VIX（CBOE Volatility Index，波動率指數／恐慌指數）\n- DXY（U.S. Dollar Index，美元指數）\n- Hard Landing（硬著陸）\n- Liquidity（市場流動性）"
+  },
+  {
+    "id": "earnings_yield",
+    "title": "Earnings Yield（盈餘殖利率）",
+    "aliases": [
+      "Earnings Yield",
+      "盈餘殖利率"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "equity_risk_premium",
+      "ten_year_treasury_yield",
+      "real_yield",
+      "gdp"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Earnings Yield（盈餘殖利率）\n\n📖 是什麼\n盈餘殖利率是每股盈餘相對股價的比例，常視為本益比倒數。\n\n🧠 為什麼重要\n它可和公債殖利率比較，觀察股票估值吸引力。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Equity Risk Premium（股票風險溢酬）\n- 10-Year Treasury Yield（美國十年期公債殖利率）\n- Real Yield（實質殖利率）\n- GDP（Gross Domestic Product，國內生產毛額）"
+  },
+  {
+    "id": "equity_risk_premium",
+    "title": "Equity Risk Premium（股票風險溢酬）",
+    "aliases": [
+      "Equity Risk Premium",
+      "ERP",
+      "股票風險溢酬"
+    ],
+    "category": "macro",
+    "related_terms": [
+      "earnings_yield",
+      "ten_year_treasury_yield",
+      "real_yield",
+      "risk_on"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "event_driven",
+      "long_term"
+    ],
+    "text": "Equity Risk Premium（股票風險溢酬）\n\n📖 是什麼\n股票風險溢酬是股票預期報酬相對無風險利率的補償。\n\n🧠 為什麼重要\n當殖利率上升而盈餘沒有同步改善，ERP 可能被壓縮。\n\n👀 實際怎麼看\n- 實際值相對市場預期\n- 前值是否修正\n- 月增率與年增率的差異\n- 對 Fed 政策預期、殖利率與估值的影響\n- 市場在公布前已經反映多少\n\n📊 市場通常看什麼\n市場通常看數據與預期的差距、細項結構、趨勢是否延續，以及債券市場如何重新定價。\n\n⚠️ 常見誤區\n- 只看數字高低，不看預期\n- 忽略前值修正與細項\n- 假設所有經濟數據都會造成同方向反應\n\n💡 KKZ 提醒\n宏觀數據不是答案本身；真正影響價格的是數據如何改變利率、盈餘與風險偏好預期。\n\n🔗 延伸閱讀\n- Earnings Yield（盈餘殖利率）\n- 10-Year Treasury Yield（美國十年期公債殖利率）\n- Real Yield（實質殖利率）\n- Risk-On（風險偏好）"
   },
   {
     "id": "foreign_investors",
-    "title": "外資",
-    "aliases": ["外資", "Foreign Investors"],
+    "title": "外資（Foreign Investors）",
+    "aliases": [
+      "外資",
+      "Foreign Investors",
+      "外國機構投資人"
+    ],
     "category": "tw_flows",
-    "text": "外資是台股三大法人之一，泛指境外機構投資人。外資買賣超會影響大型權值股與指數方向，尤其在台積電、金融股與電子權值股上的動向，常是市場關注焦點。"
+    "related_terms": [
+      "three_institutional_investors",
+      "net_buying",
+      "net_selling",
+      "position_concentration"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "event_driven"
+    ],
+    "text": "外資（Foreign Investors）\n\n📖 是什麼\n外資是境外機構投資人，是台股三大法人之一。\n\n🧠 為什麼重要\n外資在權值股與指數期貨上的動向，常影響大盤方向與市場情緒。\n\n👀 實際怎麼看\n- 股價是否和籌碼方向一致\n- 成交量是否放大或萎縮\n- 是否連續多日累積，而非只看單日\n- 產業趨勢與事件是否支持\n- 大盤與同族群是否同步\n\n🧩 要搭配什麼一起看\n搭配股價位置、成交量、法人連續性、融資融券、借券賣出與產業消息，通常比單看一個買賣超數字更有意義。\n\n⚠️ 常見誤區\n- 法人買賣超不等於未來股價保證\n- 自營商可能包含避險交易\n- 借券或融資變化不一定只有單一解讀\n\n💡 KKZ 提醒\n籌碼是資金行為的痕跡，不是單向答案；連續性與股價反應比單日數字更重要。\n\n🔗 延伸閱讀\n- 三大法人（Three Institutional Investors）\n- 買超（Net Buying）\n- 賣超（Net Selling）\n- 集中度（Position Concentration）"
   },
   {
     "id": "investment_trust",
-    "title": "投信",
-    "aliases": ["投信", "Investment Trust"],
+    "title": "投信（Investment Trust）",
+    "aliases": [
+      "投信",
+      "Investment Trust",
+      "本土基金"
+    ],
     "category": "tw_flows",
-    "text": "投信主要代表本地基金等機構資金。投信連續買超常被市場視為中小型股或特定族群的籌碼支撐，但仍要搭配成交量、基本面與股價位置判斷。"
+    "related_terms": [
+      "three_institutional_investors",
+      "consecutive_institutional_buying",
+      "major_player_net_buying",
+      "net_buying"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "event_driven"
+    ],
+    "text": "投信（Investment Trust）\n\n📖 是什麼\n投信主要代表本地基金等機構資金。\n\n🧠 為什麼重要\n投信連買常被視為特定族群或中小型股籌碼支撐，但仍需搭配價格。\n\n👀 實際怎麼看\n- 股價是否和籌碼方向一致\n- 成交量是否放大或萎縮\n- 是否連續多日累積，而非只看單日\n- 產業趨勢與事件是否支持\n- 大盤與同族群是否同步\n\n🧩 要搭配什麼一起看\n搭配股價位置、成交量、法人連續性、融資融券、借券賣出與產業消息，通常比單看一個買賣超數字更有意義。\n\n⚠️ 常見誤區\n- 法人買賣超不等於未來股價保證\n- 自營商可能包含避險交易\n- 借券或融資變化不一定只有單一解讀\n\n💡 KKZ 提醒\n籌碼是資金行為的痕跡，不是單向答案；連續性與股價反應比單日數字更重要。\n\n🔗 延伸閱讀\n- 三大法人（Three Institutional Investors）\n- 法人連續買超（Consecutive Institutional Buying）\n- 主力買賣超（Major Player Net Buying）\n- 買超（Net Buying）"
   },
   {
     "id": "dealer",
-    "title": "自營商",
-    "aliases": ["自營商", "Dealer"],
+    "title": "自營商（Dealer）",
+    "aliases": [
+      "自營商",
+      "Dealer",
+      "券商自營"
+    ],
     "category": "tw_flows",
-    "text": "自營商是券商用自有資金進行交易的部位，通常又可拆成自行買賣與避險交易。自營商買賣超有時反映短線交易或衍生性商品避險需求，解讀時不宜單獨使用。"
+    "related_terms": [
+      "three_institutional_investors",
+      "net_buying",
+      "net_selling",
+      "securities_lending"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "event_driven"
+    ],
+    "text": "自營商（Dealer）\n\n📖 是什麼\n自營商是券商用自有資金或避險需求進行交易。\n\n🧠 為什麼重要\n自營商買賣超可能包含避險，不宜直接解讀為單純看多或看空。\n\n👀 實際怎麼看\n- 股價是否和籌碼方向一致\n- 成交量是否放大或萎縮\n- 是否連續多日累積，而非只看單日\n- 產業趨勢與事件是否支持\n- 大盤與同族群是否同步\n\n🧩 要搭配什麼一起看\n搭配股價位置、成交量、法人連續性、融資融券、借券賣出與產業消息，通常比單看一個買賣超數字更有意義。\n\n⚠️ 常見誤區\n- 法人買賣超不等於未來股價保證\n- 自營商可能包含避險交易\n- 借券或融資變化不一定只有單一解讀\n\n💡 KKZ 提醒\n籌碼是資金行為的痕跡，不是單向答案；連續性與股價反應比單日數字更重要。\n\n🔗 延伸閱讀\n- 三大法人（Three Institutional Investors）\n- 買超（Net Buying）\n- 賣超（Net Selling）\n- 借券（Securities Lending）"
   },
   {
     "id": "three_institutional_investors",
-    "title": "三大法人",
-    "aliases": ["三大法人", "法人買賣超"],
+    "title": "三大法人（Three Institutional Investors）",
+    "aliases": [
+      "三大法人",
+      "Three Institutional Investors",
+      "法人買賣超"
+    ],
     "category": "tw_flows",
-    "text": "三大法人包含外資、投信與自營商。每日買賣超可以觀察市場主力資金方向，但不同法人行為邏輯不同，應分開看，也要搭配指數、族群輪動與個股成交量。"
+    "related_terms": [
+      "foreign_investors",
+      "investment_trust",
+      "dealer",
+      "consecutive_institutional_buying"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "event_driven"
+    ],
+    "text": "三大法人（Three Institutional Investors）\n\n📖 是什麼\n三大法人包含外資、投信與自營商。\n\n🧠 為什麼重要\n它能觀察主要機構資金流向，但各法人行為邏輯不同。\n\n👀 實際怎麼看\n- 股價是否和籌碼方向一致\n- 成交量是否放大或萎縮\n- 是否連續多日累積，而非只看單日\n- 產業趨勢與事件是否支持\n- 大盤與同族群是否同步\n\n🧩 要搭配什麼一起看\n搭配股價位置、成交量、法人連續性、融資融券、借券賣出與產業消息，通常比單看一個買賣超數字更有意義。\n\n⚠️ 常見誤區\n- 法人買賣超不等於未來股價保證\n- 自營商可能包含避險交易\n- 借券或融資變化不一定只有單一解讀\n\n💡 KKZ 提醒\n籌碼是資金行為的痕跡，不是單向答案；連續性與股價反應比單日數字更重要。\n\n🔗 延伸閱讀\n- 外資（Foreign Investors）\n- 投信（Investment Trust）\n- 自營商（Dealer）\n- 法人連續買超（Consecutive Institutional Buying）"
   },
   {
     "id": "margin_buying",
-    "title": "融資",
-    "aliases": ["融資", "Margin Buying"],
+    "title": "融資（Margin Buying）",
+    "aliases": [
+      "融資",
+      "Margin Buying"
+    ],
     "category": "tw_flows",
-    "text": "融資是投資人向券商借錢買股票，融資餘額上升通常代表散戶槓桿或短線參與度增加。若股價下跌且融資過高，可能面臨停損或斷頭壓力。"
+    "related_terms": [
+      "margin_balance",
+      "long_liquidation",
+      "short_squeeze",
+      "day_trading_ratio"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "event_driven"
+    ],
+    "text": "融資（Margin Buying）\n\n📖 是什麼\n融資是投資人向券商借錢買股票。\n\n🧠 為什麼重要\n融資增加代表槓桿參與提高，可能放大漲跌與停損壓力。\n\n👀 實際怎麼看\n- 股價是否和籌碼方向一致\n- 成交量是否放大或萎縮\n- 是否連續多日累積，而非只看單日\n- 產業趨勢與事件是否支持\n- 大盤與同族群是否同步\n\n🧩 要搭配什麼一起看\n搭配股價位置、成交量、法人連續性、融資融券、借券賣出與產業消息，通常比單看一個買賣超數字更有意義。\n\n⚠️ 常見誤區\n- 法人買賣超不等於未來股價保證\n- 自營商可能包含避險交易\n- 借券或融資變化不一定只有單一解讀\n\n💡 KKZ 提醒\n籌碼是資金行為的痕跡，不是單向答案；連續性與股價反應比單日數字更重要。\n\n🔗 延伸閱讀\n- 融資餘額（Margin Balance）\n- 多殺多（Long Liquidation）\n- 軋空（Short Squeeze）\n- 當沖比（Day Trading Ratio）"
   },
   {
     "id": "short_selling",
-    "title": "融券",
-    "aliases": ["融券", "Short Selling"],
+    "title": "融券（Short Selling）",
+    "aliases": [
+      "融券",
+      "Short Selling"
+    ],
     "category": "tw_flows",
-    "text": "融券是投資人向券商借股票賣出，期待未來用較低價格買回。融券增加可能代表看空或避險需求增加；若股價上漲，空方回補可能加速漲勢。"
+    "related_terms": [
+      "short_balance",
+      "short_to_margin_ratio",
+      "short_squeeze",
+      "securities_lending_short_sales"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "event_driven"
+    ],
+    "text": "融券（Short Selling）\n\n📖 是什麼\n融券是投資人借股票賣出，期待未來回補。\n\n🧠 為什麼重要\n融券增加可能代表看空、避險或短線交易，不一定只有單一含義。\n\n👀 實際怎麼看\n- 股價是否和籌碼方向一致\n- 成交量是否放大或萎縮\n- 是否連續多日累積，而非只看單日\n- 產業趨勢與事件是否支持\n- 大盤與同族群是否同步\n\n🧩 要搭配什麼一起看\n搭配股價位置、成交量、法人連續性、融資融券、借券賣出與產業消息，通常比單看一個買賣超數字更有意義。\n\n⚠️ 常見誤區\n- 法人買賣超不等於未來股價保證\n- 自營商可能包含避險交易\n- 借券或融資變化不一定只有單一解讀\n\n💡 KKZ 提醒\n籌碼是資金行為的痕跡，不是單向答案；連續性與股價反應比單日數字更重要。\n\n🔗 延伸閱讀\n- 融券餘額（Short Balance）\n- 券資比（Short-to-Margin Ratio）\n- 軋空（Short Squeeze）\n- 借券賣出（Securities Lending Short Sales）"
   },
   {
     "id": "securities_lending",
-    "title": "借券",
-    "aliases": ["借券", "Securities Lending"],
+    "title": "借券（Securities Lending）",
+    "aliases": [
+      "借券",
+      "Securities Lending"
+    ],
     "category": "tw_flows",
-    "text": "借券是市場參與者借入股票，可能用於放空、避險、套利或交割需求。借券餘額增加不一定等於單純看空，需要搭配借券賣出、股價位置與成交量一起判讀。"
+    "related_terms": [
+      "securities_lending_short_sales",
+      "short_selling",
+      "short_squeeze",
+      "net_selling"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "event_driven"
+    ],
+    "text": "借券（Securities Lending）\n\n📖 是什麼\n借券是市場參與者借入股票，可能用於放空、避險、套利或交割。\n\n🧠 為什麼重要\n借券增加不必然全部用於看空，需要搭配借券賣出與股價判斷。\n\n👀 實際怎麼看\n- 股價是否和籌碼方向一致\n- 成交量是否放大或萎縮\n- 是否連續多日累積，而非只看單日\n- 產業趨勢與事件是否支持\n- 大盤與同族群是否同步\n\n🧩 要搭配什麼一起看\n搭配股價位置、成交量、法人連續性、融資融券、借券賣出與產業消息，通常比單看一個買賣超數字更有意義。\n\n⚠️ 常見誤區\n- 法人買賣超不等於未來股價保證\n- 自營商可能包含避險交易\n- 借券或融資變化不一定只有單一解讀\n\n💡 KKZ 提醒\n籌碼是資金行為的痕跡，不是單向答案；連續性與股價反應比單日數字更重要。\n\n🔗 延伸閱讀\n- 借券賣出（Securities Lending Short Sales）\n- 融券（Short Selling）\n- 軋空（Short Squeeze）\n- 賣超（Net Selling）"
+  },
+  {
+    "id": "net_buying",
+    "title": "買超（Net Buying）",
+    "aliases": [
+      "買超",
+      "Net Buying"
+    ],
+    "category": "tw_flows",
+    "related_terms": [
+      "net_selling",
+      "foreign_investors",
+      "investment_trust",
+      "consecutive_institutional_buying"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "event_driven"
+    ],
+    "text": "買超（Net Buying）\n\n📖 是什麼\n買超是某類投資人買進金額大於賣出金額。\n\n🧠 為什麼重要\n它代表該期間資金淨流入，但不保證未來股價上漲。\n\n👀 實際怎麼看\n- 股價是否和籌碼方向一致\n- 成交量是否放大或萎縮\n- 是否連續多日累積，而非只看單日\n- 產業趨勢與事件是否支持\n- 大盤與同族群是否同步\n\n🧩 要搭配什麼一起看\n搭配股價位置、成交量、法人連續性、融資融券、借券賣出與產業消息，通常比單看一個買賣超數字更有意義。\n\n⚠️ 常見誤區\n- 法人買賣超不等於未來股價保證\n- 自營商可能包含避險交易\n- 借券或融資變化不一定只有單一解讀\n\n💡 KKZ 提醒\n籌碼是資金行為的痕跡，不是單向答案；連續性與股價反應比單日數字更重要。\n\n🔗 延伸閱讀\n- 賣超（Net Selling）\n- 外資（Foreign Investors）\n- 投信（Investment Trust）\n- 法人連續買超（Consecutive Institutional Buying）"
+  },
+  {
+    "id": "net_selling",
+    "title": "賣超（Net Selling）",
+    "aliases": [
+      "賣超",
+      "Net Selling"
+    ],
+    "category": "tw_flows",
+    "related_terms": [
+      "net_buying",
+      "foreign_investors",
+      "dealer",
+      "risk_off"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "event_driven"
+    ],
+    "text": "賣超（Net Selling）\n\n📖 是什麼\n賣超是某類投資人賣出金額大於買進金額。\n\n🧠 為什麼重要\n它代表該期間資金淨流出，但要看股價是否已反映。\n\n👀 實際怎麼看\n- 股價是否和籌碼方向一致\n- 成交量是否放大或萎縮\n- 是否連續多日累積，而非只看單日\n- 產業趨勢與事件是否支持\n- 大盤與同族群是否同步\n\n🧩 要搭配什麼一起看\n搭配股價位置、成交量、法人連續性、融資融券、借券賣出與產業消息，通常比單看一個買賣超數字更有意義。\n\n⚠️ 常見誤區\n- 法人買賣超不等於未來股價保證\n- 自營商可能包含避險交易\n- 借券或融資變化不一定只有單一解讀\n\n💡 KKZ 提醒\n籌碼是資金行為的痕跡，不是單向答案；連續性與股價反應比單日數字更重要。\n\n🔗 延伸閱讀\n- 買超（Net Buying）\n- 外資（Foreign Investors）\n- 自營商（Dealer）\n- Risk-Off（風險趨避）"
+  },
+  {
+    "id": "margin_balance",
+    "title": "融資餘額（Margin Balance）",
+    "aliases": [
+      "融資餘額",
+      "Margin Balance"
+    ],
+    "category": "tw_flows",
+    "related_terms": [
+      "margin_buying",
+      "long_liquidation",
+      "short_to_margin_ratio",
+      "day_trading_ratio"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "event_driven"
+    ],
+    "text": "融資餘額（Margin Balance）\n\n📖 是什麼\n融資餘額是尚未償還的融資買進部位。\n\n🧠 為什麼重要\n它反映市場槓桿與散戶參與度，過高時下跌風險可能放大。\n\n👀 實際怎麼看\n- 股價是否和籌碼方向一致\n- 成交量是否放大或萎縮\n- 是否連續多日累積，而非只看單日\n- 產業趨勢與事件是否支持\n- 大盤與同族群是否同步\n\n🧩 要搭配什麼一起看\n搭配股價位置、成交量、法人連續性、融資融券、借券賣出與產業消息，通常比單看一個買賣超數字更有意義。\n\n⚠️ 常見誤區\n- 法人買賣超不等於未來股價保證\n- 自營商可能包含避險交易\n- 借券或融資變化不一定只有單一解讀\n\n💡 KKZ 提醒\n籌碼是資金行為的痕跡，不是單向答案；連續性與股價反應比單日數字更重要。\n\n🔗 延伸閱讀\n- 融資（Margin Buying）\n- 多殺多（Long Liquidation）\n- 券資比（Short-to-Margin Ratio）\n- 當沖比（Day Trading Ratio）"
+  },
+  {
+    "id": "short_balance",
+    "title": "融券餘額（Short Balance）",
+    "aliases": [
+      "融券餘額",
+      "Short Balance"
+    ],
+    "category": "tw_flows",
+    "related_terms": [
+      "short_selling",
+      "short_squeeze",
+      "short_to_margin_ratio",
+      "securities_lending"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "event_driven"
+    ],
+    "text": "融券餘額（Short Balance）\n\n📖 是什麼\n融券餘額是尚未回補的融券放空部位。\n\n🧠 為什麼重要\n它可觀察空方部位壓力，但也可能帶來回補買盤。\n\n👀 實際怎麼看\n- 股價是否和籌碼方向一致\n- 成交量是否放大或萎縮\n- 是否連續多日累積，而非只看單日\n- 產業趨勢與事件是否支持\n- 大盤與同族群是否同步\n\n🧩 要搭配什麼一起看\n搭配股價位置、成交量、法人連續性、融資融券、借券賣出與產業消息，通常比單看一個買賣超數字更有意義。\n\n⚠️ 常見誤區\n- 法人買賣超不等於未來股價保證\n- 自營商可能包含避險交易\n- 借券或融資變化不一定只有單一解讀\n\n💡 KKZ 提醒\n籌碼是資金行為的痕跡，不是單向答案；連續性與股價反應比單日數字更重要。\n\n🔗 延伸閱讀\n- 融券（Short Selling）\n- 軋空（Short Squeeze）\n- 券資比（Short-to-Margin Ratio）\n- 借券（Securities Lending）"
+  },
+  {
+    "id": "short_to_margin_ratio",
+    "title": "券資比（Short-to-Margin Ratio）",
+    "aliases": [
+      "券資比",
+      "Short-to-Margin Ratio",
+      "券資比率"
+    ],
+    "category": "tw_flows",
+    "related_terms": [
+      "margin_balance",
+      "short_balance",
+      "short_squeeze",
+      "margin_buying"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "event_driven"
+    ],
+    "text": "券資比（Short-to-Margin Ratio）\n\n📖 是什麼\n券資比是融券餘額相對融資餘額的比例。\n\n🧠 為什麼重要\n它可觀察多空槓桿結構，但不同股票基準差異很大。\n\n👀 實際怎麼看\n- 股價是否和籌碼方向一致\n- 成交量是否放大或萎縮\n- 是否連續多日累積，而非只看單日\n- 產業趨勢與事件是否支持\n- 大盤與同族群是否同步\n\n🧩 要搭配什麼一起看\n搭配股價位置、成交量、法人連續性、融資融券、借券賣出與產業消息，通常比單看一個買賣超數字更有意義。\n\n⚠️ 常見誤區\n- 法人買賣超不等於未來股價保證\n- 自營商可能包含避險交易\n- 借券或融資變化不一定只有單一解讀\n\n💡 KKZ 提醒\n籌碼是資金行為的痕跡，不是單向答案；連續性與股價反應比單日數字更重要。\n\n🔗 延伸閱讀\n- 融資餘額（Margin Balance）\n- 融券餘額（Short Balance）\n- 軋空（Short Squeeze）\n- 融資（Margin Buying）"
+  },
+  {
+    "id": "securities_lending_short_sales",
+    "title": "借券賣出（Securities Lending Short Sales）",
+    "aliases": [
+      "借券賣出",
+      "Securities Lending Short Sales"
+    ],
+    "category": "tw_flows",
+    "related_terms": [
+      "securities_lending",
+      "short_selling",
+      "net_selling",
+      "short_squeeze"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "event_driven"
+    ],
+    "text": "借券賣出（Securities Lending Short Sales）\n\n📖 是什麼\n借券賣出是借入股票後在市場賣出。\n\n🧠 為什麼重要\n它較接近實際放空壓力，但仍可能有避險與套利目的。\n\n👀 實際怎麼看\n- 股價是否和籌碼方向一致\n- 成交量是否放大或萎縮\n- 是否連續多日累積，而非只看單日\n- 產業趨勢與事件是否支持\n- 大盤與同族群是否同步\n\n🧩 要搭配什麼一起看\n搭配股價位置、成交量、法人連續性、融資融券、借券賣出與產業消息，通常比單看一個買賣超數字更有意義。\n\n⚠️ 常見誤區\n- 法人買賣超不等於未來股價保證\n- 自營商可能包含避險交易\n- 借券或融資變化不一定只有單一解讀\n\n💡 KKZ 提醒\n籌碼是資金行為的痕跡，不是單向答案；連續性與股價反應比單日數字更重要。\n\n🔗 延伸閱讀\n- 借券（Securities Lending）\n- 融券（Short Selling）\n- 賣超（Net Selling）\n- 軋空（Short Squeeze）"
+  },
+  {
+    "id": "short_squeeze",
+    "title": "軋空（Short Squeeze）",
+    "aliases": [
+      "軋空",
+      "Short Squeeze"
+    ],
+    "category": "tw_flows",
+    "related_terms": [
+      "short_selling",
+      "short_balance",
+      "breakout",
+      "relative_volume"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "event_driven"
+    ],
+    "text": "軋空（Short Squeeze）\n\n📖 是什麼\n軋空是空方因股價上漲被迫回補，進一步推升價格。\n\n🧠 為什麼重要\n它常出現在空單集中、成交量放大且價格突破時。\n\n👀 實際怎麼看\n- 股價是否和籌碼方向一致\n- 成交量是否放大或萎縮\n- 是否連續多日累積，而非只看單日\n- 產業趨勢與事件是否支持\n- 大盤與同族群是否同步\n\n🧩 要搭配什麼一起看\n搭配股價位置、成交量、法人連續性、融資融券、借券賣出與產業消息，通常比單看一個買賣超數字更有意義。\n\n⚠️ 常見誤區\n- 法人買賣超不等於未來股價保證\n- 自營商可能包含避險交易\n- 借券或融資變化不一定只有單一解讀\n\n💡 KKZ 提醒\n籌碼是資金行為的痕跡，不是單向答案；連續性與股價反應比單日數字更重要。\n\n🔗 延伸閱讀\n- 融券（Short Selling）\n- 融券餘額（Short Balance）\n- Breakout（突破）\n- Relative Volume（相對成交量／RVOL）"
+  },
+  {
+    "id": "long_liquidation",
+    "title": "多殺多（Long Liquidation）",
+    "aliases": [
+      "多殺多",
+      "Long Liquidation"
+    ],
+    "category": "tw_flows",
+    "related_terms": [
+      "margin_buying",
+      "margin_balance",
+      "gap_down",
+      "risk_off"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "event_driven"
+    ],
+    "text": "多殺多（Long Liquidation）\n\n📖 是什麼\n多殺多是多方部位因下跌或停損被迫賣出，造成跌勢加速。\n\n🧠 為什麼重要\n高融資或高槓桿環境下更容易發生。\n\n👀 實際怎麼看\n- 股價是否和籌碼方向一致\n- 成交量是否放大或萎縮\n- 是否連續多日累積，而非只看單日\n- 產業趨勢與事件是否支持\n- 大盤與同族群是否同步\n\n🧩 要搭配什麼一起看\n搭配股價位置、成交量、法人連續性、融資融券、借券賣出與產業消息，通常比單看一個買賣超數字更有意義。\n\n⚠️ 常見誤區\n- 法人買賣超不等於未來股價保證\n- 自營商可能包含避險交易\n- 借券或融資變化不一定只有單一解讀\n\n💡 KKZ 提醒\n籌碼是資金行為的痕跡，不是單向答案；連續性與股價反應比單日數字更重要。\n\n🔗 延伸閱讀\n- 融資（Margin Buying）\n- 融資餘額（Margin Balance）\n- Gap Down（跳空下跌）\n- Risk-Off（風險趨避）"
+  },
+  {
+    "id": "day_trading_ratio",
+    "title": "當沖比（Day Trading Ratio）",
+    "aliases": [
+      "當沖比",
+      "Day Trading Ratio"
+    ],
+    "category": "tw_flows",
+    "related_terms": [
+      "volume",
+      "relative_volume",
+      "margin_buying",
+      "momentum"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "event_driven"
+    ],
+    "text": "當沖比（Day Trading Ratio）\n\n📖 是什麼\n當沖比衡量當日沖銷交易占成交的比例。\n\n🧠 為什麼重要\n高當沖比代表短線交易活躍，波動可能加大。\n\n👀 實際怎麼看\n- 股價是否和籌碼方向一致\n- 成交量是否放大或萎縮\n- 是否連續多日累積，而非只看單日\n- 產業趨勢與事件是否支持\n- 大盤與同族群是否同步\n\n🧩 要搭配什麼一起看\n搭配股價位置、成交量、法人連續性、融資融券、借券賣出與產業消息，通常比單看一個買賣超數字更有意義。\n\n⚠️ 常見誤區\n- 法人買賣超不等於未來股價保證\n- 自營商可能包含避險交易\n- 借券或融資變化不一定只有單一解讀\n\n💡 KKZ 提醒\n籌碼是資金行為的痕跡，不是單向答案；連續性與股價反應比單日數字更重要。\n\n🔗 延伸閱讀\n- Volume（成交量）\n- Relative Volume（相對成交量／RVOL）\n- 融資（Margin Buying）\n- Momentum（動能）"
+  },
+  {
+    "id": "major_player_net_buying",
+    "title": "主力買賣超（Major Player Net Buying）",
+    "aliases": [
+      "主力買賣超",
+      "Major Player Net Buying",
+      "主力買超"
+    ],
+    "category": "tw_flows",
+    "related_terms": [
+      "position_concentration",
+      "net_buying",
+      "net_selling",
+      "volume"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "event_driven"
+    ],
+    "text": "主力買賣超（Major Player Net Buying）\n\n📖 是什麼\n主力買賣超用來觀察較大資金在特定股票的淨買賣。\n\n🧠 為什麼重要\n它能輔助判斷籌碼集中，但資料來源與定義需一致。\n\n👀 實際怎麼看\n- 股價是否和籌碼方向一致\n- 成交量是否放大或萎縮\n- 是否連續多日累積，而非只看單日\n- 產業趨勢與事件是否支持\n- 大盤與同族群是否同步\n\n🧩 要搭配什麼一起看\n搭配股價位置、成交量、法人連續性、融資融券、借券賣出與產業消息，通常比單看一個買賣超數字更有意義。\n\n⚠️ 常見誤區\n- 法人買賣超不等於未來股價保證\n- 自營商可能包含避險交易\n- 借券或融資變化不一定只有單一解讀\n\n💡 KKZ 提醒\n籌碼是資金行為的痕跡，不是單向答案；連續性與股價反應比單日數字更重要。\n\n🔗 延伸閱讀\n- 集中度（Position Concentration）\n- 買超（Net Buying）\n- 賣超（Net Selling）\n- Volume（成交量）"
+  },
+  {
+    "id": "position_concentration",
+    "title": "集中度（Position Concentration）",
+    "aliases": [
+      "集中度",
+      "Position Concentration",
+      "籌碼集中度"
+    ],
+    "category": "tw_flows",
+    "related_terms": [
+      "major_player_net_buying",
+      "foreign_investors",
+      "volume",
+      "support"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "event_driven"
+    ],
+    "text": "集中度（Position Concentration）\n\n📖 是什麼\n集中度觀察籌碼是否集中在少數大戶或法人手中。\n\n🧠 為什麼重要\n籌碼集中可能降低浮動供給，但也可能增加大戶調節風險。\n\n👀 實際怎麼看\n- 股價是否和籌碼方向一致\n- 成交量是否放大或萎縮\n- 是否連續多日累積，而非只看單日\n- 產業趨勢與事件是否支持\n- 大盤與同族群是否同步\n\n🧩 要搭配什麼一起看\n搭配股價位置、成交量、法人連續性、融資融券、借券賣出與產業消息，通常比單看一個買賣超數字更有意義。\n\n⚠️ 常見誤區\n- 法人買賣超不等於未來股價保證\n- 自營商可能包含避險交易\n- 借券或融資變化不一定只有單一解讀\n\n💡 KKZ 提醒\n籌碼是資金行為的痕跡，不是單向答案；連續性與股價反應比單日數字更重要。\n\n🔗 延伸閱讀\n- 主力買賣超（Major Player Net Buying）\n- 外資（Foreign Investors）\n- Volume（成交量）\n- Support（支撐）"
+  },
+  {
+    "id": "consecutive_institutional_buying",
+    "title": "法人連續買超（Consecutive Institutional Buying）",
+    "aliases": [
+      "法人連續買超",
+      "Consecutive Institutional Buying",
+      "連續買超"
+    ],
+    "category": "tw_flows",
+    "related_terms": [
+      "three_institutional_investors",
+      "investment_trust",
+      "net_buying",
+      "relative_strength"
+    ],
+    "difficulty": "beginner",
+    "market_context": [
+      "swing",
+      "event_driven"
+    ],
+    "text": "法人連續買超（Consecutive Institutional Buying）\n\n📖 是什麼\n法人連續買超是法人多日持續淨買進。\n\n🧠 為什麼重要\n連續性通常比單日買超更有參考價值，但仍要看股價是否同步轉強。\n\n👀 實際怎麼看\n- 股價是否和籌碼方向一致\n- 成交量是否放大或萎縮\n- 是否連續多日累積，而非只看單日\n- 產業趨勢與事件是否支持\n- 大盤與同族群是否同步\n\n🧩 要搭配什麼一起看\n搭配股價位置、成交量、法人連續性、融資融券、借券賣出與產業消息，通常比單看一個買賣超數字更有意義。\n\n⚠️ 常見誤區\n- 法人買賣超不等於未來股價保證\n- 自營商可能包含避險交易\n- 借券或融資變化不一定只有單一解讀\n\n💡 KKZ 提醒\n籌碼是資金行為的痕跡，不是單向答案；連續性與股價反應比單日數字更重要。\n\n🔗 延伸閱讀\n- 三大法人（Three Institutional Investors）\n- 投信（Investment Trust）\n- 買超（Net Buying）\n- Relative Strength（相對強勢）"
   }
 ]

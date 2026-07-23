@@ -25,6 +25,9 @@ from knowledge_base import (
 logger = logging.getLogger("kkz.webhook")
 app = FastAPI(title="KKZ LINE Knowledge Webhook")
 app.mount("/static", StaticFiles(directory=ROOT_DIR / "static"), name="static")
+MAX_QUICK_REPLY_ITEMS = 13
+TERM_PAGE_SIZE = 10
+MAX_QUICK_REPLY_LABEL_LENGTH = 20
 
 
 def get_channel_secret():
@@ -55,8 +58,15 @@ def quick_reply_item(label, data=None, text=None):
     return {"type": "action", "action": action}
 
 
+def compact_quick_reply_label(value):
+    label = str(value).split("（", 1)[0].strip()
+    if len(label) <= MAX_QUICK_REPLY_LABEL_LENGTH:
+        return label
+    return f"{label[: MAX_QUICK_REPLY_LABEL_LENGTH - 3]}..."
+
+
 def quick_reply(items):
-    return {"items": items[:13]}
+    return {"items": items[:MAX_QUICK_REPLY_ITEMS]}
 
 
 def main_menu_items():
@@ -96,16 +106,26 @@ def category_message(menu_id):
     }
 
 
-def term_list_message(category_id):
+def term_list_message(category_id, page=1):
     category = CATEGORIES[category_id]
+    terms = terms_for_category(category_id)
+    total_pages = max(1, (len(terms) + TERM_PAGE_SIZE - 1) // TERM_PAGE_SIZE)
+    page = max(1, min(page, total_pages))
+    start = (page - 1) * TERM_PAGE_SIZE
+    visible_terms = terms[start : start + TERM_PAGE_SIZE]
     items = [
-        quick_reply_item(term.title, f"term={term.id}")
-        for term in terms_for_category(category_id)
+        quick_reply_item(compact_quick_reply_label(term.title), f"term={term.id}")
+        for term in visible_terms
     ]
+    if page > 1:
+        items.append(quick_reply_item("上一頁", f"category={category_id}&page={page - 1}"))
+    if page < total_pages:
+        items.append(quick_reply_item("下一頁", f"category={category_id}&page={page + 1}"))
     items.extend(navigation_items(f"menu={category['menu']}"))
+    page_label = f"（{page}/{total_pages}）" if total_pages > 1 else ""
     return {
         "type": "text",
-        "text": f"{category['title']}：請選擇名詞。",
+        "text": f"{category['title']}{page_label}：請選擇名詞。",
         "quickReply": quick_reply(items),
     }
 
@@ -154,7 +174,11 @@ def messages_for_payload(payload):
             return [category_message(menu_id)]
     if category_id := parsed.get("category"):
         if category_id in CATEGORIES:
-            return [term_list_message(category_id)]
+            try:
+                page = int(parsed.get("page", "1"))
+            except ValueError:
+                page = 1
+            return [term_list_message(category_id, page)]
     if term_id := parsed.get("term"):
         if term_id in TERMS_BY_ID:
             return term_messages(TERMS_BY_ID[term_id])

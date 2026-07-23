@@ -39,7 +39,7 @@ class WebhookNavigationTest(unittest.TestCase):
             item["action"]["label"]
             for item in messages[0]["quickReply"]["items"]
         ]
-        self.assertEqual(labels, ["技術指標", "常見線型", "價格行為", "返回", "主選單"])
+        self.assertEqual(labels, ["技術指標", "常見線型", "K 線型態", "價格行為", "返回", "主選單"])
 
     def test_category_payload_returns_terms_within_line_limit(self):
         message = category_message("market_basics")
@@ -50,9 +50,21 @@ class WebhookNavigationTest(unittest.TestCase):
             item["action"]["label"]
             for item in messages[0]["quickReply"]["items"]
         ]
-        self.assertIn("外資", labels)
-        self.assertIn("借券", labels)
+        self.assertTrue(any(label.startswith("外資") for label in labels))
+        self.assertIn("下一頁", labels)
         self.assertLessEqual(len(labels), 13)
+
+    def test_large_category_can_page_to_later_terms(self):
+        messages = messages_for_payload("category=tw_flows&page=2")
+        labels = [
+            item["action"]["label"]
+            for item in messages[0]["quickReply"]["items"]
+        ]
+
+        self.assertTrue(any(label.startswith("借券賣出") for label in labels))
+        self.assertIn("上一頁", labels)
+        self.assertLessEqual(len(labels), 13)
+        self.assertTrue(all(len(label) <= 20 for label in labels))
 
     def test_unknown_payload_returns_no_messages(self):
         self.assertEqual(messages_for_payload("not-a-known-topic"), [])
