@@ -503,6 +503,7 @@ class WatchlistMarketTest(unittest.TestCase):
                 "main.build_event_radar",
                 return_value="📅 Event Radar\n今日無新的或當週重要事件。",
             ) as mocked_event_radar,
+            patch("main.build_tw_institutional_sections", return_value=[]),
         ):
             message = build_message("tw")
 

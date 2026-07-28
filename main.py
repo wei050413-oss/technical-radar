@@ -11,6 +11,8 @@ import pandas as pd
 import requests
 import yfinance as yf
 
+from tw_institutional import build_tw_institutional_sections
+
 
 SHEET_ID = "1DM7x4sQP2Mt7Tiohf2wGLt_l1dizbhAk-sZEIMleqlc"
 MAX_MESSAGE_LENGTH = 4500
@@ -817,8 +819,12 @@ def build_message(market=None):
 
     sections = [
         build_daily_watchlist(results, config["title"]),
-        build_technical_alerts(results),
     ]
+
+    if (market or os.getenv("WATCHLIST_MARKET") or DEFAULT_MARKET).lower() == "tw":
+        sections.extend(build_tw_institutional_sections(get_today_taipei()))
+
+    sections.append(build_technical_alerts(results))
 
     if config["include_event_radar"]:
         try:
