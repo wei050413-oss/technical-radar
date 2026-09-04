@@ -1,6 +1,6 @@
 import unittest
 from datetime import date, datetime
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 import pandas as pd
 
@@ -16,9 +16,15 @@ from main import (
     build_technical_alerts,
     calculate_period_return,
     calculate_volume_ratio,
+    get_expected_price_date,
+    get_price_data,
+    get_earnings_events,
+    get_macro_events,
+    get_previous_us_week_range,
     get_watchlist_from_sheets,
     get_upcoming_events,
     get_volume_price_signal,
+    parse_bls_release_events,
     should_run_weekly_recap,
 )
 
@@ -240,7 +246,8 @@ class TechnicalAlertsTest(unittest.TestCase):
     def price_data(self, latest_close, latest_volume):
         close = [100.0] * 59 + [latest_close]
         volume = [100.0] * 59 + [latest_volume]
-        return pd.DataFrame({"close": close, "volume": volume})
+        index = pd.date_range("2026-06-01", periods=60, freq="D")
+        return pd.DataFrame({"close": close, "volume": volume}, index=index)
 
     def analyze_with_price_data(self, latest_close, latest_volume):
         with patch(
@@ -295,6 +302,46 @@ class TechnicalAlertsTest(unittest.TestCase):
         self.assertIsNone(result["error"])
         self.assertFalse(any("Avg Volume" in alert for alert in all_alerts))
 
+    def test_analyze_rejects_stale_price_date_when_expected_date_is_set(self):
+        df = self.price_data(103.0, 120.0)
+        with patch("main.get_price_data", return_value=df):
+            result = analyze_ticker(
+                "TEST",
+                expected_price_date=date(2026, 9, 3),
+            )
+
+        self.assertIn("價格資料日期不符", result["error"])
+        self.assertEqual(result["price_date"], date(2026, 7, 30))
+
+    def test_get_price_data_uses_quote_when_history_is_stale(self):
+        df = self.price_data(103.0, 120.0).rename(
+            columns={"close": "Close", "volume": "Volume"}
+        )
+        ticker = Mock()
+        ticker.info = {
+            "regularMarketTime": int(
+                datetime(2026, 9, 2, 16, 0, tzinfo=main.NEW_YORK_TIMEZONE)
+                .timestamp()
+            ),
+            "regularMarketPrice": 106.0,
+            "regularMarketVolume": 210,
+        }
+
+        with (
+            patch("main.yf.download", return_value=df),
+            patch("main.yf.Ticker", return_value=ticker),
+        ):
+            price_data = get_price_data("TEST", date(2026, 9, 2))
+
+        self.assertEqual(price_data.index[-1].date(), date(2026, 9, 2))
+        self.assertEqual(price_data["close"].iloc[-1], 106.0)
+        self.assertEqual(price_data["volume"].iloc[-1], 210)
+
+    def test_us_expected_price_date_uses_previous_new_york_close(self):
+        now = datetime(2026, 9, 3, 4, 30, tzinfo=TAIPEI_TIMEZONE)
+
+        self.assertEqual(get_expected_price_date("us", now), date(2026, 9, 2))
+
     def test_medium_volume_signal_survives_when_high_alerts_are_full(self):
         message = self.build_alerts(
             high_alerts=[
@@ -310,6 +357,143 @@ class TechnicalAlertsTest(unittest.TestCase):
 
 
 class EventRadarTest(unittest.TestCase):
+    def test_earnings_events_use_finnhub_hour_when_available(self):
+        response = Mock()
+        response.raise_for_status.return_value = None
+        response.json.return_value = {
+            "earningsCalendar": [
+                {
+                    "symbol": "AAPL",
+                    "date": "2026-07-24",
+                    "hour": "amc",
+                }
+            ]
+        }
+
+        with (
+            patch.dict("main.os.environ", {"FINNHUB_API_KEY": "test-key"}),
+            patch("main.get_today_taipei", return_value=date(2026, 7, 22)),
+            patch("main.requests.get", return_value=response) as mocked_get,
+        ):
+            events = get_earnings_events(
+                [{"ticker": "AAPL", "display_name": "AAPL"}]
+            )
+
+        self.assertEqual(
+            events,
+            [
+                {
+                    "id": "AAPL_earnings_2026-07-24",
+                    "type": "earnings",
+                    "name": "AAPL 財報",
+                    "ticker": "AAPL",
+                    "date": "2026-07-24",
+                    "session": "after_market",
+                }
+            ],
+        )
+        self.assertEqual(
+            mocked_get.call_args.kwargs["params"]["symbol"],
+            "AAPL",
+        )
+        self.assertEqual(
+            mocked_get.call_args.kwargs["params"]["token"],
+            "test-key",
+        )
+
+    def test_tw_earnings_events_request_finnhub_international_calendar(self):
+        response = Mock()
+        response.raise_for_status.return_value = None
+        response.json.return_value = {"earningsCalendar": []}
+
+        with (
+            patch.dict("main.os.environ", {"FINNHUB_API_KEY": "test-key"}),
+            patch("main.get_today_taipei", return_value=date(2026, 7, 22)),
+            patch("main.requests.get", return_value=response) as mocked_get,
+            patch("main.yf.Ticker"),
+        ):
+            get_earnings_events(
+                [{"ticker": "2330.TW", "display_name": "台積電"}],
+                "tw",
+            )
+
+        self.assertEqual(
+            mocked_get.call_args.kwargs["params"]["international"],
+            "true",
+        )
+
+    def test_earnings_events_fall_back_to_yfinance_without_finnhub_key(self):
+        ticker = Mock()
+        ticker.calendar = pd.DataFrame(
+            [datetime(2026, 7, 24, 8, 0)],
+            index=["Earnings Date"],
+        )
+
+        with (
+            patch.dict("main.os.environ", {}, clear=True),
+            patch("main.get_today_taipei", return_value=date(2026, 7, 22)),
+            patch("main.yf.Ticker", return_value=ticker),
+        ):
+            events = get_earnings_events(
+                [{"ticker": "AAPL", "display_name": "AAPL"}]
+            )
+
+        self.assertEqual(events[0]["session"], "before_market")
+
+    def test_parse_bls_release_events_reads_official_schedule_rows(self):
+        html = """
+        <table>
+            <tr>
+                <td>June 2026</td>
+                <td>Jul. 14, 2026</td>
+                <td>08:30 AM</td>
+            </tr>
+            <tr>
+                <td>July 2026</td>
+                <td>Aug. 12, 2026</td>
+                <td>08:30 AM</td>
+            </tr>
+        </table>
+        """
+        schedule = {
+            "id_prefix": "CPI",
+            "name": "CPI",
+            "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+        }
+
+        events = parse_bls_release_events(html, schedule)
+
+        self.assertEqual(
+            events,
+            [
+                {
+                    "id": "CPI_2026-07-14",
+                    "type": "macro",
+                    "name": "CPI",
+                    "reference_month": "June 2026",
+                    "date": "2026-07-14",
+                    "session": "before_market",
+                },
+                {
+                    "id": "CPI_2026-08-12",
+                    "type": "macro",
+                    "name": "CPI",
+                    "reference_month": "July 2026",
+                    "date": "2026-08-12",
+                    "session": "before_market",
+                },
+            ],
+        )
+
+    def test_macro_events_include_bls_fallback_when_fetch_fails(self):
+        with patch("main.requests.get", side_effect=main.requests.RequestException):
+            events = get_macro_events()
+
+        event_ids = {event["id"] for event in events}
+        self.assertIn("CPI_2026-07-14", event_ids)
+        self.assertIn("PPI_2026-07-15", event_ids)
+        self.assertIn("NFP_2026-08-07", event_ids)
+
     def test_upcoming_events_excludes_past_events(self):
         events = [
             {"id": "past", "name": "CPI", "date": "2026-06-12"},
@@ -472,13 +656,14 @@ class WatchlistMarketTest(unittest.TestCase):
                     "display_name": "台積電",
                     "close": 1000.0,
                     "change_pct": 1.23,
+                    "price_date": date(2026, 9, 3),
                     "error": None,
                 }
             ],
             "📈 台股 Watchlist",
         )
 
-        self.assertIn("📈 台股 Watchlist", message)
+        self.assertIn("📈 台股 Watchlist（9/3）", message)
         self.assertIn("台積電: 1000.00 (+1.23%)", message)
         self.assertNotIn("2330.TW", message)
 
@@ -533,19 +718,17 @@ class WeeklyMarketRecapTest(unittest.TestCase):
                 "losers": ["PLTR -8.0%", "ARM -7.0%"],
                 "big_moves": ["BE +18.0%", "MU +12.0%", "PLTR -8.0%"],
             },
-            "news_headlines": [
-                {
-                    "title": "Fed keeps rates unchanged",
-                    "source": "Reuters",
-                    "published_at": "2026-06-18",
-                    "url": "https://example.com/fed",
-                }
-            ],
         }
 
     def test_weekly_recap_runs_on_monday(self):
         self.assertTrue(should_run_weekly_recap(date(2026, 6, 22)))
         self.assertFalse(should_run_weekly_recap(date(2026, 6, 23)))
+
+    def test_weekly_recap_range_uses_friday_close_to_friday_close(self):
+        self.assertEqual(
+            get_previous_us_week_range(date(2026, 6, 29)),
+            (date(2026, 6, 19), date(2026, 6, 26)),
+        )
 
     def test_period_return_is_calculated(self):
         price_data = pd.DataFrame(
@@ -567,8 +750,7 @@ class WeeklyMarketRecapTest(unittest.TestCase):
         self.assertIn('"indices"', user_prompt)
         self.assertIn('"sector_etfs"', user_prompt)
         self.assertIn('"watchlist_top_movers"', user_prompt)
-        self.assertIn('"news_headlines"', user_prompt)
-        self.assertIn("Fed keeps rates unchanged", user_prompt)
+        self.assertNotIn('"news_headlines"', user_prompt)
         self.assertIn("Dow Jones", user_prompt)
         self.assertIn("S&P500", user_prompt)
         self.assertIn("PHLX", user_prompt)

@@ -1,17 +1,17 @@
 import json
 import os
+import re
+from html import unescape
 from datetime import date, datetime, time, timedelta
-from email.utils import parsedate_to_datetime
 from pathlib import Path
-from urllib.parse import quote, quote_plus
-from xml.etree import ElementTree
+from urllib.parse import quote
 from zoneinfo import ZoneInfo
 
 import pandas as pd
 import requests
 import yfinance as yf
 
-from tw_institutional import build_tw_institutional_sections
+from tw_institutional import build_tw_institutional_sections, is_tw_trading_day
 
 
 SHEET_ID = "1DM7x4sQP2Mt7Tiohf2wGLt_l1dizbhAk-sZEIMleqlc"
@@ -22,14 +22,17 @@ VOLUME_EXPANSION_THRESHOLD = 1.5
 VOLUME_SHRINK_THRESHOLD = 1.0
 BIG_MOVE_THRESHOLD = 5.0
 TAIPEI_TIMEZONE = ZoneInfo("Asia/Taipei")
+NEW_YORK_TIMEZONE = ZoneInfo("America/New_York")
 MAX_ALERTS_PER_TICKER = 4
+FINNHUB_EARNINGS_LOOKAHEAD_DAYS = 180
 DEFAULT_MARKET = "us"
 DEFAULT_REPORT_TYPE = "daily"
+TW_PRICE_DATA_READY_TIME = time(14, 30)
+US_PRICE_DATA_READY_TIME = time(16, 30)
 WEEKLY_RECAP_FALLBACK = (
     "📊 Weekly Market Recap\n\nWeekly Market Recap 暫時無法產生。"
 )
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
-WEEKLY_NEWS_LIMIT = 12
 WEEKLY_WATCHLIST_LIMIT = 5
 WEEKLY_INDEX_TICKERS = {
     "Dow Jones": "^DJI",
@@ -57,22 +60,6 @@ WEEKLY_SECTOR_ETFS = {
     "TAN": "太陽能",
     "ICLN": "潔淨能源",
 }
-WEEKLY_NEWS_KEYWORDS = [
-    "Federal Reserve",
-    "inflation",
-    "CPI",
-    "PPI",
-    "jobs report",
-    "oil price",
-    "Middle East",
-    "Iran",
-    "tariffs",
-    "Nvidia",
-    "AI infrastructure",
-    "semiconductor",
-    "data center power",
-    "nuclear energy",
-]
 WATCHLIST_CONFIGS = {
     "us": {
         "sheet_name": "US Watchlist",
@@ -90,43 +77,70 @@ WATCHLIST_CONFIGS = {
     },
 }
 
-MACRO_EVENTS = [
+STATIC_MACRO_EVENTS = [
     {
-        "id": "CPI_2026-06-12",
-        "type": "macro",
-        "name": "CPI",
-        "date": "2026-06-12",
-        "session": "before_market",
-    },
-    {
-        "id": "PPI_2026-06-15",
-        "type": "macro",
-        "name": "PPI",
-        "date": "2026-06-15",
-        "session": "before_market",
-    },
-    {
-        "id": "FOMC_2026-06-18",
+        "id": "FOMC_2026-07-29",
         "type": "macro",
         "name": "FOMC",
-        "date": "2026-06-18",
+        "date": "2026-07-29",
         "session": "after_market",
     },
     {
-        "id": "NFP_2026-07-05",
-        "type": "macro",
-        "name": "非農就業",
-        "date": "2026-07-05",
-        "session": "before_market",
-    },
-    {
-        "id": "PCE_2026-07-26",
+        "id": "PCE_2026-07-30",
         "type": "macro",
         "name": "PCE",
-        "date": "2026-07-26",
+        "date": "2026-07-30",
         "session": "before_market",
     },
 ]
+BLS_RELEASE_SCHEDULES = [
+    {
+        "id_prefix": "CPI",
+        "name": "CPI",
+        "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+    },
+    {
+        "id_prefix": "PPI",
+        "name": "PPI",
+        "url": "https://www.bls.gov/schedule/news_release/ppi.htm",
+    },
+    {
+        "id_prefix": "NFP",
+        "name": "非農就業",
+        "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+    },
+]
+BLS_RELEASE_FALLBACK_EVENTS = {
+    "CPI": [
+        ("June 2026", "2026-07-14"),
+        ("July 2026", "2026-08-12"),
+        ("August 2026", "2026-09-11"),
+        ("September 2026", "2026-10-14"),
+        ("October 2026", "2026-11-10"),
+        ("November 2026", "2026-12-10"),
+    ],
+    "PPI": [
+        ("June 2026", "2026-07-15"),
+        ("July 2026", "2026-08-13"),
+        ("August 2026", "2026-09-10"),
+        ("September 2026", "2026-10-15"),
+        ("October 2026", "2026-11-13"),
+        ("November 2026", "2026-12-15"),
+    ],
+    "NFP": [
+        ("June 2026", "2026-07-02"),
+        ("July 2026", "2026-08-07"),
+        ("August 2026", "2026-09-04"),
+        ("September 2026", "2026-10-02"),
+        ("October 2026", "2026-11-06"),
+        ("November 2026", "2026-12-04"),
+    ],
+}
+FINNHUB_EARNINGS_HOUR_TO_SESSION = {
+    "bmo": "before_market",
+    "amc": "after_market",
+    "dmh": "during_market",
+}
 
 
 def get_watchlist_config(market=None):
@@ -416,52 +430,213 @@ def _get_earnings_session(earnings_datetime):
     return "unknown"
 
 
-def get_earnings_events(watchlist):
+def _normalize_finnhub_earnings_hour(hour):
+    if hour is None or pd.isna(hour):
+        return "unknown"
+
+    normalized = str(hour).strip().lower()
+    return FINNHUB_EARNINGS_HOUR_TO_SESSION.get(normalized, "unknown")
+
+
+def _make_earnings_event(ticker, display_name, earnings_date, session):
+    return {
+        "id": f"{ticker}_earnings_{earnings_date}",
+        "type": "earnings",
+        "name": f"{display_name} 財報",
+        "ticker": ticker,
+        "date": earnings_date,
+        "session": session,
+    }
+
+
+def _get_yfinance_earnings_event(item, today):
+    ticker = item["ticker"] if isinstance(item, dict) else item
+    display_name = (
+        item.get("display_name", ticker)
+        if isinstance(item, dict)
+        else ticker
+    )
+
+    try:
+        calendar = yf.Ticker(ticker).calendar
+        values = _extract_earnings_values(calendar)
+        earnings_datetimes = [
+            parsed
+            for value in values
+            if (parsed := _parse_earnings_datetime(value)) is not None
+        ]
+        upcoming = [
+            value for value in earnings_datetimes if value.date() >= today
+        ]
+        if not upcoming:
+            return None
+
+        earnings_datetime = min(upcoming, key=lambda value: value.date())
+        earnings_date = earnings_datetime.date().isoformat()
+        return _make_earnings_event(
+            ticker,
+            display_name,
+            earnings_date,
+            _get_earnings_session(earnings_datetime),
+        )
+    except Exception as exc:
+        print(f"Warning: {ticker} 財報日期讀取失敗，已跳過：{exc}")
+        return None
+
+
+def get_finnhub_earnings_event(item, today, international=False):
+    api_key = os.getenv("FINNHUB_API_KEY")
+    if not api_key:
+        return None
+
+    ticker = item["ticker"] if isinstance(item, dict) else item
+    display_name = (
+        item.get("display_name", ticker)
+        if isinstance(item, dict)
+        else ticker
+    )
+    to_date = today + timedelta(days=FINNHUB_EARNINGS_LOOKAHEAD_DAYS)
+    params = {
+        "symbol": ticker,
+        "from": today.isoformat(),
+        "to": to_date.isoformat(),
+        "token": api_key,
+    }
+    if international:
+        params["international"] = "true"
+
+    try:
+        response = requests.get(
+            "https://finnhub.io/api/v1/calendar/earnings",
+            params=params,
+            timeout=20,
+        )
+        response.raise_for_status()
+        calendar = response.json().get("earningsCalendar", [])
+    except (ValueError, requests.RequestException) as exc:
+        print(f"Warning: {ticker} Finnhub 財報日期讀取失敗，改用 yfinance：{exc}")
+        return None
+
+    upcoming = []
+    for row in calendar:
+        try:
+            event_date = parse_event_date(row)
+        except ValueError:
+            continue
+        if event_date >= today:
+            upcoming.append((event_date, row))
+
+    if not upcoming:
+        return None
+
+    event_date, row = min(upcoming, key=lambda value: value[0])
+    return _make_earnings_event(
+        ticker,
+        display_name,
+        event_date.isoformat(),
+        _normalize_finnhub_earnings_hour(row.get("hour")),
+    )
+
+
+def get_earnings_events(watchlist, event_scope="us"):
     events = []
     today = get_today_taipei()
+    international = event_scope == "tw"
 
     for item in watchlist:
-        ticker = item["ticker"] if isinstance(item, dict) else item
-        display_name = (
-            item.get("display_name", ticker)
-            if isinstance(item, dict)
-            else ticker
-        )
-        try:
-            calendar = yf.Ticker(ticker).calendar
-            values = _extract_earnings_values(calendar)
-            earnings_datetimes = [
-                parsed
-                for value in values
-                if (parsed := _parse_earnings_datetime(value)) is not None
-            ]
-            upcoming = [
-                value for value in earnings_datetimes if value.date() >= today
-            ]
-            if not upcoming:
-                continue
-
-            earnings_datetime = min(upcoming, key=lambda value: value.date())
-            earnings_date = earnings_datetime.date().isoformat()
-            events.append(
-                {
-                    "id": f"{ticker}_earnings_{earnings_date}",
-                    "type": "earnings",
-                    "name": f"{display_name} 財報",
-                    "ticker": ticker,
-                    "date": earnings_date,
-                    "session": _get_earnings_session(earnings_datetime),
-                }
-            )
-        except Exception as exc:
-            print(f"Warning: {ticker} 財報日期讀取失敗，已跳過：{exc}")
+        event = get_finnhub_earnings_event(item, today, international)
+        if event is None:
+            event = _get_yfinance_earnings_event(item, today)
+        if event is not None:
+            events.append(event)
 
     return events
 
 
+def strip_html_tags(value):
+    return unescape(re.sub(r"<[^>]+>", "", value)).strip()
+
+
+def parse_bls_release_date(value):
+    normalized = value.replace(".", "").replace("Sept", "Sep")
+    return datetime.strptime(normalized, "%b %d, %Y").date()
+
+
+def make_bls_release_event(schedule, reference_month, release_date):
+    return {
+        "id": f"{schedule['id_prefix']}_{release_date.isoformat()}",
+        "type": "macro",
+        "name": schedule["name"],
+        "reference_month": reference_month,
+        "date": release_date.isoformat(),
+        "session": "before_market",
+    }
+
+
+def parse_bls_release_events(html_text, schedule):
+    row_pattern = re.compile(
+        r"<tr[^>]*>\s*"
+        r"<td[^>]*>(?P<reference_month>.*?)</td>\s*"
+        r"<td[^>]*>(?P<release_date>.*?)</td>\s*"
+        r"<td[^>]*>(?P<release_time>.*?)</td>\s*"
+        r"</tr>",
+        re.IGNORECASE | re.DOTALL,
+    )
+    events = []
+
+    for match in row_pattern.finditer(html_text):
+        reference_month = strip_html_tags(match.group("reference_month"))
+        release_date_text = strip_html_tags(match.group("release_date"))
+        release_time = strip_html_tags(match.group("release_time"))
+        if not reference_month or not release_date_text:
+            continue
+        if "08:30" not in release_time:
+            continue
+
+        try:
+            release_date = parse_bls_release_date(release_date_text)
+        except ValueError:
+            continue
+
+        events.append(
+            make_bls_release_event(schedule, reference_month, release_date)
+        )
+
+    return events
+
+
+def get_bls_release_fallback_events(schedule):
+    fallback_rows = BLS_RELEASE_FALLBACK_EVENTS.get(schedule["id_prefix"], [])
+    return [
+        make_bls_release_event(
+            schedule,
+            reference_month,
+            datetime.strptime(release_date, "%Y-%m-%d").date(),
+        )
+        for reference_month, release_date in fallback_rows
+    ]
+
+
+def get_bls_release_events(schedule):
+    try:
+        response = requests.get(schedule["url"], timeout=20)
+        response.raise_for_status()
+        events = parse_bls_release_events(response.text, schedule)
+        if events:
+            return events
+        print(f"Warning: {schedule['name']} BLS schedule 解析不到事件，改用 fallback。")
+    except requests.RequestException as exc:
+        print(f"Warning: {schedule['name']} BLS schedule 讀取失敗，改用 fallback：{exc}")
+
+    return get_bls_release_fallback_events(schedule)
+
+
 def get_macro_events():
     events = []
-    for event in MACRO_EVENTS:
+    for schedule in BLS_RELEASE_SCHEDULES:
+        events.extend(get_bls_release_events(schedule))
+
+    for event in STATIC_MACRO_EVENTS:
         try:
             parse_event_date(event)
             events.append(event.copy())
@@ -587,7 +762,7 @@ def _sort_events(events):
 
 def build_event_radar(watchlist, event_scope="us"):
     today = get_today_taipei()
-    earnings_events = get_earnings_events(watchlist)
+    earnings_events = get_earnings_events(watchlist, event_scope)
     if event_scope == "tw":
         market_events = get_tw_market_events(today)
     else:
@@ -629,18 +804,7 @@ def build_event_radar(watchlist, event_scope="us"):
     return "\n".join(lines)
 
 
-def get_price_data(ticker):
-    df = yf.download(
-        ticker,
-        period="1y",
-        interval="1d",
-        auto_adjust=True,
-        progress=False,
-    )
-
-    if df.empty:
-        raise ValueError("抓不到價格資料")
-
+def _normalize_downloaded_price_data(df, ticker):
     if isinstance(df.columns, pd.MultiIndex):
         try:
             close = df["Close"][ticker]
@@ -652,29 +816,132 @@ def get_price_data(ticker):
         close = df["Close"]
         volume = df["Volume"]
 
-    price_data = pd.DataFrame({"close": close, "volume": volume}).dropna(
+    return pd.DataFrame({"close": close, "volume": volume}).dropna(
         subset=["close"]
     )
+
+
+def get_quote_price_row(ticker, expected_price_date):
+    info = yf.Ticker(ticker).info
+    market_time = info.get("regularMarketTime")
+    price = info.get("regularMarketPrice")
+    volume = info.get("regularMarketVolume")
+    if not market_time or price is None:
+        return None
+
+    quote_date = datetime.fromtimestamp(
+        int(market_time),
+        NEW_YORK_TIMEZONE,
+    ).date()
+    if quote_date != expected_price_date:
+        return None
+
+    return quote_date, float(price), 0 if volume is None else int(volume)
+
+
+def get_price_data(ticker, expected_price_date=None):
+    df = yf.download(
+        ticker,
+        period="1y",
+        interval="1d",
+        auto_adjust=True,
+        progress=False,
+    )
+
+    if df.empty:
+        raise ValueError("抓不到價格資料")
+
+    price_data = _normalize_downloaded_price_data(df, ticker)
+    if expected_price_date is not None:
+        latest_price_date = (
+            get_latest_price_date(price_data) if not price_data.empty else None
+        )
+        if latest_price_date != expected_price_date:
+            quote_row = get_quote_price_row(ticker, expected_price_date)
+            if quote_row is not None:
+                quote_date, quote_price, quote_volume = quote_row
+                price_data.loc[pd.Timestamp(quote_date)] = {
+                    "close": quote_price,
+                    "volume": quote_volume,
+                }
+                price_data = price_data.sort_index()
+
     if len(price_data) < 2:
         raise ValueError("價格資料不足，至少需要兩個交易日")
 
     return price_data
 
 
-def analyze_ticker(ticker, display_name=None):
+def get_latest_price_date(price_data):
+    latest_index = price_data.index[-1]
+    if isinstance(latest_index, datetime):
+        return latest_index.date()
+    if isinstance(latest_index, date):
+        return latest_index
+    if hasattr(latest_index, "date"):
+        try:
+            return latest_index.date()
+        except (TypeError, ValueError):
+            return None
+    return None
+
+
+def get_expected_price_date(market=None, now=None):
+    market_key = (market or os.getenv("WATCHLIST_MARKET") or DEFAULT_MARKET).lower()
+    now = now or datetime.now(TAIPEI_TIMEZONE)
+    if market_key == "us":
+        new_york_now = now.astimezone(NEW_YORK_TIMEZONE)
+        if (
+            new_york_now.weekday() < 5
+            and new_york_now.time() >= US_PRICE_DATA_READY_TIME
+        ):
+            return new_york_now.date()
+        return get_previous_weekday(new_york_now.date())
+
+    if market_key != "tw":
+        return None
+
+    today = now.date()
+    if is_tw_trading_day(today) and now.time() >= TW_PRICE_DATA_READY_TIME:
+        return today
+    return None
+
+
+def get_previous_weekday(value):
+    candidate = value - timedelta(days=1)
+    while candidate.weekday() >= 5:
+        candidate -= timedelta(days=1)
+    return candidate
+
+
+def analyze_ticker(ticker, display_name=None, expected_price_date=None):
     result = {
         "ticker": ticker,
         "display_name": display_name or ticker,
         "close": None,
         "change_pct": None,
         "volume_ratio": None,
+        "price_date": None,
         "high_alerts": [],
         "medium_alerts": [],
         "error": None,
     }
 
     try:
-        df = get_price_data(ticker)
+        df = get_price_data(ticker, expected_price_date)
+        latest_price_date = get_latest_price_date(df)
+        result["price_date"] = latest_price_date
+        if (
+            expected_price_date is not None
+            and latest_price_date is not None
+            and latest_price_date != expected_price_date
+        ):
+            raise ValueError(
+                "價格資料日期不符："
+                f"latest={latest_price_date.isoformat()}, "
+                f"expected={expected_price_date.isoformat()}"
+            )
+
         close = df["close"]
         volume = df["volume"]
 
@@ -748,7 +1015,19 @@ def analyze_ticker(ticker, display_name=None):
     return result
 
 
+def format_report_date(value):
+    return f"{value.month}/{value.day}"
+
+
 def build_daily_watchlist(results, title="📈 Daily Watchlist"):
+    price_dates = {
+        result.get("price_date")
+        for result in results
+        if result.get("price_date") is not None and not result.get("error")
+    }
+    if len(price_dates) == 1:
+        title = f"{title}（{format_report_date(next(iter(price_dates)))}）"
+
     lines = [title]
     for result in results:
         display_name = result.get("display_name") or result["ticker"]
@@ -812,8 +1091,14 @@ def build_message(market=None):
         print("Google Sheets 中沒有 active=True 的 ticker，不送出 LINE 訊息。")
         return None
 
+    market_key = (market or os.getenv("WATCHLIST_MARKET") or DEFAULT_MARKET).lower()
+    expected_price_date = get_expected_price_date(market_key)
     results = [
-        analyze_ticker(item["ticker"], item["display_name"])
+        analyze_ticker(
+            item["ticker"],
+            item["display_name"],
+            expected_price_date=expected_price_date,
+        )
         for item in watchlist
     ]
 
@@ -821,7 +1106,7 @@ def build_message(market=None):
         build_daily_watchlist(results, config["title"]),
     ]
 
-    if (market or os.getenv("WATCHLIST_MARKET") or DEFAULT_MARKET).lower() == "tw":
+    if market_key == "tw":
         sections.extend(build_tw_institutional_sections(get_today_taipei()))
 
     sections.append(build_technical_alerts(results))
@@ -853,9 +1138,11 @@ def should_run_weekly_recap(today=None):
 
 def get_previous_us_week_range(today=None):
     today = today or get_today_taipei()
-    days_since_previous_monday = today.weekday() + 7
-    week_start = today - timedelta(days=days_since_previous_monday)
-    week_end = week_start + timedelta(days=4)
+    days_since_last_friday = (today.weekday() - 4) % 7
+    if days_since_last_friday == 0:
+        days_since_last_friday = 7
+    week_end = today - timedelta(days=days_since_last_friday)
+    week_start = week_end - timedelta(days=7)
     return week_start, week_end
 
 
@@ -984,67 +1271,6 @@ def format_movers(movers):
     ]
 
 
-def parse_rss_items(xml_text, start_date, end_date, limit):
-    try:
-        root = ElementTree.fromstring(xml_text)
-    except ElementTree.ParseError:
-        return []
-
-    items = []
-    seen_titles = set()
-    for item in root.findall(".//item"):
-        title = (item.findtext("title") or "").strip()
-        link = (item.findtext("link") or "").strip()
-        source = (item.findtext("source") or "Google News").strip()
-        published_text = (item.findtext("pubDate") or "").strip()
-        if not title or title.lower() in seen_titles:
-            continue
-
-        published_at = ""
-        published_date = None
-        if published_text:
-            try:
-                published = parsedate_to_datetime(published_text)
-                published_date = published.date()
-                published_at = published_date.isoformat()
-            except (TypeError, ValueError):
-                published_at = published_text
-
-        if published_date and not (start_date <= published_date <= end_date):
-            continue
-
-        seen_titles.add(title.lower())
-        items.append(
-            {
-                "title": title,
-                "source": source,
-                "published_at": published_at,
-                "url": link,
-            }
-        )
-        if len(items) >= limit:
-            break
-
-    return items
-
-
-def fetch_weekly_market_news(start_date, end_date, limit=WEEKLY_NEWS_LIMIT):
-    query = " OR ".join(f'"{keyword}"' for keyword in WEEKLY_NEWS_KEYWORDS)
-    query = f"({query}) after:{start_date.isoformat()} before:{(end_date + timedelta(days=1)).isoformat()}"
-    url = (
-        "https://news.google.com/rss/search"
-        f"?q={quote_plus(query)}&hl=en-US&gl=US&ceid=US:en"
-    )
-
-    try:
-        response = requests.get(url, timeout=20)
-        response.raise_for_status()
-        return parse_rss_items(response.text, start_date, end_date, limit)
-    except requests.RequestException as exc:
-        print(f"Warning: Weekly news 讀取失敗，已跳過：{exc}")
-        return []
-
-
 def collect_weekly_market_data(today=None):
     week_start, week_end = get_previous_us_week_range(today)
     indices = get_weekly_returns(WEEKLY_INDEX_TICKERS, week_start, week_end)
@@ -1065,15 +1291,12 @@ def collect_weekly_market_data(today=None):
         week_start,
         week_end,
     )
-    news_headlines = fetch_weekly_market_news(week_start, week_end)
-
     return {
         "week_range": f"{week_start.isoformat()} to {week_end.isoformat()}",
         "indices": format_return_map(indices),
         "sector_etfs": format_return_map(sector_returns),
         "sector_etf_labels": WEEKLY_SECTOR_ETFS,
         "watchlist_top_movers": watchlist_top_movers,
-        "news_headlines": news_headlines,
     }
 
 
@@ -1095,7 +1318,7 @@ def build_weekly_recap_prompt(summary):
 規則：
 1. 不要給買賣建議。
 2. 不要硬編原因。
-3. 如果新聞與市場表現無法明確連結，請寫「市場反應較分散，未出現單一明確主線」。
+3. 如果市場表現無法看出明確輪動，請寫「市場反應較分散，未出現單一明確主線」。
 4. 本週主線最多 3 點。
 5. 類股輪動最多列 3 個強勢、3 個弱勢。
 6. 內容要短。

@@ -2,7 +2,10 @@ name: Daily Technical Radar
 
 on:
   schedule:
-    - cron: "30 23 * * 1-5"  # 台灣早上 7:30
+    # Run at 16:30 New York time after the US cash-market close.
+    # GitHub cron is UTC-only, so both DST and standard-time slots are listed.
+    - cron: "30 20 * * 1-5"
+    - cron: "30 21 * * 1-5"
   workflow_dispatch:
 
 jobs:
@@ -13,17 +16,37 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Check US close window
+        id: close-window
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          ny_time="$(TZ=America/New_York date +%H:%M)"
+          if [ "$ny_time" = "16:30" ]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Skipping scheduled run at $ny_time New York time."
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Setup Python
+        if: steps.close-window.outputs.should_run == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install packages
+        if: steps.close-window.outputs.should_run == 'true'
         run: pip install -r requirements.txt
 
       - name: Run script
+        if: steps.close-window.outputs.should_run == 'true'
         env:
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
           WATCHLIST_MARKET: us
         run: python main.py
