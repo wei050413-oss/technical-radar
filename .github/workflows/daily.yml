@@ -1,9 +1,6 @@
 name: Daily Technical Radar
 
 on:
-  push:
-    branches:
-      - main
   schedule:
     # Run at 16:30 New York time after the US cash-market close.
     # GitHub cron is UTC-only, so both DST and standard-time slots are listed.
