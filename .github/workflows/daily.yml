@@ -24,11 +24,13 @@ jobs:
             exit 0
           fi
 
-          ny_time="$(TZ=America/New_York date +%H:%M)"
-          if [ "$ny_time" = "16:30" ]; then
+          ny_zone="$(TZ=America/New_York date +%Z)"
+          triggered_schedule="${{ github.event.schedule }}"
+          if { [ "$ny_zone" = "EDT" ] && [ "$triggered_schedule" = "30 20 * * 1-5" ]; } ||
+             { [ "$ny_zone" = "EST" ] && [ "$triggered_schedule" = "30 21 * * 1-5" ]; }; then
             echo "should_run=true" >> "$GITHUB_OUTPUT"
           else
-            echo "Skipping scheduled run at $ny_time New York time."
+            echo "Skipping scheduled run for $triggered_schedule while New York is $ny_zone."
             echo "should_run=false" >> "$GITHUB_OUTPUT"
           fi
 
