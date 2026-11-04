@@ -921,6 +921,8 @@ def analyze_ticker(ticker, display_name=None, expected_price_date=None):
         "close": None,
         "change_pct": None,
         "volume_ratio": None,
+        "year_high_close": None,
+        "drawdown_pct": None,
         "price_date": None,
         "high_alerts": [],
         "medium_alerts": [],
@@ -956,6 +958,14 @@ def analyze_ticker(ticker, display_name=None, expected_price_date=None):
 
         result["close"] = latest_close
         result["change_pct"] = change_pct
+
+        # The downloaded history covers one year of adjusted closing prices.
+        year_high_close = float(close.max())
+        if year_high_close > 0:
+            result["year_high_close"] = year_high_close
+            result["drawdown_pct"] = (
+                (year_high_close - latest_close) / year_high_close * 100
+            )
 
         previous_close = close.iloc[:-1]
         previous_20 = previous_close.tail(20)
@@ -1039,6 +1049,12 @@ def build_daily_watchlist(results, title="📈 Daily Watchlist"):
             f"{display_name}: {result['close']:.2f} "
             f"({result['change_pct']:+.2f}%)"
         )
+        drawdown_pct = result.get("drawdown_pct")
+        if drawdown_pct is not None and drawdown_pct > 15:
+            lines.append(
+                f"⚠️ 距近一年最高收盤價 {result['year_high_close']:.2f} "
+                f"已回落 {drawdown_pct:.2f}%（超過15%）"
+            )
 
     return "\n".join(lines)
 
